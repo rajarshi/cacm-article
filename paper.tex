@@ -61,15 +61,15 @@ email: {\texttt{jsmith@affiliation.org}}) and Julius P.~Kumquat
 \section{Is Cheminformatics the New Bioinformatics?}
 
 Novel technologies in the life sciences churn out information at an ever
-increasing rate – public data stores such as at the European Bioinformatics
-Institute (EBI) contain on the order of 10 Petabytes of biological information,
-a long way from the few kilobytes of the first sequenced genome in 1977.
+increasing rate -- public data stores such as at the European Bioinformatics
+Institute (EBI) contain on the order of 10 PB of biological information.
 However, while biological information has been available publicly for decades,
-the same has not been true for chemical information until very recently. Only
-2004 saw a large public compound repository, PubChem, entering the public
-domain, followed more recently by other databases as discussed later in this
-article. In the same vein, open source software and the publication of
-algorithms have only recently become a main focus of the field \cite{faulon2010}.
+the same has not been true for chemical information until very recently. It was
+not until 2004 that a large public small molecule structure repository (Pubchem)
+became freely available. This was followed by other databases as discussed later
+in this article. In the same vein, open source software and the publication of
+algorithms have only recently become a main focus of the field
+\cite{faulon2010}.
 
 So why should we actually care about chemical information being made public --
 and how does this relate to the field of computer science?
@@ -85,32 +85,33 @@ currently stored in public databases such as PubChem with a large amount of
 annotations, and the design of data structures for chemicals, as well as
 subsequent data mining of this information, are areas where expertise in
 computer science is dearly needed. (For a recent, detailed introduction to the
-field written for computer scientists see \cite{brown2009}). Cheminformatics
-comprises different areas, which broadly speaking can be divided into three
-fields: capturing data (using lab notebooks or potentially using formats such as
-the Chemical Markup Language for publications); storing data (designing database
-schemas, devising ontologies) and mining data (such as for bioactivity
-prediction, which might involve algorithms based on graphs). However, what is a
-major difference to the bioinformatics field is the type of information being
-analyzed: While bioinformatics often deals with sequences, the domain of
-cheminformatics is chemical structures. In case of the former, information can
-very frequently be represented as one-dimensional strings, which are relatively
-easy to handle computationally. On the other hand, chemical structures may
-possess rings, branches as well as multiple valid representations of even the
-same structure, potentially giving rise to ambiguities. Hence, chemical
-structure is often thought of as being more difficult to standardize than
-information from other domains. As an illustration, different representations of
-the same chemical structure are shown in Figure 1. The top left hand corner
-shows a structure a chemist would draw it -- every 'corner' representing a carbon
-atom (which can also be represented as a C), every O denoting oxygen, every N
-nitrogen, every H hydrogen and so on. This is the standard format chemists use
-when exchanging information with their peers. However, this is not directly
-amenable to data mining -- different atoms might be collapsed into one node,
-sets of atoms might have the same relevant properties assigned. Hence, the top
-right hand corner of Figure 1 shows an annotated graph representation, taking
-into account that atoms, though being of different elemental atom type, can have
-similar properties -- e.g. both oxygen and nitrogen carry an 'On' label in this
-graph.
+field written for computer scientists see \cite{brown2009}). 
+
+Cheminformatics comprises different areas, which broadly speaking can be divided
+into three fields: capturing data (using lab notebooks or potentially using
+formats such as the Chemical Markup Language for publications); storing data
+(designing database schemas, devising ontologies) and mining data (such as for
+bioactivity prediction, which might involve algorithms based on graphs).
+However, what is a major difference to the bioinformatics field is the type of
+information being analyzed: While bioinformatics often deals with sequences, the
+domain of cheminformatics is chemical structures. In case of the former,
+information can very frequently be represented as one-dimensional strings, which
+are relatively easy to handle computationally. On the other hand, chemical
+structures may possess rings, branches as well as multiple valid representations
+of even the same structure, potentially giving rise to ambiguities. Hence,
+chemical structure is often thought of as being more difficult to standardize
+than information from other domains. As an illustration, different
+representations of the same chemical structure are shown in Figure 1. The top
+left hand corner shows a structure a chemist would draw it -- every 'corner'
+representing a carbon atom (which can also be represented as a C), every O
+denoting oxygen, every N nitrogen, every H hydrogen and so on. This is the
+standard format chemists use when exchanging information with their peers.
+However, this is not directly amenable to data mining -- different atoms might
+be collapsed into one node, sets of atoms might have the same relevant
+properties assigned. Hence, the top right hand corner of Figure 1 shows an
+annotated graph representation, taking into account that atoms, though being of
+different elemental atom type, can have similar properties -- e.g. both oxygen
+and nitrogen carry an 'On' label in this graph.
 
 % \begin{figure}
 % \centering
@@ -161,10 +162,21 @@ time and space efficient way. Many aspects pertaining to those areas will be
 discussed in the following sections.
 
 \section{Bridging Cheminformatics \& Computer Science}
-\label{sec:bridg-chem-}
+
+The motivation for this article is to highlight a variety of topics in
+cheminformatics and present the computational and algorithmic problems that are
+addressed i the field. The hope is that we will be able to highlight areas where modern CS
+research could contribute to these problems. 
+
+While cheminformatics has a broad range of applicability, ranging from
+agrochemical research and drug discovery to the design of novel materials, we
+have chosen to use drug discovery as the context of this article. The remainder
+of this article is structured around the concept of ``risk minimization'' in
+drug discovery -- how does one minimize the chances of a small molecule failing
+as a drug candidate and how do cheminformatics methods play a key role in this
+efforts.
 
 \subsection{Databases \& Ontologies}
-\label{sec:datab--ontol}
 
 Most cheminformatics applications rely on large databases of chemical structures
 and their properties. Organising and maintaining such databases, searching based

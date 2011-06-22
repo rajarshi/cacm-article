@@ -39,16 +39,20 @@ email: {\texttt{jsmith@affiliation.org}}) and Julius P.~Kumquat
   been the advance of bioinformatics: interdisciplinary collaboration between
   computer scientists and molecular biologists led to the sequencing the human genome
   (among many other accomplishments), because researchers connected biological
-  technologies to the theory of string algorithms. However, despite this great
+  concepts to the theory of string algorithms. However, despite this great
   success, few computer scientists are familiar with a related (and older!)
-  discipline -- chemoinformatics, the use of computers to discover new molecules with
-  desired behavior, such as new pharmaceuticals or industrial solvents. Until
+  discipline -- chemoinformatics, the use of computers to represent
+  small molecules structures and analyze their properties based on aspects
+  of their structures. Cheminformatics has a wide applicability
+  including the discovery of novel drug candidates to optimizing
+  certain physicochemical properties of small molecules. Until
   recently, the data and techniques of chemoinformatics have been closely guarded
   secrets of companies whose financial success depended on being the first to produce
   the new "miracle molecule". Only within the last decade -- and largely because of
   chemists volunteering their time for an Open Science "movement" -- do researchers
   now have access to freely available software packages and databases of tens of
-  millions of chemicals. As a result, chemists now confront hundreds of unsolved
+  millions of chemicals. As a result, chemists now confront a variety
+  of unsolved
   algorithmic problems that could not have been tackled a decade ago, but whose
   solutions are critical to research ranging from determining the behavior of small
   molecules in biological pathways, to finding a cure for malaria.
@@ -164,17 +168,18 @@ discussed in the following sections.
 \section{Bridging Cheminformatics \& Computer Science}
 
 The motivation for this article is to highlight a variety of topics in
-cheminformatics and present the computational and algorithmic problems that are
-addressed i the field. The hope is that we will be able to highlight areas where modern CS
-research could contribute to these problems. 
+cheminformatics and present the computational and algorithmic problems
+that are addressed in the field. The hope is that we will be able to
+highlight areas where modern CS research could contribute to these
+problems.
 
 While cheminformatics has a broad range of applicability, ranging from
-agrochemical research and drug discovery to the design of novel materials, we
-have chosen to use drug discovery as the context of this article. The remainder
-of this article is structured around the concept of ``risk minimization'' in
-drug discovery -- how does one minimize the chances of a small molecule failing
-as a drug candidate and how do cheminformatics methods play a key role in this
-efforts.
+agrochemical research and drug discovery to the design of novel
+materials, we have chosen to use drug discovery as the context of this
+article. The remainder of this article is structured around the
+concept of ``risk minimization'' in drug discovery -- how does one
+minimize the chances of a small molecule failing as a drug candidate
+and how do cheminformatics methods play a key role in this efforts.
 
 \subsection{Databases \& Ontologies}
 
@@ -545,87 +550,102 @@ also legal questions about contribution metrics will get enough room to grow.
 \section{The Role of Open Source \& Open Data}
 \label{sec:role-open-source}
 
-See e.g. role for the EBI and genome campus,
-https://registration.hinxton.wellcome.ac.uk/display_info.asp?id=246 See also
-impact of open chemical data, ChEMBL to future, e.g. ELIXIR
-http://www.elixir-europe.org/page.php
+A key aspect of cheminformatics is that much of its development
+requries access to collections of molecular structures (and usually,
+associated bioactivity data). As has been noted, it is only recently
+that large structure and bioactivity data collections have become
+available. As a result, this enables much more robust validation of
+cheminformatics methodologies as well as large scale benchmarking of
+algorithms. The latter is especially relevant for the plethora of
+data mining techniques that are emoloyed in cheminformatics. At this
+point, the nature of Open Data focuses primarily on structure and
+actvity data types. On the other hand, there is a distinct lack of
+textual data (such as journal articles) that are Open in nature. While
+PubMed abstract serve as a proxy for journal articles, text mining
+methods in cheminformatics are hindered by this state of affairs.
+Interestingly, patent information is publicly accessible (cf. Google
+Patents) and there have been efforts to mine these for chemical
+information using Open tools.
 
+Obviously freely accessible data is important for research; but
+equally important are the tools to work with chemical data -- more
+specifically, chemical structures. Chemical toolkits are the workhorses
+of cheminformatics research and a variety of toolkits are available,
+both commericial (which, in many cases, provide free academic
+licenses) and Open Source. In this article we do not debate the
+arguments for and against Open Source; rather, we focus on Open Source
+tools since this ensures that a reader will be able to explore
+cheminformatics problems with a minimum of encumbrances.
 
 \subsection{Open Source Chemical Toolkits}
 
-A key success of the open source movement is that experts can team up for
-collaborating in their expert areas. Especially in the chemistry domain, with a
-strong expert system history, this is even more relevant due to its complex data
-types and relation to many outcome variables, like biological activities,
-toxicological effects, influence to diseases, or effects on the environment.
-
-Open Babel and the Chemistry Development Kit (CDK) are two of the most widely
-used Open Source chemical toolkits. Such toolkits are used, for example, to
-read/write chemical file formats, manipulate chemical structures, measure
-similarity of molecules, search for substructures, and generate 2D diagrams. The
-underlying algorithms used include graph algorithms (e.g. maximal common
-substructure, canonical labelling of graphs), geometrical methods (e.g. Kabsch
-alignment) and vector manipulation (e.g. converting coordinates in various
-systems, 3D structure generation). As well as being of direct use to practising
-cheminformaticians in their day-to-day work, many applications have been
-developed that rely on these toolkits to handle chemical data; for example, the
-molecular viewer Avogadro (http://avogadro.openmolecules.net) uses Open Babel,
-while the molecular workbench Bioclipse \cite{Bioclipse2} uses the CDK.
+A number of toolkits are available including the Chemistry Development
+Kit (CDK), OpenBabel, RDKit and Indigo. These toolkits are written in
+Java or C++ (though toolkits written in the latter invariably have
+bindings to a variety of languages). Such toolkits are used, for
+example, to read/write chemical file formats, manipulate chemical
+structures, measure similarity of molecules, search for substructures,
+and generate 2D diagrams. The underlying algorithms used include graph
+algorithms (e.g. maximal common substructure, canonical labelling of
+graphs), geometrical methods (e.g. Kabsch alignment) and vector
+manipulation (e.g. converting coordinates in various systems, 3D
+structure generation). As well as being of direct use to practising
+cheminformaticians in their day-to-day work, many applications have
+been developed that rely on these toolkits to handle chemical data;
+for example, the molecular viewer Avogadro
+(http://avogadro.openmolecules.net) uses Open Babel, while the
+molecular workbench Bioclipse \cite{Bioclipse2} uses the CDK.
  
-Open Babel (http://openbabel.org) is composed of a set of command-line
-applications, a GUI, and a C++ library with SWIG-generated bindings in several
-languages. It runs cross-platform and uses CMake and CTest for building and
-testing. One of its unique features is support for a large number of chemical
-file formats and its babel command-line application is widely used for
-conversion between them. The origin of Open Babel is OELib, a chemical toolkit
-released under the GPL by OpenEye Scientific Software. In 2001, OpenEye decided
-to discontinue work on OELib and to focus instead on an internal rewrite of the
-library which would not be open source (OEChem). At that point, OELib was
-renamed to Open Babel and since then it has been maintained and developed by a
-community led by Dr Geoffrey Hutchison (University of Pittsburgh).
+The various toolkits have many features in common and at the same time
+have certain distinguishing features. For example, the CDK implements
+a large collection of molecular descriptors. On the other hand,
+OpenBabel has robust support for 3D structure generation and
+optimization and supports the interconversion of a huge number of
+chemical file formats. 
 
-The Chemistry Development Kit (http://cdk.sf.net, \cite{Steinbeck2006}) project
-originated in 2000 as a common base for two existing Java applications Jmol and
-JChemPaint. The initial code bases inherited from both these project and
-CompChem. It soon outgrew this initial goal and is now a fully-featured
-cheminformatics toolkit in its own right. The CDK is a Java library and uses Ant
-and JUnit for building and testing, as well as PMD and OpenJavaDocCheck for code
-quality control. A particular strength of the toolkit is its support for a large
-number of so-called “molecular descriptors” (numerical representations of
-chemical structures used in machine learning to link chemical structure to a
-physical or biological property). The project was initially led by Dr Christoph
-Steinbeck (EMBL-EBI, UK) and Dr Egon Willighagen (Karolinska Institutet,
-Sweden), and more recently Dr Rajarshi Guha (NIH, USA) joined as third, current
-project leader.
+While algorithmic challenges are certainly faced by toolkits, software
+engineering challenges probably affect the use and development of the
+toolkits on a daily basis. Examples include verifying code coverage,
+thread safety, documentation quality and so on. Some projects such as
+the CDK employ a variety of tools to address some of these issues.
+Examples include the use of PMD to analyze code quality and JUnit to
+perform unit testing. At the level of implementation, there are still
+inefficiencies in some toolkits. For example the CDK employs a JJTree
+parser to implement the SMARTS specification, but employs a hand built
+parser to handle SMILES. The latter is essentially a complex tangle of
+\emph{if \ldots then} statements and is not easily maintainable. 
 
-Both the CDK and Open Babel are very open to new contributors to the projects.
-They both have an open mailing list, without any further private lists.
-Likewise, issue tracking systems are fully open, and ongoing and future
-development is openly discussed. Contributors are encouraged to get involved
-with any of the following areas: development of new features, improvement of
-existing features, performance optimisation, fixing bugs, documentation, website
-development, reporting bugs, and helping users on the mailing list. Anyone
-interested should email the respective developer’s mailing list (either
-cdk-devel@lists.sf.net or openbabel-devel@lists.sf.net) with their interests and
-background, and a mentor will be assigned to help them join the project.
+It is also important to note that certain challenges faced by nearly
+all cheminformatics toolkit stem from the graph representation of
+chemistry. This representation, while succinct and amenable to
+computation, is only an approximation of reality -- and edges cases
+abound. Existing areas of interest are enumeration of colored graphs,
+taking into account symmetry, and symmetry detection itself, which not
+merely derives from the chemical graph, but typically also from the 3D
+geometry of the chemical. However, more challenging is that chemical
+representation of a molecule really needs to capture non-static
+graphs, in order to take into account delocalisation and tautomeric
+phenomena molecules can practically undergo. It is important to
+realize that though chemical representations have increased in
+sophistication over the years, many chiral molecules cannot be
+satisfactorily handled by current representation systems.
 
-Contributions as such are made to both projects on a regular basis, both from
-industries more interested in the use and application of these libraries, as
-well as from research groups in academia. And example here is the contribution
-of a ring search algorithm replacing the earlier Figueras algorithm by
-mathematicians from the TU M\"{u}nchen in Germand (\cite{Berger2004}). The former is
-maintained in the CDK, as the project also aims to provide an educational
-resource.  
 
-Challenges faced by the CDK and OpenBabel libraries are abundant. Many of these
-originate from the complexity of the graph theory used in chemistry, which is an
-approximate but insufficient representation to capture chemical reality.
-Existing areas of interest are enumeration of colored graphs, taking into
-account symmetry, and symmetry detection itself, which not merely derives from
-the chemical graph, but typically also from the 3D geometry of the chemical.
-However, more challenging is that chemical representation of a molecule really
-needs to capture non-static graphs, in order to take into account delocalisation
-and tautomeric phenomena molecules can practically undergo.
+Given that there is ample scope for software engineering (algorithm
+implementation, code quality and analysis, build systems etc), both
+the CDK and OpenBabel are open to new contributions. Both are driven
+via public, active mailing lists and public issue tracking systems.
+Development questions are actively and openly discussed to arrive at a
+consensus and contributors are encouraged to get involved with any of
+the following areas: development of new features, improvement of
+existing features, performance optimisation, fixing bugs,
+documentation, website development, reporting bugs, and helping users
+on the mailing list. Anyone interested should email the respective
+developer’s mailing list (either cdk-devel@lists.sf.net or
+openbabel-devel@lists.sf.net) with their interests and background, and
+a mentor will be assigned to help them join the project.
+
+
 
 \section{Conclusions}
 \label{sec:conclusions}

@@ -65,8 +65,21 @@ Egon Willighagen (Karolinska Institutet, Stockholm, Sweden, email: {\texttt{baoi
 
 \category{H.4}{Information Systems Applications}{Miscellaneous}
 \terms{
-\textit{Tautomerism} - Tautomers are isomers of organic compounds that readily interconvert by a chemical reaction called tautomerization.
-\textit{Protonation} - In chemistry, protonation is the addition of a proton (H+) to an atom, molecule, or ion.
+\begin{itemize}
+\item \textit{Tautomerism} - Tautomers are isomers (same molecular formula but different structural formula) of organic compounds that readily interconvert by a chemical reaction called tautomerization.
+\item \textit{Protonation and protonation state} - In chemistry, protonation is the addition of a proton (H+) to an atom, molecule, or ion. The different states (different number of H+ or on different atoms) are called protonation states for a molecular compound (e.g. de-protonated, mono-protonated, bi-protonated, or any variations of those states).
+\item \textit{BioAssay} - A system measuring the biological activity of a chemical compound on a particular biological assay (with all its parameters).
+\item \textit{Metabolites} - Metabolites are the intermediates and products of metabolism. The term metabolite is usually restricted to small molecules (chemical compounds).
+\item \textit{Mass spectrometry} - Mass spectrometry (MS) is an analytical technique that measures the mass-to-charge ratio of charged particles. It is used for determining masses of particles, for determining the elemental composition of a sample or molecule, and for elucidating the chemical structures of molecules, such as peptides and other chemical compounds.
+\item \textit{Ligand (coordination chemistry)} - an atom, ion, or functional group that donates one or more of its electrons through a coordinate covalent bond to one or more central atoms or ions
+\item \textit{Ligand (biochemistry)} - a substance that binds to a protein
+\item \textit{Receptor (biochemistry)} - in biochemistry, a protein molecule that receives and responds to a neurotransmitter, or other substance
+\item \textit{Proteochemometric modeling} - combining data mining for chemical compounds (ligands) and proteins within the same machine learning framework 
+\item \textit{BioDegradation} - is the chemical dissolution of materials by bacteria or other biological means.
+\item \textit{Reaction catalyses} - Catalysis is the change in rate of a chemical reaction due to the participation of a substance called a catalyst.
+\item \textit{Conformation and conformational isomerism} - In chemistry, conformational isomerism is a form of stereoisomerism in which the isomers can be interconverted exclusively by rotations about formally single bonds. Single possible states of compounds are called conformers.
+\item \textit{SMARTS} - SMiles ARbitrary Target Specification (SMARTS) is a language for specifying substructural patterns in molecules
+\end{itemize}
 }
 \keywords{cheminformatics, graphs, chemistry, databases, knowledge management, open source, open data}
 
@@ -311,8 +324,8 @@ pioneer project that produced the first expert system.
 
 Enumerating molecules is not only an interesting academic exercise but has
 practical utility as well. The foremost application of enumeration is \emph{structure
-elucidation} of natural compounds such as metabolites, geochemicals, and
-petrochemicals. Ideally, the wishful bench chemist collects experimental data
+elucidation} of natural compounds such as metabolites, for naming just one example. 
+Ideally, the wishful bench chemist collects experimental data
 from an unknown compound, the data is fed into a code, and the resulting
 structure is returned. Although that streamlined process may not yield a unique
 solution, there are commercial software products such as MOLGEN
@@ -362,7 +375,7 @@ the technique. To palliate that limitation, algorithms have recently been
 developed to enumerate all compounds in the chemical space matching circular [5]
 or path fingerprints [6], these fingerprints being popular tools to measure
 similarity. Enumerating molecules from fingerprints, or more generally
-enumerating molecules from structure-activity molecular descriptors, is still
+enumerating molecules from molecular descriptors, is still
 very much under development. At stake is the design of new chemicals or drugs
 that have not yet been synthesized.
 
@@ -388,7 +401,7 @@ and sampling is an active field of research, particularly in the context of
 metabolism, either to study biodegradation, or to propose metabolic engineering
 strategies to biosynthesize compounds of commercial interest. The difficulty
 with metabolic network design is that in addition to network generation based on
-reactions, one also needs to verify that there are enzymatic sequences enabling
+reactions, one also needs to verify that there are enzymatic events possible for enabling
 reactions catalyses. That additional task requires encompassing both chemical
 and sequence information and the development of tools that are at the interface
 between chemoinformatics and bioinformatics.
@@ -649,7 +662,30 @@ a mentor will be assigned to help them join the project.
 
 \section{Conclusions}
 \label{sec:conclusions}
-Cheminformatics, the computer science of chemical discovery, is an industrial and academic discipline with roots dating back to the 1960s, with the creation of DENDRAL, the first expert system of any kind.  Much of its development from the 1960s until the new millenium was performed in secret, because of competition in the pharmaceutical industry.  While chemists were among the first scientists to embrace web-based tools of knowledge management, research into fundamental algorithmic questions of structure enumeration and database management (and a host of other topics) have suffered, because of limited academic access to either tools or data.  As we enter the second decade of the 21st century, however, this landscape is rapidly shifting.  There now exist free-of-charge open-source cheminformatics toolkits, and open databases with tens of millions of compounds.  We believe the prospects for academic and industrial collaboration between chemists and computer scientists are quite bright, and we would like to encourage more computer scientists to participate in cheminformatics research.  There is an admittedly steep learning curve, as the structural issues faced by chemists are often too detailed and subtle to admit as clean an abstraction as ``algorithms on a string,'' the way many bioinformatics can be abstracted into a CS framework.  Nevertheless, because of the changing landscape, there are many research questions we are only now in position to try to answer: for a theorist, graph-theoretic questions of three-dimensional enumeration; for a database designer, more effective search algorithms and ontologies; for a practical programmer, expansion of the many open-source cheminformatics projects.  If more chemists think algorithmically, and more computer scientists think ``chemically,'' we may discover ``miracle drugs'' more consistently than ever before.
+Cheminformatics, the computer science of chemical discovery, is an industrial 
+and academic discipline with roots dating back to the 1960s, with the creation of 
+DENDRAL, the first expert system of any kind.  Much of its development from the 1960s 
+until the new millenium was performed in secret, because of competition in the pharmaceutical industry.  
+While chemists were among the first scientists to embrace web-based tools of knowledge management, 
+research into fundamental algorithmic questions of structure enumeration and database management 
+(and a host of other topics) have suffered, because of limited academic access to either tools or data.  
+As we enter the second decade of the 21st century, however, this landscape is rapidly shifting.  
+There now exist free-of-charge open-source cheminformatics toolkits, and open databases with tens 
+of millions of compounds.  We believe the prospects for academic and industrial collaboration between 
+chemists and computer scientists are quite bright, and we would like to encourage more computer 
+scientists to participate in cheminformatics research.  There is an admittedly steep learning curve, 
+as the structural issues faced by chemists are often too detailed and subtle to admit as clean an abstraction as
+ ``algorithms on a string,'' the way many bioinformatics can be abstracted into a CS framework. 
+Nevertheless, because of the changing landscape, there are many research questions we are only now in 
+position to try to answer: for a theorist, graph-theoretic questions of three-dimensional enumeration; 
+for a database designer, more effective search algorithms and ontologies; for a practical programmer, 
+expansion of the many open-source cheminformatics projects.  
+If more chemists think algorithmically, and more computer scientists think ``chemically,'' 
+%we may discover ``miracle drugs'' more consistently than ever before.
+we are much better positioned taking not only ``simple'' chemicals into account (only one identifier and isomer possible per molecule), 
+but also their complex relationships, transformations, 
+and combinatorial challenges into account. This will allow us to normalize, search, and use all chemical information, 
+around us and within us.
 
 \section*{Acknowledgements}
 We would like to thank Danny Verbinnen for sharing his insights into ELN's.  This article was written while A. Sterling was visiting the Department of Electrical Engineering and Computer Science, Northwestern University, supported in part by NSF grant CCF-1049899.

@@ -23,7 +23,7 @@ Aaron Sterling\\
 Rajarshi Guha\\
 \affaddr{NIH Center for Translational Therapeutics}\\
 \affaddr{9800 Medical Center Drive}\\
-\affaddr{Rockvile, MD 20850}\\
+\affaddr{Rockville, MD 20850}\\
 \email{guhar@mail.nih.gov}
 }
 
@@ -31,7 +31,7 @@ Rajarshi Guha\\
 Andreas Bender (University of Cambridge, email: {\texttt{bender.andreas@gmail.com}}),
 Jean-Loup Faulon (University of Evry, email: {\texttt{Jean-Loup.Faulon@issb.genopole.fr}}),
 Janna Hastings (European Bioinformatics Institute, Cambridge, UK, email: {\texttt{janna.hastings@gmail.com}}),
-Noel O'Boyle (University College, Cork, Ireland, email: {\texttt{baoilleach@gmail.com}}),
+Noel O'Boyle (University College Cork, Cork, Ireland, email: {\texttt{baoilleach@gmail.com}}),
 John Overington (European Bioinformatics Institute, Cambridge, UK, email: {\texttt{jpo@ebi.ac.uk}}),
 Herman Van Vlijmen (Tibotec, Beerse, Belgium, email: {\texttt{hvvlijme@its.jnj.com}}), and
 Egon Willighagen (Karolinska Institutet, Stockholm, Sweden, email: {\texttt{egon.willighagen@ki.se}})
@@ -78,7 +78,7 @@ Egon Willighagen (Karolinska Institutet, Stockholm, Sweden, email: {\texttt{egon
 \item \textit{BioDegradation} - is the chemical dissolution of materials by bacteria or other biological means.
 \item \textit{Reaction catalyses} - Catalysis is the change in rate of a chemical reaction due to the participation of a substance called a catalyst.
 \item \textit{Conformation and conformational isomerism} - In chemistry, conformational isomerism is a form of stereoisomerism in which the isomers can be interconverted exclusively by rotations about formally single bonds. Single possible states of compounds are called conformers.
-\item \textit{SMARTS} - SMiles ARbitrary Target Specification (SMARTS) is a language for specifying substructural patterns in molecules
+\item \textit{SMARTS} - SMiles ARbitrary Target Specification (SMARTS) is a language for specifying substructure patterns in molecules
 \end{itemize}
 }
 \keywords{cheminformatics, graphs, chemistry, databases, knowledge management, open source, open data}
@@ -90,7 +90,7 @@ increasing rate---public data stores such as at the European Bioinformatics
 Institute (EBI) contain on the order of 10 petabytes of biological information.
 However, while biological information has been available publicly for decades,
 the same has not been true for chemical information until very recently. It was
-not until 2004 that a large public small molecule structure repository (Pubchem)
+not until 2004 that a large public small molecule structure repository (PubChem)
 became freely available. This was followed by other databases, as discussed later
 in this article. In the same vein, open source software and the publication of
 algorithms have only recently become a main focus of the field
@@ -213,7 +213,7 @@ and how do cheminformatics methods play a key role in these efforts.
 \subsection{Databases \& Ontologies}
 
 Most cheminformatics applications rely on large databases of chemical structures
-and their properties. Organising and maintaining such databases, searching based
+and their properties. Organizing and maintaining such databases, searching based
 on features of chemical structures, and clustering similar structures together,
 are essential utilities to enable many scientific applications. Yet, each one of
 those challenges poses its unique computer science complexities.
@@ -278,7 +278,7 @@ discovery based on chemical databases are \emph{substructure searching} and \emp
 searching}. In substructure searching, the database is searched for a specified
 wholly contained part of the structures in the database; in similarity
 searching, the database is searched for structures similar to a provided search
-structure. Chemical search packages are often implemented and optimised for a
+structure. Chemical search packages are often implemented and optimized for a
 given database technology, for example, the OrChem package is an open source
 chemical search package for the Oracle database \cite{rijnbeek2009}.
 
@@ -288,10 +288,10 @@ search across a full chemical database of thousands or even millions of
 structures is completely infeasible. For that reason, complex heuristics must be
 used to drastically filter the candidate search space. Structure-based
 \emph{fingerprints} are commonly used for this purpose. Fingerprints encode
-characteristic features of a given chemical structure in a boolean array, or
+characteristic features of a given chemical structure in a Boolean array, or
 bitmap. The fingerprint is created by an algorithm which generates bitmap
 patterns for each atom in the structure; then each atom and its nearest
-neighbours, including the bonds between them; then each group of atoms connected
+neighbors, including the bonds between them; then each group of atoms connected
 by paths of increasing lengths up to the maximum implemented for the algorithm
 (commonly around eight). The bitmap patterns are added together into the final
 fingerprint. If all bits in a query fingerprint are also present in the target
@@ -592,7 +592,7 @@ argue that the image/text mining in scientific journals is less challenging; in
 fact, it remains a huge challenge and many chemists do not trust automated
 non-expert validated mining sources. The closed CAS (Chemical Abstract Service)
 is a highly trusted source, and public chemistry and bioactivity space has to
-improve quality and interconnectivity. Efforts like Chembl and PubChem-BioAssay
+improve quality and interconnectivity. Efforts like ChEMBL and PubChem-BioAssay
 are on the right track. Still, improving data quality and standards between
 public and closed sources will be absolutely critical for ensuring a constant
 growth, usage, and collaboration scenarios between private and public parties.
@@ -603,15 +603,15 @@ legal questions about contribution metrics will get enough room to grow.
 \label{sec:role-open-source}
 
 A key aspect of cheminformatics is that much of its development
-requries access to collections of molecular structures (and, usually,
+requires access to collections of molecular structures (and, usually,
 associated bioactivity data). As has been noted, it is only recently
 that large structure and bioactivity data collections have become
 available. As a result, this enables much more robust validation of
 cheminformatics methodologies as well as large scale \emph{benchmarking of
 algorithms}. The latter is especially relevant for the plethora of
-data mining techniques that are emoloyed in cheminformatics. At this
+data mining techniques that are employed in cheminformatics. At this
 point, the nature of Open Data focuses primarily on structure and
-actvity data types. On the other hand, there is a distinct lack of
+activity data types. On the other hand, there is a distinct lack of
 textual data (such as journal articles) that are Open in nature. While
 PubMed abstracts serve as a proxy for journal articles, text mining
 methods in cheminformatics are hindered by this state of affairs.
@@ -623,7 +623,7 @@ Obviously freely accessible data is important for research; but
 equally important are the tools to work with chemical data---more
 specifically, chemical structures. Chemical toolkits are the workhorses
 of cheminformatics research and a variety of toolkits are available,
-both commericial (which, in many cases, provide free academic
+both commercial (which, in many cases, provide free academic
 licenses) and Open Source. In this article we do not debate the
 arguments for and against Open Source; rather, we focus on Open Source
 tools, since this ensures that a reader will be able to explore
@@ -690,7 +690,7 @@ via public, active mailing lists and public issue tracking systems.
 Development questions are actively and openly discussed to arrive at a
 consensus and contributors are encouraged to get involved with any of
 the following areas: development of new features, improvement of
-existing features, performance optimisation, fixing bugs,
+existing features, performance optimization, fixing bugs,
 documentation, website development, reporting bugs, and helping users
 on the mailing list. Anyone interested should email the respective
 developer's mailing list (either cdk-devel@lists.sf.net or
@@ -745,4 +745,4 @@ Northwestern University, supported in part by NSF grant CCF-1049899.
 \bibliographystyle{abbrv}
 \bibliography{paper}
 
-\end{document} 
+\end{document}

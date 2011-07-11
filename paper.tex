@@ -50,7 +50,7 @@ Egon Willighagen (Karolinska Institutet, Stockholm, Sweden, email: {\texttt{egon
   discipline---cheminformatics, the use of computers to represent
   small molecules structures and analyze their properties based on aspects
   of their structures. Cheminformatics has a wide applicability
-  including the discovery of novel drug candidates to optimizing
+  from the discovery of novel drug candidates to optimizing
   certain physicochemical properties of small molecules. Until
   recently, the data and techniques of chemoinformatics have been closely guarded
   secrets of companies whose financial success depended on being the first to produce
@@ -67,16 +67,16 @@ Egon Willighagen (Karolinska Institutet, Stockholm, Sweden, email: {\texttt{egon
 \terms{
 \begin{itemize}
 \item \textit{Tautomerism} - Tautomers are isomers (same molecular formula but different structural formula) of organic compounds that readily interconvert by a chemical reaction called tautomerization.
-\item \textit{Protonation and protonation state} - In chemistry, protonation is the addition of a proton (H$^+$) to an atom, molecule, or ion. The different states (different number of H$^+$ or on different atoms) are called protonation states for a molecular compound (e.g. de-protonated, mono-protonated, bi-protonated, or any variations of those states).
-\item \textit{BioAssay} - A system measuring the biological activity of a chemical compound on a particular biological assay (with all its parameters).
+\item \textit{Protonation and protonation state} - In chemistry, protonation is the addition of a proton (H$^+$) to an atom, molecule, or ion. The different states (different number of H$^+$ or on different atoms) are called protonation states for a molecular compound (e.g. de-protonated, mono-protonated, di-protonated, or any variations of those states).
+\item \textit{Bioassay} - A system measuring the biological activity of a chemical compound on a particular biological assay (with all its parameters).
 \item \textit{Metabolites} - Metabolites are the intermediates and products of metabolism. The term metabolite is usually restricted to small molecules (chemical compounds).
 \item \textit{Mass spectrometry} - Mass spectrometry (MS) is an analytical technique that measures the mass-to-charge ratio of charged particles. It is used for determining masses of particles, for determining the elemental composition of a sample or molecule, and for elucidating the chemical structures of molecules, such as peptides and other chemical compounds.
 \item \textit{Ligand (coordination chemistry)} - an atom, ion, or functional group that donates one or more of its electrons through a coordinate covalent bond to one or more central atoms or ions.
 \item \textit{Ligand (biochemistry)} - a substance that binds to a protein.
 \item \textit{Receptor (biochemistry)} - in biochemistry, a protein molecule that receives and responds to a neurotransmitter, or other substance.
 \item \textit{Proteochemometric modeling} - combining data mining for chemical compounds (ligands) and proteins within the same machine learning framework.
-\item \textit{BioDegradation} - is the chemical dissolution of materials by bacteria or other biological means.
-\item \textit{Reaction catalyses} - Catalysis is the change in rate of a chemical reaction due to the participation of a substance called a catalyst.
+\item \textit{Biodegradation} - is the chemical dissolution of materials by bacteria or other biological means.
+\item \textit{Reaction catalysis} - Catalysis is the change in rate of a chemical reaction due to the participation of a substance called a catalyst.
 \item \textit{Conformation and conformational isomerism} - In chemistry, conformational isomerism is a form of stereoisomerism in which the isomers can be interconverted exclusively by rotations about formally single bonds. Single possible states of compounds are called conformers.
 \item \textit{SMARTS} - SMiles ARbitrary Target Specification (SMARTS) is a language for specifying substructure patterns in molecules
 \end{itemize}
@@ -99,11 +99,11 @@ algorithms have only recently become a main focus of the field
 So why should we actually care about chemical information being made
 public---and how does this relate to the field of computer science?
 
-We should care about chemical information being made public since the
+Making chemical information public is important because the
 drugs we take are the result of intensive and costly research, and the
 more information is shared (a process sometimes very hard to achieve
-in pharmaceutical companies) the more easy it should be to develop
-novel treatments drugs. How chemical information relates to computer
+in pharmaceutical companies) the easier it should be to develop
+novel treatments. How chemical information relates to computer
 science becomes clear when realizing the amount of data available
 currently---74 million different molecules are currently stored in
 public databases (such as PubChem) with a large amount of annotations,
@@ -153,18 +153,18 @@ and nitrogen carry an `On' label in this graph.
 % solubility, or bioactivity).}
 % \end{figure}
 
-Graph mining algorithms can be applied on this type of annotated graph
+Graph mining algorithms can be applied to this type of annotated graph
 (employing large databases of thousands of molecules), to discover
 patterns in large-scale datasets.  Many successful applications of
 this concept have been published \cite{wegner2006,horst2009}. Still,
 this ``annotated graph'' representation is far from being the end of
 the story. Molecules are three-dimensional entities, as represented in
 the bottom left hand corner of the figure, and the precise 3D shape is
-relevant in many situations (while not in others).  Nevertheless, the
+relevant in many situations (although not in others).  Nevertheless, the
 3D information is lost when one only considers the graph of a
 molecule. To extend the concept of three-dimensionality further, in
 many biological systems the \emph{surface properties} of the molecule
-are what appears to be relevant, as shown in the bottom right hand
+are what appear to be relevant, as shown in the bottom right hand
 corner.  Hence, while graph mining on chemicals is certainly a
 promising avenue to explore, one needs to keep in mind that not all
 molecular properties are encoded in the graph (for example, neither
@@ -186,7 +186,7 @@ scientists) and computer scientists---where the former need to be able
 to pose their problems in a way relevant for practical applications;
 and where the latter are able to devise ways of capturing, storing,
 and analyzing chemical data by bridging the gap between risk in
-generalizable encodings and complexity (space and time). The goals: to
+generalizable encodings and complexity (space and time). The goals of cheminformatics are to
 support better chemical decision making by 1. storing and integrating
 data in maintainable ways, 2.  providing enough open standards and
 tools so software engineering concepts allow applications and data to
@@ -197,10 +197,9 @@ discuss all three goals in the following sections.
 \section{Bridging Cheminformatics \& Computer Science}
 
 Our motivation for this article is to highlight a variety of topics in
-cheminformatics and present the computational and algorithmic problems
-that are addressed in the field. We hope to
-highlight areas where modern CS research could contribute to these
-problems.
+cheminformatics where modern CS research could contribute, and
+to present the computational and algorithmic problems
+that are addressed in the field.
 
 While cheminformatics has a broad range of applicability, ranging from
 agrochemical research and drug discovery to the design of novel
@@ -216,11 +215,11 @@ Most cheminformatics applications rely on large databases of chemical structures
 and their properties. Organizing and maintaining such databases, searching based
 on features of chemical structures, and clustering similar structures together,
 are essential utilities to enable many scientific applications. Yet, each one of
-those challenges poses its unique computer science complexities.
+those areas poses its unique computer science challenges.
 
 There is a considerable progress in open chemical and bioactivity databases like
 ChEMBL and NCBI-PubChem, which are both freely available. Still, the integration
-of chemical databases with one other remains a challenge, not only due to the
+of chemical databases with each other remains a challenge, not only due to the
 normalization problems in the chemical and bioactivity landscape, but also due
 to sheer data volume. As mentioned earlier, we have to be able to
 search in complex data, for example multi-labelled molecular graphs, where
@@ -236,9 +235,11 @@ an expensive operation (the next section will discuss this in-depth);
 thus, a representation of the structure that is unique and invariant
 with respect to how the structure is drawn is needed for
 identification. An early effort in this direction was the Simplified
-Molecular Input Line Specification (SMILES). However, several
-different SMILES implementations became available, with no universal
-standard of interpretation. After years of research and various
+Molecular Input Line Specification (SMILES), and specifically the
+generation of a single canonical SMILES for a particular structure. However,
+with time several
+different SMILES implementations became available with no universal
+standard of generating a canonical SMILES. After years of research and various
 commercial products, there is today no single public standard for a
 line-notation of molecular labeled graphs, which is available to a
 broad audience (academic and
@@ -302,7 +303,7 @@ length of the fingerprint.
 
 Fingerprints also facilitate the rapid calculation of quantitative
 structure-based similarity measures. An example measure of similarity is the
-\emph{Tanimoto coefficient}, calculated as the ratio $T(a,b) = \frac{c}{(a+b−c)}$,
+\emph{Tanimoto coefficient}, calculated as the ratio $T(a,b) = \frac{c}{(a+b-c)}$,
 where c is the count of bits on in the same position in both the two
 fingerprints, a is the count of bits on in the first structure, and b is the
 count of bits on in the second structure. The Tanimoto coefficient varies in the
@@ -363,7 +364,7 @@ construct virtual libraries, test hypotheses, and provides guidance in the
 design of optimal combinatorial experiments.
 
 The major difficulty with enumeration is that the \emph{in silico} representation of
-molecules, the so-called molecular graphs, are labeled object (i.e. labeled
+molecules, the so-called molecular graphs, are labeled objects (i.e. labeled
 graphs), while the atoms of a molecule are of course not uniquely labeled. The
 mathematical concept to tackle this problem is to consider orbits of labeled
 molecular graphs under the operation of the symmetric group. When enumerating
@@ -381,7 +382,7 @@ compounds from NMR data.
 The underlying computational complexity and potential intractability
 of molecular enumeration may not be a bottleneck after all, as
 computational chemists have developed and successfully used
-enumeration tools to generate large chemical libraries like GDC-13
+enumeration tools to generate large chemical libraries like GDB-13
 comprising almost a trillion chemical
 structures\footnote{http://www.dcb-server.unibe.ch/groups/reymond/gdb/home.html}. Yet,
 the current enumeration software products do not generally produce
@@ -391,12 +392,12 @@ cheminformatics community.
 
 GDB-13 along with other databases such as PubChem (NCBI/NIH) or ZINC
 (UCSF) are valuable resources to search for new drugs. For instance
-the well known ligand-based design approach is making use of these
+the well known ligand-based design approach uses these
 databases along with structure similarity tools to discover new
 compounds binding to biological targets (protein or nucleic
 acid). Compounds retrieved through ligand-based design, however, must
 already be present in databases, which is a limitation of the
-technique. To palliate that limitation, algorithms have recently been
+technique. To overcome that limitation, algorithms have recently been
 developed to enumerate all compounds in the chemical space matching
 circular [5] or path fingerprints [6], these fingerprints being
 popular tools to measure similarity. Enumerating molecules from

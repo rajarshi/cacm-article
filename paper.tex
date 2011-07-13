@@ -314,13 +314,13 @@ classification structure is needed for chemicals and their linked biological
 information. One such answer to this need is provided in the form of \emph{ontologies}.
 An ontology is a formal specification of entities and their relationships in a
 domain of interest. It is structured around an underlying logical representation
-such as Description Logic [baaderdl2007]. The logic-based representation allows
+such as Description Logic ~\cite{baaderdl2007}. The logic-based representation allows
 automated reasoning to derive new knowledge (inferences) from the knowledge
 encoded, making the representation both compact and powerful.
 Ontologies are already in widespread use across the biomedical domain. A
 similarity measure based on the information encoded in ontologies is termed
 \emph{semantic similarity}, and such measures have already been applied to enhance
-chemical classification in several problem areas [couto2010]. Many open
+chemical classification in several problem areas \cite{couto2010}. Many open
 questions still remain about the best way to combine the information encoded in
 chemical structures with chemical ontologies \cite{hastingsowled2010}.
 
@@ -458,7 +458,7 @@ numerical vector representation (a.k.a. \emph{descriptors} or
 \emph{features}) of chemical structures, or we use algorithms for
 comparing molecular graphs directly (\emph{molecule kernel}). In the
 first case thousands of descriptors (many of which are equivalent)
-have been described [Todeschini, Handbook of Molecular Descriptors]
+have been described \cite{todeschini2000},
 and a variety of tools are available for their calculation. Given a
 set of molecules, observed activities and a descriptor vector, the
 problem can be considered a traditional statistical modeling
@@ -508,7 +508,8 @@ simultaneously. Multi-conformer modeling has been addressed in the
 science techniques such as \emph{multiple-instance learning} could
 also be applied to the multi-conformer problem. More recently,
 simultaneous modeling of receptor and ligand has been addressed by the
-proteochemometric approach as first reported by Lapinsh et al.
+proteochemometric approach as first reported by Lapinsh
+\textit{et al.} \cite{lapinsh2001}.
 
 With the advent of high-throughput screening technologies, large libraries of
 compounds can be screened against multiple targets in an efficient manner. Such
@@ -519,7 +520,7 @@ problem are rather simplistic since they develop multiple individual models.
 Instead one could imagine an approach that takes into account the correlations
 in observed activities against multiple targets within a single model. Such an
 approach should lead to more robust predictions for panel assays. Finally, does
-this also better reflect clinical relevant compound profiles [SIDER database]
+this also better reflect clinical relevant compound profiles \cite{kuhn2010}
 and a 'personalized medicine' concept (e.g. drug-drug interaction profiles) [The
 Decision Tree].
 
@@ -632,7 +633,7 @@ cheminformatics problems with a minimum of encumbrances.
 \subsection{Open Source Chemical Toolkits}
 
 A number of toolkits are available including the Chemistry Development
-Kit (CDK), OpenBabel, RDKit and Indigo. These toolkits are written in
+Kit (CDK) \cite{steinbeck2003}, OpenBabel, RDKit and Indigo. These toolkits are written in
 Java or C++ (though toolkits written in the latter invariably have
 bindings to a variety of languages). Such toolkits are used, for
 example, to read/write chemical file formats, manipulate chemical

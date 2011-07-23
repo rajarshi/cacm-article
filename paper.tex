@@ -366,22 +366,25 @@ chemical ontologies \cite{hastingsowled2010}.
 \subsection{Structure Enumeration}
 \label{sec:struct-enum}
 
-Enumerating molecules is a combinatorial problem that has fascinated chemists,
-computer scientists and mathematicians alike for more than a century. It is one
-important risk-reduction element in still being able to encode closely-related
-molecules and for keeping the space complexity of databases under (algorithmic)
-control. Indeed, while trying to solve the problem of counting the isomers of
-paraffin structures or counting substituted aromatic compounds, fundamental
-principles in graph theory and combinatorics were developed by Cayley, Polya and
-others. Even terms that are widely-used nowadays like graph and tree were
-originally coined in a chemistry context (Chapters 1 and 8 in [1]). More than
-four decades ago, Joshua Lederberg, Carl Djerassi, Edward Feigenbaum and others
-from Stanford University started developing codes to explicitly enumerate
-molecules. Their project, named DENDRAL, was funded by NASA with the goal of
-developing an automated system to elucidate compounds from spectral data. While
-studying this challenging problem, important concepts in computer science were
-developed. DENDRAL is generally quoted in artificial intelligence textbooks as a
-pioneer project that produced the first expert system.
+Enumerating molecules is a combinatorial problem that has fascinated
+chemists, computer scientists and mathematicians alike for more than a
+century. It is one important risk-reduction element in still being
+able to encode closely-related molecules and for keeping the space
+complexity of databases under (algorithmic) control. Indeed, while
+trying to solve the problem of counting the isomers of paraffin
+structures or counting substituted aromatic compounds, fundamental
+principles in graph theory and combinatorics were developed by Cayley,
+Polya and others. Even terms that are widely-used nowadays like graph
+and tree were originally coined in a chemistry context (Chapters 1 and
+8 in \cite{faulon2010}). More than four decades ago, Joshua Lederberg,
+Carl Djerassi, Edward Feigenbaum and others from Stanford University
+started developing codes to explicitly enumerate molecules. Their
+project, named DENDRAL, was funded by NASA with the goal of developing
+an automated system to elucidate compounds from spectral data. While
+studying this challenging problem, important concepts in computer
+science were developed. DENDRAL is generally quoted in artificial
+intelligence textbooks as a pioneer project that produced the first
+expert system.
 
 Enumerating molecules is not only an interesting academic exercise but has
 practical utility as well. The foremost application of enumeration is \emph{structure
@@ -401,21 +404,23 @@ enumeration has taken a central role as it allows computational chemists to
 construct virtual libraries, test hypotheses, and provides guidance in the
 design of optimal combinatorial experiments.
 
-The major difficulty with enumeration is that the \emph{in silico} representation of
-molecules, the so-called molecular graphs, are labeled objects (i.e. labeled
-graphs), while the atoms of a molecule are of course not uniquely labeled. The
-mathematical concept to tackle this problem is to consider orbits of labeled
-molecular graphs under the operation of the symmetric group. When enumerating
-molecular structures, one has thus to solve the so--called isomorphism problem.
-The good news is that isomorphism can be solved in polynomial time for molecular
-graphs due to the fact that molecules belong to a restricted class of graphs
-known as \emph{bounded valence graphs}; however, that same restriction prevents
-applying to a molecular graph the polynomial delay enumeration results obtained
-for general graphs (Chapter 8 in [1]). While the complexity of molecular graph
-enumeration remains an open problem it has nonetheless been shown that molecules
-can be sampled efficiently [2]. Sampling procedures based on the Metropolis or
-the Genetic Algorithms have been developed and used to elucidate natural
-compounds from NMR data.
+The major difficulty with enumeration is that the \emph{in silico}
+representation of molecules, the so-called molecular graphs, are
+labeled objects (i.e. labeled graphs), while the atoms of a molecule
+are of course not uniquely labeled. The mathematical concept to tackle
+this problem is to consider orbits of labeled molecular graphs under
+the operation of the symmetric group. When enumerating molecular
+structures, one has thus to solve the so--called isomorphism problem.
+The good news is that isomorphism can be solved in polynomial time for
+molecular graphs due to the fact that molecules belong to a restricted
+class of graphs known as \emph{bounded valence graphs}; however, that
+same restriction prevents applying to a molecular graph the polynomial
+delay enumeration results obtained for general graphs (Chapter 8 in
+\cite{faulon2010}). While the complexity of molecular graph
+enumeration remains an open problem it has nonetheless been shown that
+molecules can be sampled efficiently \cite{goldberg1999}. Sampling
+procedures based on the Metropolis or the Genetic Algorithms have been
+developed and used to elucidate natural compounds from NMR data.
 
 The underlying computational complexity and potential intractability
 of molecular enumeration may not be a bottleneck after all, as
@@ -424,20 +429,20 @@ enumeration tools to generate large chemical libraries like GDB-13
 comprising almost a trillion chemical
 structures\footnote{http://www.dcb-server.unibe.ch/groups/reymond/gdb/home.html}. Yet,
 the current enumeration software products do not generally produce
-stereoisomers [3] or tautomers [4]; these require specific enumeration
+stereoisomers or tautomers; these require specific enumeration
 procedures, which are still the subject of investigations by the
 cheminformatics community.
 
 GDB-13 along with other databases such as PubChem (NCBI/NIH) or ZINC
 (UCSF) are valuable resources to search for new drugs. For instance
-the well known ligand-based design approach uses these
-databases along with structure similarity tools to discover new
-compounds binding to biological targets (protein or nucleic
-acid). Compounds retrieved through ligand-based design, however, must
-already be present in databases, which is a limitation of the
-technique. To overcome that limitation, algorithms have recently been
-developed to enumerate all compounds in the chemical space matching
-circular [5] or path fingerprints [6], these fingerprints being
+the well known ligand-based design approach uses these databases along
+with structure similarity tools to discover new compounds binding to
+biological targets (protein or nucleic acid). Compounds retrieved
+through ligand-based design, however, must already be present in
+databases, which is a limitation of the technique. To overcome that
+limitation, algorithms have recently been developed to enumerate all
+compounds in the chemical space matching circular \cite{faulon2003} or
+path fingerprints \cite{fujiwara2008}, these fingerprints being
 popular tools to measure similarity. Enumerating molecules from
 fingerprints, or more generally enumerating molecules from molecular
 descriptors, is still very much under development. At stake is the
@@ -456,8 +461,8 @@ combustion and petroleum refining, studying the dynamics of metabolic
 networks, applying metabolic engineering and synthetic biology to
 produce heterologous compounds in microorganisms, all are applications
 that require the enumeration of reaction networks. As reviewed in
-Chapter 11 in [1] several network enumeration techniques have been
-developed. However, these techniques generally suffer from a
+Chapter 11 in \cite{faulon2010} several network enumeration techniques
+have been developed. However, these techniques generally suffer from a
 combinatorial explosion of intermediate compounds being produced. One
 way to limit the number of compounds generated is to simulate the
 dynamics of the network while it is being constructed and remove

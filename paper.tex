@@ -91,7 +91,7 @@ Institute (EBI) contain on the order of 10 petabytes of biological information.
 However, while biological information has been available publicly for decades,
 the same has not been true for chemical information until very recently. It was
 not until 2004 that a large public small molecule structure repository (PubChem)
-became freely available. This was followed by other databases, as discussed later
+became freely available. This was followed by other databases, as discuss later
 in this article. In the same vein, open source software and the publication of
 algorithms have only recently become a main focus of the field
 \cite{faulon2010}.
@@ -99,16 +99,17 @@ algorithms have only recently become a main focus of the field
 So why should we actually care about chemical information being made
 public---and how does this relate to the field of computer science?
 
-Making chemical information public is important because the
-drugs we take are the result of intensive and costly research, and the
-more information is shared (a process sometimes very hard to achieve
-in pharmaceutical companies) the easier it should be to develop
-novel treatments. How chemical information relates to computer
-science becomes clear when realizing the amount of data available
+Making chemical information public is important because the drugs we
+take are the result of intensive and costly research, and the more
+information is shared (a process sometimes very hard to achieve in
+pharmaceutical companies) the easier it should be to develop novel
+treatments. How chemical information relates to computer science
+becomes clear when realizing the amount of data available
 currently---74 million different molecules are currently stored in
-public databases (such as PubChem) with a large amount of annotations,
-and the design of data structures for chemicals, as well as subsequent
-data mining of this information, are areas where expertise in computer
+various public databases (such as PubChem) with a large amount of
+annotations, and the design of data structures for the representation
+and manipulation of chemical structure, as well as subsequent data
+mining of this information, are areas where expertise in computer
 science is dearly needed. (For a recent, detailed introduction to
 cheminformatics, written for computer scientists, see
 \cite{brown2009}).
@@ -160,39 +161,65 @@ this concept have been published \cite{wegner2006,horst2009}. Still,
 this ``annotated graph'' representation is far from being the end of
 the story. Molecules are three-dimensional entities, as represented in
 the bottom left hand corner of the figure, and the precise 3D shape is
-relevant in many situations (although not in others).  Nevertheless, the
-3D information is lost when one only considers the graph of a
+relevant in many situations (although not in others).  Nevertheless,
+the 3D information is lost when one only considers the graph of a
 molecule. To extend the concept of three-dimensionality further, in
 many biological systems the \emph{surface properties} of the molecule
 are what appear to be relevant, as shown in the bottom right hand
 corner.  Hence, while graph mining on chemicals is certainly a
 promising avenue to explore, one needs to keep in mind that not all
-molecular properties are encoded in the graph (for example, neither
-rotational states, nor different charge states are encoded) and thus
-often other `descriptors' need to be used to capture the essentials of
-a chemical system \cite{bender2004}.
+molecular properties are encoded in the graph and thus often other
+`descriptors' need to be used to capture the essentials of a chemical
+system \cite{bender2004}.
 
-From the above it becomes clear that the nature of chemical problems
-is often a complex mixture of combinatorial and continuous
-problems. If we oversimplify the nature of chemical structures and
-their properties, we can not describe the world around us in
-sufficient detail. On the other hand, if we try to encode every detail
-(\emph{e.g.}, all possible 3D structures and their properties, all
-metabolites of a structure in humans in different tissues), the
-complexity to collect, store, and mine data increases
+From the above it becomes clear that the nature of many problems in
+cheminformatics require that a complex mixture of combinatorial and
+continuous techniques.  If we oversimplify the nature of chemical
+structures and their properties, we can not describe the world around
+us in sufficient detail. On the other hand, if we try to encode every
+detail (\emph{e.g.}, all possible 3D structures and their properties,
+all metabolites of a structure in humans in different tissues), the
+complexity of collecting, storing, and mining data increases
 dramatically. For the field of cheminformatics to flourish, we need
 closer collaboration between chemists (or, more generally, life
 scientists) and computer scientists---where the former need to be able
 to pose their problems in a way relevant for practical applications;
 and where the latter are able to devise ways of capturing, storing,
 and analyzing chemical data by bridging the gap between risk in
-generalizable encodings and complexity (space and time). The goals of cheminformatics are to
-support better chemical decision making by 1. storing and integrating
-data in maintainable ways, 2.  providing enough open standards and
-tools so software engineering concepts allow applications and data to
-be used across heterogeneous platforms, and 3. mining the many
-chemical property spaces in a time- and space-efficient way. We will
-discuss all three goals in the following sections.
+generalizable encodings and complexity (space and time). The goals of
+cheminformatics are to support better chemical decision making by
+1. storing and integrating data in maintainable ways, 2.  providing
+enough open standards and tools so software engineering concepts allow
+applications and data to be used across heterogeneous platforms, and
+3. mining the many chemical property spaces in a time- and
+space-efficient way. We will discuss all three goals in the following
+sections.
+
+\subsection{Outline}
+\label{sec:outline}
+
+
+The remainder of the article discusses various topics in
+cheminformatics by placing them in the context of the relevant
+subfields of computer science, aiming to highlight the challenges that
+need to be addressed and possible entry points for computer science
+research. Section \ref{sec:databases} discusses issues related to the
+storage of chemical structures in relational databases and how
+ontologies allow us to query such collections beyond the standard
+graph based subgraph matching approaches. While databases usually
+contain explicit molecules, enumeration of sctructures based on
+various constraints is key to a variety of chemical problems ranging
+from mass spectrometry to reaction planning. Section
+\ref{sec:struct-enum} discusses challenges in this area. Section
+\ref{sec:activity-mining} highlights the problem of making predictions
+of biological activity from chemical structure and tieing it all
+together, Section \ref{sec:knowledge-management} discusses the
+challenges of managing chemical structure data along with associated
+biological data in production scenarios. Finally Section
+\ref{sec:role-open-source} discusses the public sources of chemical
+information and tools available for the handling of chemical structre
+-- both of which are required for for the development of
+cheminformatics research programs.
 
 \section{Bridging Cheminformatics \& Computer Science}
 
@@ -210,6 +237,8 @@ minimize the chances of a small molecule failing as a drug candidate
 and how do cheminformatics methods play a key role in these efforts.
 
 \subsection{Databases \& Ontologies}
+\label{sec:databases}
+
 
 Most cheminformatics applications rely on large databases of chemical structures
 and their properties. Organizing and maintaining such databases, searching based
@@ -273,57 +302,66 @@ the generated InChI is the same.
 %Figure 2: The generated InChI is the same for the stereoisomers cisplatin and
 %transplatin.
 
-InChI or other identity-mapping algorithms allow for exact searching (within the
-limitations of the algorithms), but two other requirements for scientific
-discovery based on chemical databases are \emph{substructure searching} and \emph{similarity
-searching}. In substructure searching, the database is searched for a specified
+InChI or other identity-mapping algorithms allow for exact searching
+(within the limitations of the algorithms), but two other requirements
+for scientific discovery based on chemical databases are
+\emph{substructure searching} and \emph{similarity searching}. In
+substructure searching, the database is searched for a specified
 wholly contained part of the structures in the database; in similarity
-searching, the database is searched for structures similar to a provided search
-structure. Chemical search packages are often implemented and optimized for a
-given database technology, for example, the OrChem package is an open source
-chemical search package for the Oracle database \cite{rijnbeek2009}.
+searching, the database is searched for structures similar to a
+provided search structure. Chemical search packages are often
+implemented and optimized for a given database technology, for
+example, the OrChem package is an open source chemical search package
+for the Oracle database \cite{rijnbeek2009}.
 
-Graph substructure matching is a variant of \emph{graph isomorphism detection},which is
-well known to be computationally intractable [3]. To execute a graph isomorphism
-search across a full chemical database of thousands or even millions of
-structures is completely infeasible. For that reason, complex heuristics must be
-used to drastically filter the candidate search space. Structure-based
-\emph{fingerprints} are commonly used for this purpose. Fingerprints encode
-characteristic features of a given chemical structure in a Boolean array, or
-bitmap. The fingerprint is created by an algorithm which generates bitmap
-patterns for each atom in the structure; then each atom and its nearest
-neighbors, including the bonds between them; then each group of atoms connected
-by paths of increasing lengths up to the maximum implemented for the algorithm
-(commonly around eight). The bitmap patterns are added together into the final
-fingerprint. If all bits in a query fingerprint are also present in the target
-fingerprint of a stored database structure, only then is the structure subjected
-to the computationally expensive subgraph matching algorithm. Bit operations are
-very fast and independent of the number of atoms in a structure due to the fixed
-length of the fingerprint.
+Graph substructure matching is a variant of \emph{graph isomorphism
+  detection},which is well known to be computationally intractable
+[3]. To execute a graph isomorphism search across a full chemical
+database of thousands or even millions of structures is completely
+infeasible. For that reason, complex heuristics must be used to
+drastically filter the candidate search space. Structure-based
+\emph{fingerprints} are commonly used for this purpose. Fingerprints
+encode characteristic features of a given chemical structure in a
+Boolean array, or bitmap. The fingerprint is created by an algorithm
+which generates bitmap patterns for each atom in the structure; then
+each atom and its nearest neighbors, including the bonds between them;
+then each group of atoms connected by paths of increasing lengths up
+to the maximum implemented for the algorithm (commonly around
+eight). The bitmap patterns are added together into the final
+fingerprint. If all bits in a query fingerprint are also present in
+the target fingerprint of a stored database structure, only then is
+the structure subjected to the computationally expensive subgraph
+matching algorithm. Bit operations are very fast and independent of
+the number of atoms in a structure due to the fixed length of the
+fingerprint.
 
 Fingerprints also facilitate the rapid calculation of quantitative
-structure-based similarity measures. An example measure of similarity is the
-\emph{Tanimoto coefficient}, calculated as the ratio $T(a,b) = \frac{c}{(a+b-c)}$,
-where c is the count of bits on in the same position in both the two
-fingerprints, a is the count of bits on in the first structure, and b is the
-count of bits on in the second structure. The Tanimoto coefficient varies in the
-range 0.0 -- 1.0, with a score of 1.0 indicating that the two structures are very
-similar (i.e. their fingerprints are the same). Structure-based similarity is of
-limited use in grouping of chemicals based on non-structural features, such as
-shared bioactivity profiles. For this purpose, a large-scale and flexible
-classification structure is needed for chemicals and their linked biological
-information. One such answer to this need is provided in the form of \emph{ontologies}.
-An ontology is a formal specification of entities and their relationships in a
-domain of interest. It is structured around an underlying logical representation
-such as Description Logic ~\cite{baaderdl2007}. The logic-based representation allows
-automated reasoning to derive new knowledge (inferences) from the knowledge
-encoded, making the representation both compact and powerful.
-Ontologies are already in widespread use across the biomedical domain. A
-similarity measure based on the information encoded in ontologies is termed
-\emph{semantic similarity}, and such measures have already been applied to enhance
-chemical classification in several problem areas \cite{couto2010}. Many open
-questions still remain about the best way to combine the information encoded in
-chemical structures with chemical ontologies \cite{hastingsowled2010}.
+structure-based similarity measures. An example measure of similarity
+is the \emph{Tanimoto coefficient}, calculated as the ratio $T(a,b) =
+\frac{c}{(a+b-c)}$, where c is the count of bits on in the same
+position in both the two fingerprints, a is the count of bits on in
+the first structure, and b is the count of bits on in the second
+structure. The Tanimoto coefficient varies in the range 0.0 -- 1.0,
+with a score of 1.0 indicating that the two structures are very
+similar (i.e. their fingerprints are the same). Structure-based
+similarity is of limited use in grouping of chemicals based on
+non-structural features, such as shared bioactivity profiles. For this
+purpose, a large-scale and flexible classification structure is needed
+for chemicals and their linked biological information. One such answer
+to this need is provided in the form of \emph{ontologies}.  An
+ontology is a formal specification of entities and their relationships
+in a domain of interest. It is structured around an underlying logical
+representation such as Description Logic ~\cite{baaderdl2007}. The
+logic-based representation allows automated reasoning to derive new
+knowledge (inferences) from the knowledge encoded, making the
+representation both compact and powerful.  Ontologies are already in
+widespread use across the biomedical domain. A similarity measure
+based on the information encoded in ontologies is termed
+\emph{semantic similarity}, and such measures have already been
+applied to enhance chemical classification in several problem areas
+\cite{couto2010}. Many open questions still remain about the best way
+to combine the information encoded in chemical structures with
+chemical ontologies \cite{hastingsowled2010}.
 
 \subsection{Structure Enumeration}
 \label{sec:struct-enum}
@@ -438,7 +476,7 @@ development of tools that are at the interface between
 chemoinformatics and bioinformatics.
 
 \subsection{Activity Mining \& Prediction}
-\label{sec:activity-mining-}
+\label{sec:activity-mining}
 
 
 The basis of predictive modeling in cheminformatics is that \emph{chemical structure
@@ -633,6 +671,7 @@ tools, since this ensures that a reader will be able to explore
 cheminformatics problems with a minimum of encumbrances.
 
 \subsection{Open Source Chemical Toolkits}
+\label{sec:toolkits}
 
 The extent of open-source software in cheminformatics has somewhat
 lagged behind related fields such as bioinformatics, partly

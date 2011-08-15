@@ -273,21 +273,27 @@ structure. Chemical search packages are often implemented and optimized for a
 given database technology; for example, the OrChem package is an open source
 chemical search package for the Oracle database \cite{rijnbeek2009}.
 
-Graph substructure matching is a variant of \emph{graph isomorphism detection},which is
-widely believed to be computationally intractable [3]. To execute a graph isomorphism
-search across a full chemical database of thousands or even millions of
+Graph substructure matching is a variant of \emph{graph isomorphism
+  detection},which is widely believed to be computationally
+intractable \cite{cordella2001}. To execute a graph isomorphism search
+across a full chemical database of thousands or even millions of
 structures is infeasible. For that reason, complex heuristics must be
 used to drastically filter the candidate search space. Structure-based
-\emph{fingerprints} are commonly used for this purpose. Fingerprints encode
-characteristic features of a given chemical structure in a Boolean array, or
-bitmap, and they can be implemented in a variety of ways. Common fingerprints are created by an algorithm which generates bitmap patterns for each atom in the structure; then each atom and its nearest
-neighbors, including the bonds between them; then each group of atoms connected
-by paths of increasing lengths up to the maximum implemented for the algorithm
-(commonly around eight). In this way, characteristic parts of molecule are captured and the bitmap patterns are added together into the final fingerprint. If all bits in a query fingerprint are also present in the target
-fingerprint of a stored database structure, only then is the structure subjected
-to the computationally expensive subgraph matching algorithm. Bit operations are
-very fast and independent of the number of atoms in a structure due to the fixed
-length of the fingerprint.
+\emph{fingerprints} are commonly used for this purpose. Fingerprints
+encode characteristic features of a given chemical structure in a
+Boolean array, or bitmap, and they can be implemented in a variety of
+ways. Common fingerprints are created by an algorithm which generates
+bitmap patterns for each atom in the structure; then each atom and its
+nearest neighbors, including the bonds between them; then each group
+of atoms connected by paths of increasing lengths up to the maximum
+implemented for the algorithm (commonly around eight). In this way,
+characteristic parts of molecule are captured and the bitmap patterns
+are added together into the final fingerprint. If all bits in a query
+fingerprint are also present in the target fingerprint of a stored
+database structure, only then is the structure subjected to the
+computationally expensive subgraph matching algorithm. Bit operations
+are very fast and independent of the number of atoms in a structure
+due to the fixed length of the fingerprint.
 
 Fingerprints also facilitate the rapid calculation of quantitative
 structure-based similarity measures. An example measure of similarity is the

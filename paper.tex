@@ -28,7 +28,7 @@ Rajarshi Guha\\
 }
 
 \additionalauthors{Additional authors:
-Andreas Bender (University of Cambridge, email: {\texttt{bender.andreas@gmail.com}}),
+Andreas Bender (University of Cambridge, email: {\texttt{andreas.bender@cantab.net}}),
 Jean-Loup Faulon (University of Evry, email: {\texttt{Jean-Loup.Faulon@issb.genopole.fr}}),
 Janna Hastings (European Bioinformatics Institute, Cambridge, UK, email: {\texttt{janna.hastings@gmail.com}}),
 Noel O'Boyle (University College Cork, Cork, Ireland, email: {\texttt{baoilleach@gmail.com}}),
@@ -42,25 +42,20 @@ Egon Willighagen (Karolinska Institutet, Stockholm, Sweden, email: {\texttt{egon
 \maketitle
 \begin{abstract}
 One of the most prominent success stories in all the sciences over the last decade has
-  been the advance of bioinformatics: interdisciplinary collaboration between
- computer scientists and molecular biologists led to the sequencing of the human genome
-  and many other accomplishments, since researchers connected biological
-  concepts to the theory of string algorithms. However, despite this great
+  been the advance of bioinformatics: The interdisciplinary collaboration between
+ computer scientists and molecular biologists led as one its major accomplishments to the sequencing of the human genome, where researchers connected biological concepts to the theory of string algorithms. However, despite this great
   success, few computer scientists are familiar with a related (and older!)
-  discipline---cheminformatics, the use of computers to represent
+  discipline: cheminformatics, the use of computers to represent
  the structures of small molecules and analyze their properties.
-  Cheminformatics has a wide applicability,
-  from the discovery of novel drug candidates to the optimization of
+  Cheminformatics has wide applicability, from the discovery of novel drug candidates to the optimization of
   certain physicochemical properties of small molecules. Until
- recently, the data and techniques of cheminformatics have been closely guarded
+ recently, the data and techniques employed in the cheminformatics field have been closely guarded
   secrets of companies whose financial success depended on being the first to produce
-  the new ``miracle molecule.'' Only within the last decade---and largely because of
- chemists volunteering their time for an Open Science ``movement''---have researchers
-  gained access to freely available software packages and databases of tens of
+  the new ``miracle molecule.'' Only within the last decade---and as an effect of a change in mindsets, government-mandated policy changes and last but not least because of  chemists volunteering their time for an Open Science ``movement''---have researchers gained access to freely available software packages and databases of tens of
   millions of chemicals. Academic chemists now confront a variety of unsolved
   algorithmic problems that could not have been tackled a decade ago, but whose
   solutions are critical to research ranging from determining the behavior of small
-  molecules in biological pathways, to finding a cure for malaria.
+  molecules in biological pathways, to finding a cure for malaria as well as many other neglected diseases.
 \end{abstract}
 
 \category{H.4}{Information Systems Applications}{Miscellaneous}
@@ -75,6 +70,7 @@ One of the most prominent success stories in all the sciences over the last deca
 \item \textit{Metabolites} - Metabolites are the intermediates and products of metabolism. The term metabolite is usually restricted to small molecules (chemical compounds).
 \item \textit{Proteochemometric modeling} - combining data mining for chemical compounds (ligands) and proteins within the same machine learning framework.
 \item \textit{Protonation and protonation state} - In chemistry, protonation is the addition of a proton (H$^+$) to an atom, molecule, or ion. The different states (different number of H$^+$ or on different atoms) are called protonation states for a molecular compound (e.g. de-protonated, mono-protonated, di-protonated, or any variations of those states).
+\item \textit{QSAR} - Quantitative Structure-Activity Relationships; methods to relate the structure and the biological activity of a chemical structure in a quantitative manner.
 \item \textit{Reaction catalysis} - Catalysis is the change in rate of a chemical reaction due to the participation of a substance called a catalyst.
 \item \textit{Receptor (biochemistry)} - in biochemistry, a protein molecule that receives and responds to a neurotransmitter, or other substance.
 \item \textit{Regulation authorities} - In the US the Food and Drug Administration (FDA) is responsible for protecting and promoting public health through the regulation and supervision of e.g. dietary supplements, prescription and over-the-counter pharmaceutical drugs (medications), vaccines, biopharmaceuticals, medical devices, and many other health related items. The European Medicines Agency (EMA) is a European agency for the evaluation of medicinal products.
@@ -83,7 +79,7 @@ One of the most prominent success stories in all the sciences over the last deca
 \item \textit{Tautomerism} - Tautomers are isomers (same molecular formula but different structural formula) of organic compounds that readily interconvert by a chemical reaction called tautomerization.
 \end{itemize}
 }
-\keywords{cheminformatics, graphs, chemistry, databases, knowledge management, open source, open data}
+\keywords{cheminformatics, chemoinformatics, graphs, chemistry, databases, knowledge management, open source, open data}
 
 \section{Is Cheminformatics the New \\Bioinformatics?}
 
@@ -91,7 +87,7 @@ Novel technologies in the life sciences churn out information at an ever
 increasing rate---public data stores such as the one at the European Bioinformatics
 Institute (EBI) contain on the order of 10 petabytes of biological information.
 However, while biological information has been publicly available for decades,
-the same has not been true for chemical information until very recently. It was
+the same has not been true for chemical information for very long. It was
 not until 2004 that a large public small molecule structure repository (PubChem)
 became freely available. This was followed by other databases, as discussed later
 in this article. In the same vein, open source software and the publication of
@@ -106,10 +102,10 @@ drugs we take are the result of intensive and costly research,
 which is facilitated by the extent of information available. The
 more information is shared (a process very hard to achieve
 in pharmaceutical companies), the more information is available to each
-researcher, facilitating the development of
+researcher and facilitating the development of
 novel treatments. The relevance of computer
-science in this research becomes clear in considering the quantity of data available
-currently---74 million different molecules are currently stored in
+science in this research becomes clear in considering the quantity of data available---
+currently 74 million different molecules are stored in
 public databases (such as PubChem), together with an even larger number of annotations.
 The design of data structures for this chemical information, as well as subsequent
 data mining of this information, are areas where expertise in computer
@@ -122,14 +118,14 @@ into three fields: \emph{capturing data} (using lab notebooks or potentially usi
 formats such as the Chemical Markup Language for publications); \emph{storing data}
 (designing database schemas, devising ontologies) and \emph{mining data} (such as for
 bioactivity prediction, which might involve algorithms based on graphs).
-However, a major difference from bioinformatics lies in the type of
+However, a major difference to the area of bioinformatics lies in the type of
 information being analyzed: While bioinformatics often deals with sequences, the
 domain of cheminformatics is chemical structures. In the case of the former,
 information can very frequently be represented as one-dimensional strings, which
-are relatively easy to handle computationally. In the case of the latter, chemical
+are relatively easy to handle computationally. In the case of the latter however, chemical
 structures may possess rings, branches as well as multiple valid representations
-of the same structure, potentially giving rise to ambiguities. Hence,
-chemical structure is often reported to be more difficult to standardize.
+of the same structure (such as so-called 'tautomers', where hydrogen atoms can be positioned in different places of the molecules), potentially giving rise to ambiguities. Hence,
+chemical structures are often reported to be more difficult to standardize.
 
 To illustrate the difficulty of standardizing chemical structures, different
 representations of the same chemical structure are shown in Figure 1. The top
@@ -142,13 +138,13 @@ be collapsed into one node, and sets of atoms might have the same relevant
 properties assigned. Hence, the top right hand corner of Figure 1 shows an
 annotated graph representation, taking into account that atoms, though being of
 different elemental atom type, can have similar properties---\emph{e.g.}, both oxygen
-and nitrogen carry an `On' label in this graph.
+and nitrogen carry an `On' label in this graph. 
 
 % \begin{figure}
 % \centering
 % \psfig{file=placeholder.ps}
 % \caption{The many different facets of representing chemical structures. Shown
-% are a chemist’s usually representation of a molecule (top left) and a
+% are a chemistï¿½s usually representation of a molecule (top left) and a
 % graph-based representation amenable to data mining (top right). These
 % representations are supplemented by a 3D representation of the same molecule
 % (bottom left) that is closer to reality and a representation using surface
@@ -174,7 +170,7 @@ promising avenue to explore, one needs to keep in mind that not all
 molecular properties are encoded in the graph (for example, neither
 rotational states, nor different charge states are encoded) and thus
 often other `descriptors' need to be used to capture the essentials of
-a chemical system \cite{bender2004}.
+a chemical system \cite{bender2004}. Hence, one of the difficulties of a cheminformatician is that the equivalence of particular atoms (or sets of atoms) is usually not known from the onset but it rather depends on the particular system considered - involving a large amount of trial-and-error in the choice of a 'proper' description for molecules in a particular case.
 
 From the above it becomes clear that the nature of chemical problems
 is often a complex mixture of combinatorial and continuous
@@ -205,13 +201,11 @@ cheminformatics where modern CS research could contribute, and
 to present the computational and algorithmic problems
 that are addressed in the field.
 
-While cheminformatics has a broad range of applicability, ranging from
+While cheminformatics has a rather broad applicability, ranging from
 agrochemical research and drug discovery to the design of novel
-materials, we have chosen to use drug discovery as the context of this
-article. The remainder of this article is structured around the
-concept of ``risk minimization'' in drug discovery---how does one
-minimize the chances of a small molecule failing as a drug candidate
-and how do cheminformatics methods play a key role in these efforts.
+materials (since everything around us consists of 'molecules'), we have chosen to use drug discovery as the context of this
+article due to its central relevance for human wellbeing. Given that the safety of drugs on the market is a key concern both for the general audience as well as researchers in pharmaceutical companies, the remainder of this article is structured around the
+concept of ``risk minimization'' in drug discovery---the question of how to minimize the chances of a small molecule failing in the various research and development stages as a drug candidate, and how to successfully employed cheminformatics methods in these efforts.
 
 \subsection{Databases \& Ontologies}
 \label{sec:databases}
@@ -219,54 +213,42 @@ and how do cheminformatics methods play a key role in these efforts.
 
 Most cheminformatics applications rely on large databases of chemical structures, 
 their properties, and relationships to e.g. biological targets.
-Organizing and maintaining such databases, searching based
-on features of chemical structures, and clustering similar structures together,
-are essential utilities to enable many scientific applications. Yet, each one of
+Organizing and maintaining such databases, as well as searching and clustering similar structures together,
+are essential  to enable many scientific applications. Yet, each one of
 those areas poses its unique computer science challenges.
 
 There is considerable progress in open chemical and bioactivity databases like
-ChEMBL and NCBI-PubChem, which are both freely available. Still, the integration
+ChEMBL and NCBI-PubChem, which are both freely available and contain in the order of millions (ChEMBL) and tens of millions of data points each (PubChem). Still, the integration
 of chemical databases with each other remains a challenge, not only due to the
 normalization problems in the chemical and bioactivity landscape, but also due
-to sheer data volume. As mentioned earlier, we have to be able to
-search in complex data, for example multi-labelled molecular graphs, where
-graph labels can be different. Still, we need to be able to capture
-molecular graphs in a risk-bounded machine encoded way.
+to sheer data volume. One problem is the annotation with the 'protein targets' a molecule binds to - here dozens of protein and gene identifiers exist, generally without the availability of a one-to-one mapping from each ontology, which makes merging databases often a very cumbersome exercise.
 
-Chemical graphs can differ based on the manner in which the structures
-are drawn. Also chemical behaviors can result in multiple encodings of
-``the same'' molecule and its tautomeric states, different protonation
-states, or many variations of implicit chemical expert
-knowledge. Checking whether two graphs represent the same chemical is
+Given the requirement to 'make sense' of as much chemical data at hand as possible, we have to be able to search in complex data, for example multi-labelled molecular graphs, where graph labels can be different. Hence, we need to be able to capture
+molecular graphs in a risk-bounded machine encoded way. 
+
+One main challenge in the cheminformatics field is that not one unique way exists to represent every molecule in a machine-readable form. This results in multiple encodings of
+``the same'' molecule and its different tautomeric or protonation states (see glossary for an explanation of the technical terms). Checking whether two graphs represent the same chemical structure is
 an expensive operation (the next section will discuss this in-depth);
 thus, a representation of the structure that is unique and invariant
-with respect to how the structure is drawn is needed for
+with respect to a particular graphical display of that chemical is needed for
 identification. An early effort in this direction was the Simplified
 Molecular Input Line Specification (SMILES), and specifically the
-generation of a single canonical SMILES for a particular structure. However,
+generation of a single, 'canonical' SMILES for a particular structure. The idea was to devise rules for a unique ordering of the atoms in a molecular structure, hence resulting in the same representation of the same molecule. However,
 over the course of time, several
 different SMILES implementations became available, with no universal
-standard for generating a canonical SMILES.
-%After years of research and various
-%commercial products, there is today no single public standard for a
-%line-notation of molecular labeled graphs, which is available to a
-%broad audience (academic and
-%commercial). %The very same problem does also exist for
-%bioassay ontologies and the lack of options to normalize the property spaces of
-%chemical compounds, e.g. biological assays or clinical data outcome
-%(biobanking).
+standard for generating a canonical SMILES. Nonetheless, the SMILES format remains one of the major representations of molecules used in practice today.
 
 With each database using their own algorithm for molecular encoding,
 automated exchange of data between different databases was hindered.
-As more and more data became available online,
-structure-based identification became a pressing need, and the IUPAC
-International Chemical Identifier (InChI) code was developed. The
+As more and more data became available online, the use of unique
+structure-based identifiers became a pressing need, resulting in the IUPAC
+International Chemical Identifier (InChI) to be developed. The
 InChI is a non-proprietary, structured textual identifier for chemical
 entities \cite{inchi}. InChI identifiers are not intended to be read and
 understood by humans, but are useful for computational matching of
 chemical entities. For rapid database lookups, the InChIKey is a
 hashed key for the InChI, which has an invariant length of 14
-characters. Figure \ref{smiles} illustrates the SMILES, InChI and InChIKey for
+characters. (Unfortunately, after implementation and publication of the hashing scheme it became apparent that in particular in case of stereochemically related molecules clashes of the InChI key take place in some, albeit rare cases.) Figure \ref{smiles} illustrates the SMILES, InChI and InChIKey for
 lipoic acid.
 
 %Figure {smiles}: The standard chemical graph illustration together with the SMILES,
@@ -282,13 +264,13 @@ the generated InChI is the same.
 %transplatin.
 
 InChI or other identity-mapping algorithms allow for exact searching (within the
-limitations of the algorithms), but two other requirements for scientific
+limitations of the algorithms). However, two other practically relevant algorithms for scientific
 discovery based on chemical databases are \emph{substructure searching} and \emph{similarity
-searching}. In substructure searching, the database is searched for a specified
-wholly contained part of the structures in the database; in similarity
-searching, the database is searched for structures similar to a provided search
+searching}, which are required to generalize from the data points contained in a particular database to other, related molecules. In substructure searching, the database is searched for a specified
+wholly contained part of the structures in the database, while in similarity
+searching, the database is searched for structures similar (in some property space) to a provided search, or query, 
 structure. Chemical search packages are often implemented and optimized for a
-given database technology, for example, the OrChem package is an open source
+given database technology; for example, the OrChem package is an open source
 chemical search package for the Oracle database \cite{rijnbeek2009}.
 
 Graph substructure matching is a variant of \emph{graph isomorphism detection},which is
@@ -298,12 +280,10 @@ structures is infeasible. For that reason, complex heuristics must be
 used to drastically filter the candidate search space. Structure-based
 \emph{fingerprints} are commonly used for this purpose. Fingerprints encode
 characteristic features of a given chemical structure in a Boolean array, or
-bitmap. The fingerprint is created by an algorithm which generates bitmap
-patterns for each atom in the structure; then each atom and its nearest
+bitmap, and they can be implemented in a variety of ways. Common fingerprints are created by an algorithm which generates bitmap patterns for each atom in the structure; then each atom and its nearest
 neighbors, including the bonds between them; then each group of atoms connected
 by paths of increasing lengths up to the maximum implemented for the algorithm
-(commonly around eight). The bitmap patterns are added together into the final
-fingerprint. If all bits in a query fingerprint are also present in the target
+(commonly around eight). In this way, characteristic parts of molecule are captured and the bitmap patterns are added together into the final fingerprint. If all bits in a query fingerprint are also present in the target
 fingerprint of a stored database structure, only then is the structure subjected
 to the computationally expensive subgraph matching algorithm. Bit operations are
 very fast and independent of the number of atoms in a structure due to the fixed
@@ -314,9 +294,11 @@ structure-based similarity measures. An example measure of similarity is the
 \emph{Tanimoto coefficient}, calculated as the ratio $T(a,b) = \frac{c}{(a+b-c)}$,
 where $c$ is the count of bits on in the same position in both the two
 fingerprints, $a$ is the count of bits on in the first structure, and $b$ is the
-count of bits on in the second structure. The Tanimoto coefficient varies in the
-range 0.0 -- 1.0, with a score of 1.0 indicating that the two structures are very
-similar (i.e. their fingerprints are the same). Structure-based similarity is of
+count of bits on in the second structure. Historically, this coefficient originated from the comparison of ecosystems around lakes, where a measure was needed to describe how similar those ecosystems are with respect to the animals, plants etc. they contain. However, it can be applied to every other system as well where features can be described in a binary manner. The Tanimoto coefficient varies in the
+range 0.0 -- 1.0, with a score of 1.0 indicating that the two structures are either very
+similar or even identical (i.e. their fingerprints are the same).
+
+Structure-based similarity is however of
 limited use in grouping of chemicals based on non-structural features, such as
 shared bioactivity profiles. For this purpose, a large-scale and flexible
 classification structure is needed for chemicals and their linked biological
@@ -326,7 +308,7 @@ domain of interest. It is structured around an underlying logical representation
 such as Description Logics~\cite{baaderdl2007}. The logic-based representation allows
 automated reasoning to derive new knowledge (inferences) from the knowledge
 encoded, making the representation both compact and powerful.
-Ontologies are already in widespread use across the biomedical domain. A
+Ontologies are already in widespread use across the biomedical domain, and in the cheminformatics field ontologies relating to the chemical structures themselves and the protein targets the molecules are active against are probably most common. A
 similarity measure based on the information encoded in ontologies is termed
 \emph{semantic similarity}, and such measures have already been applied to enhance
 chemical classification in several problem areas \cite{couto2010}. Many open
@@ -337,15 +319,15 @@ chemical structures with chemical ontologies \cite{hastingsowled2010}.
 \label{sec:struct-enum}
 
 Enumerating molecules is a combinatorial problem that has fascinated
-chemists, computer scientists and mathematicians alike for more than a
+chemists, computer scientists and mathematicians alike, for more than a
 century. It is one important risk-reduction element in still being
 able to encode closely-related molecules and for keeping the space
 complexity of databases under (algorithmic) control. Indeed, while
 trying to solve the problem of counting the isomers of paraffin
 structures or counting substituted aromatic compounds, fundamental
 principles in graph theory and combinatorics were developed by Cayley,
-Polya and others. Even terms that are widely-used nowadays like graph
-and tree were originally coined in a chemistry context (Chapters 1 and
+Polya and others. Even terms that are widely-used nowadays, like 'graph'
+and 'tree', were originally coined in a chemistry context (Chapters 1 and
 8 in \cite{faulon2010}). More than four decades ago, Joshua Lederberg,
 Carl Djerassi, Edward Feigenbaum and others from Stanford University
 started developing codes to explicitly enumerate molecules. Their
@@ -358,7 +340,7 @@ expert system.
 
 Enumerating molecules is not only an interesting academic exercise but has
 practical utility as well. The foremost application of enumeration is \emph{structure
-elucidation} of natural compounds such as metabolites.
+elucidation} of natural compounds such as metabolites. Metabolites are small molecules that can be found an organism (such as a human) and which in many cases indicate the state the organism is in - such as indicating a disease, or a fasted state, etc., and with a sufficiently large database the idea is to be able to detect the chemical composition of body fluids and to arrive at conclusions regarding the particular state of the organism at this point in time.
 Ideally, the wishful bench chemist collects experimental data
 from an unknown compound, the data is fed into a code, and the resulting
 structure is returned. Although that streamlined process may not yield a unique
@@ -374,13 +356,13 @@ enumeration has taken a central role as it allows computational chemists to
 construct virtual libraries and test hypotheses, and it provides guidance in the
 design of optimal combinatorial experiments.
 
-The major difficulty with enumeration is that the \emph{in silico}
+The major difficulty with enumeration (apart from the size of the search space, which is thought to be in the order of 10^60 molecules for 30 heavy atoms) is that the \emph{in silico}
 representation of molecules, the so-called molecular graphs, are
 labeled objects (i.e. labeled graphs), while the atoms of a molecule
 are of course not uniquely labeled. The mathematical concept to tackle
 this problem is to consider orbits of labeled molecular graphs under
-the operation of the symmetric group. When enumerating molecular
-structures, one has thus to solve the so--called isomorphism problem.
+the operation of the symmetric group. However, when enumerating molecular
+structures, one has thus to solve the so--called isomorphism problem, where molecules that seem different are actually equivalent (i.e., their atoms can be mapped on top of each other by keeping the connectivity between atoms intact).
 The good news is that isomorphism can be solved in polynomial time for
 molecular graphs due to the fact that molecules belong to a restricted
 class of graphs known as \emph{bounded valence graphs}; however, that
@@ -401,7 +383,7 @@ structures\footnote{http://www.dcb-server.unibe.ch/groups/reymond/gdb/home.html}
 the current enumeration software products do not generally produce
 stereoisomers or tautomers; these require specific enumeration
 procedures, which are still the subject of investigations by the
-cheminformatics community.
+cheminformatics community. In addition, also GDB-13 only enumerates molecules up to 13 heavy atoms - given the possibly exponential increase in search space with the number of atoms, it seems unlikely that the practically relevant chemical space of about 30 heavy atoms will be exhaustively enumerated in the near future.
 
 GDB-13 along with other databases such as PubChem (NCBI/NIH) or ZINC
 (UCSF) are valuable resources to search for new drugs. For instance
@@ -418,7 +400,7 @@ fingerprints, or more generally enumerating molecules from molecular
 descriptors, is still very much under development. At stake is the
 design of new chemicals or drugs that have not yet been synthesized.
 
-Another area where enumeration plays a role is in the \emph{generation
+Apart from analytical chemistry and compound design, enumeration plays a role is in the \emph{generation
   of chemical reaction networks}. The problem here consists of
 enumerating all the possible compounds that can be produced by
 applying reaction rules to a set of initial molecules. By reversing
@@ -462,14 +444,14 @@ activities. The goal is to describe cause-effect relationships with
 the lowest possible risk, and also to describe the likelihood of error
 (confidence) when using such models for decision making. In many
 cases, the activity of a small molecule is due to its interaction with
-a receptor. Traditional QSAR approaches ignore receptor interactions,
+a receptor. Traditional 'QSAR' approaches ignore receptor interactions,
 focusing only on small molecule features, and therefore loose valuable
 information. As a result, techniques such as proteochemometric
 modeling have been designed to take into account both ligand and
 receptor structures.
 
 The first step in the predictive modeling of biological activities is
-to compare compounds. Either we transform molecular graphs into a
+to describe compounds in a way amenable to computerized data mining, while at the same time capturing information relevant for the property one attempts to model. Here multiple approaches exist: Either we transform molecular graphs into a
 numerical vector representation (a.k.a. \emph{descriptors} or
 \emph{features}) of chemical structures, or we use algorithms for
 comparing molecular graphs directly (\emph{molecule kernel}). In the
@@ -484,25 +466,22 @@ graph into a vector without losing information. On the other hand, the
 implicit kernel encoding imposes the challenge that we have to compare all compounds against
 all compounds, which imposes large-scale mining challenge, which risks overrunning available
 processing time and space. Note that the public PubChem dataset alone
-contains over 30 million chemical compounds and over 70 million other
-substances.
+contains over 30 million chemical compounds and over 70 million substances.
 
-First, we must consider the goal of a predictive model in a
-cheminformatics setting. In some cases, pure predictive ability is
-desired---such as in a virtual screening setting. For such cases, the
+In order to judge which predictive modeling approach is applicable in every case, we firstly have to consider the goal of a the model in a cheminformatics setting. In some cases, pure predictive ability is
+desired---such as in a virtual screening setting. (Basically, only the reliability of the model matters, but other aspects such as interpretability are of minor importance.) For such cases, the
 complexity of the modeling approach is immaterial, as it leads to
 accurate and generalizable results. Here a large-scale mining capacity
 is crucial. On the other hand, when working with chemists and
 biologists, the interpretability of a model and risk reduction
 arguments are paramount, since we have to translate better-predicted
 \emph{in silico} compounds into real-world compounds. In such cases,
-black box methods can be less useful, though attempts have been made
+'black-box methods' can be less useful, though attempts have been made
 to interpret vectorial models built using neural networks, Support Vector Machines or
-random forests. Related to this, there is a never-ending debate on the
-choice of descriptors, \emph{e.g.}, by applying feature selection.
+random forests as well.
 
-Second, the concept of model applicability---when is the prediction
-for a new object reliable (confidence)?---has grown in importance with
+Secondly, the concept of model applicability---the question of when the prediction of the model
+for a new object is reliable---has grown in importance with
 the increasing use of predictive models in regulatory settings. A
 variety of methods have been developed that attempt to characterize
 the domain of a model. These methods not only determine whether models
@@ -548,23 +527,18 @@ reducing the risk in current research, but also for enabling new
 collaboration/innovation opportunities with internal partners and a rapidly growing
 number of external/public partners. In fact, in cheminformatics and chemistry,
 scientists already switched many years ago from paper lab-notebooks to
-online collaboration platforms, called ELNs (Electronic Lab Notebooks). So, why
-have chemists and companies already adopted ``Enterprise 2.0,'' a social
-online collaboration culture? Many other disciplines are still busy with solving
-ROI (return-of-investment), risk reduction, opportunity creation, change
-culture, and technical collaboration challenges for scientists and scientific
-data.
+online collaboration platforms, called ELNs (Electronic Lab Notebooks). So, what were the drivers behind chemists, and companies, adopting ``Enterprise 2.0,'' a social online collaboration culture? 
 
 Before the year 2000, many chemists were still using paper
 lab-notebooks, multiple compound registration, and search tools. Compared to
-today there were many pitfalls and drawbacks with this. The overall architecture
+today there were many pitfalls and drawbacks associated with this. The overall architecture
 was too inflexible to adopt to fast changing data standards, scientists spent
 too much time with administrative work, chemical data quality was inconsistent,
 an alignment with other working groups was inefficient (e.g. for running
 analytical experiments), a legal dispute required to find data in paper
 lab-notebooks, data synchronization between systems caused lag times and access
 delays, and local silos hampered an efficient global collaboration. Now,
-chemists prefer ELNs, because they can run searches in the data of colleagues. This does
+chemists prefer ELNs, because they can run searches in the data across the organization. This does
 not only allow to find experts faster, but also allows access to highly trusted
 data with approved quality workflows. Since this also gives access to
 analytical and legal data directly every new ELN release is aiming at increasing
@@ -573,8 +547,8 @@ to irrational or bounded-rational decision making and increasing decision making
 efficiency.
 
 ELNs are typically much more accepted and used within the cheminformatics
-domain than in the bioinformatics domain, which is picking up speed lately. The
-question is why? In chemistry, every experiment requires a lot of expert
+domain than in the bioinformatics domain, which is picking up speed lately, the
+question being why this is the case. In chemistry, every experiment requires a lot of expert
 knowledge. Therefore, approaches for reducing risks by communicating
 with fellow chemists about similar reactions or compounds is critical. This
 requires capturing the reaction details, compound details, and time consuming
@@ -633,9 +607,9 @@ algorithms}. The latter is especially relevant for the plethora of
 data mining techniques that are employed in cheminformatics. At this
 point, the nature of Open Data focuses primarily on structure and
 activity data types. On the other hand, there is a distinct lack of
-textual data (such as journal articles) that are Open in nature. While
+textual data (such as journal articles) that are 'Open' in nature. While
 PubMed abstracts serve as a proxy for journal articles, text mining
-methods in cheminformatics are hindered by this state of affairs.
+methods in cheminformatics are hindered by not being able to mine the full text of many scientific publications.
 Interestingly, patent information is publicly accessible (cf. Google
 Patents) and there have been efforts to mine these for chemical
 information using Open tools.
@@ -750,7 +724,7 @@ would like to encourage more computer scientists to participate in
 cheminformatics research.  There is an admittedly steep learning
 curve, as the structural issues faced by chemists are often too
 detailed and subtle to admit as clean an abstraction as ``algorithms
-on a string,'' the way many bioinformatics algorithms can be abstracted into a CS
+on a string'', the way many bioinformatics algorithms can be abstracted into a computer science
 framework.  Nevertheless, because of the changing landscape, there are
 many research questions we are only now in position to try to answer:
 for a theorist, graph-theoretic questions of three-dimensional
@@ -770,7 +744,7 @@ within us.
 We would like to thank Danny Verbinnen for sharing his insights into
 ELN's.  This article was written while A. Sterling was visiting the
 Department of Electrical Engineering and Computer Science,
-Northwestern University, supported in part by NSF grant CCF-1049899.
+Northwestern University, supported in part by NSF grant CCF-1049899. AB thanks Unilever for funding.
 
 \bibliographystyle{abbrv}
 \bibliography{paper}

@@ -62,9 +62,9 @@ Egon Willighagen (Karolinska Institutet, Stockholm, Sweden, email: {\texttt{egon
   sequencing of the human genome, where researchers connected
   biological concepts to the theory of string algorithms. However,
   despite this great success, few computer scientists are familiar
-  with a related (and older!)  discipline: cheminformatics, the use of
-  computers to represent the structures of small molecules and analyze
-  their properties.  Cheminformatics has wide applicability, from the
+  with a related discipline: cheminformatics, the use of computers to
+  represent the structures of small molecules and analyze their
+  properties.  Cheminformatics has wide applicability, from the
   discovery of novel drug candidates to the optimization of certain
   physicochemical properties of small molecules. Until recently, the
   data and techniques employed in the cheminformatics field have been
@@ -124,32 +124,41 @@ expertise in computer science is urgently needed. (For a recent,
 detailed introduction to cheminformatics, written for computer
 scientists, see \cite{brown2009}).
 
-Cheminformatics comprises different areas, which broadly speaking can be divided
-into three fields: \emph{capturing data} (using lab notebooks or potentially using
-formats such as the Chemical Markup Language for publications); \emph{storing data}
-(designing database schemas, devising ontologies) and \emph{mining data} (such as for
-bioactivity prediction, which might involve algorithms based on graphs).
-However, the type of information being analyzed is different from biological information: while bioinformatics often deals with sequences, the
-domain of cheminformatics is chemical structures. In the case of the former,
-information can very frequently be represented as one-dimensional strings, which
-are relatively easy to handle computationally. In the case of the latter however, chemical
-structures may possess rings, branches as well as multiple valid representations
-of the same structure (such as so-called ``tautomers'', where hydrogen atoms can be positioned in different places of the
-molecules), potentially giving rise to ambiguities. Hence,
-chemical structures are often reported to be more difficult to standardize.
+Cheminformatics comprises different areas, which broadly speaking can
+be divided into three fields: \emph{capturing data} (using lab
+notebooks or potentially using formats such as the Chemical Markup
+Language for publications); \emph{storing data} (designing database
+schemas, devising ontologies) and \emph{mining data} (such as for
+bioactivity prediction, which might involve algorithms based on
+graphs).  However, the type of information being analyzed is different
+from biological information: while bioinformatics often deals with
+sequences, the domain of cheminformatics is chemical structures. In
+the case of the former, information can very frequently be represented
+as one-dimensional strings, which are relatively easy to handle
+computationally. In the case of the latter however, chemical
+structures may possess rings, branches as well as multiple valid
+representations of the same structure (such as so-called
+``tautomers'', where hydrogen atoms can be positioned in different
+places of the molecules), potentially giving rise to
+ambiguities. Hence, chemical structures are often reported to be more
+difficult to standardize.
 
-To illustrate the difficulty of standardizing chemical structures, different
-representations of the same chemical structure are shown in Figure~\ref{figure:chemical-structures}. The top
-left hand corner shows a structure a chemist would draw it---every ``corner''
-representing a carbon atom (which can also be represented as a C), every O
-denoting oxygen, every N nitrogen, every H hydrogen, and so on. This is the
-standard format chemists use when exchanging information with their peers.
-However, this format is not directly amenable to data mining---different atoms might
-be collapsed into one node, and sets of atoms might have the same relevant
-properties assigned. Hence, the top right hand corner of Figure~\ref{figure:chemical-structures} shows an
-annotated graph representation, taking into account that atoms, though being of
-different elemental atom type, can have similar properties---\emph{e.g.}, both oxygen
-and nitrogen carry an ``On'' label in this graph.
+To illustrate the difficulty of standardizing chemical structures,
+different representations of the same chemical structure are shown in
+Figure~\ref{figure:chemical-structures}. The top left hand corner
+shows a structure a chemist would draw it---every ``corner''
+representing a carbon atom (which can also be represented as a C),
+every O denoting oxygen, every N nitrogen, every H hydrogen, and so
+on. This is the standard format chemists use when exchanging
+information with their peers.  However, this format is not directly
+amenable to data mining---different atoms might be collapsed into one
+node, and sets of atoms might have the same relevant properties
+assigned. Hence, the top right hand corner of
+Figure~\ref{figure:chemical-structures} shows an annotated graph
+representation, taking into account that atoms, though being of
+different elemental atom type, can have similar
+properties---\emph{e.g.}, both oxygen and nitrogen carry an ``On''
+label in this graph.
 
 \begin{figure}
 \centering

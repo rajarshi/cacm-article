@@ -172,9 +172,15 @@ this concept have been published \cite{wegner2006,horst2009}. Still,
 this ``annotated graph'' representation is far from being the end of
 the story. Molecules are three-dimensional entities, as represented in
 the bottom left hand corner of the figure, and the precise 3D shape is
-relevant in many situations (although not in others).  Nevertheless, the
-3D information is lost when one only considers the graph of a
-molecule. To extend the concept of three-dimensionality further, in
+relevant in many situations (although not in others). Although the
+graph implicitly encodes the 3D structure of a molecule (when combined
+with knowledge about favored bond angles and distances), many
+different low energy 3D structures, or conformers, may be consistent
+with the same graph structure. In addition, the 3D structure may have
+a geometrical arrangement of features (such as the presence of a
+right-handed helix) which cannnot be encoded in the graph.
+
+To extend the concept of three-dimensionality further, in
 many biological systems the \emph{surface properties} of the molecule
 are what appear to be relevant, as shown in the bottom right hand
 corner.  Hence, while graph mining on chemicals is certainly a

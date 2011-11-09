@@ -73,43 +73,67 @@ definitions of pioneers in the field with Brown concluding that
 It is also useful to clarify some other terms and how
 cheminformatics might relate to them:
 \begin{itemize}
-\item \textbf{Quantum chemistry} is generally associated with
+\item \textbf{Quantum chemistry} (QM) is generally associated with
   theoretical chemistry or chemical physics. Briefly, it focuses on
-  the description of chemical systems starting from irst principles
+  the description of chemical systems starting from first principles
   and is based on the Schr\"{o}dinger wave equation and frameworks
-built on top of it. The use of quantum mechanics allows one to
-describe molecules in terms of electron density, which thus forms the
-basis of physically accurate calculations of physical properties
-(e.g., infrred spectra). The results of quantum chemistry calculations
-are used in molecular modeling (energy force field parameters) and
-cheminformatics (atom partial charges, or full molecule properties,
-e.g molecule polarizabilities).
-\item \textbf{Molecular modeling} or \textbf{Computational chemistry} considers typically energy calculations of single molecules or interactions
-with other molecules, e.g. proteins. 'Molecular docking' belongs into this category, since it places a chemical molecule in the active site of enzymes
-and calculates energy/interaction scores between a chemical molecule and the protein. Surely are there various cheminformatics concepts required to
-perform such a task. Still, strictly speaking is cheminformatics rather on the chemical molecule side than on the protein side, though are both sides
-affecting each other. This area is typically strongly related to structural biology and technologies like XRay crystallography and 
-NMR spectra structure determination. 
-\item \textbf{Chemometrics} can be considered as applied cheminformatics to the field of chemical/physical analysis, e.g. infrared, mass and NMR spectra analysis.
-\item '\textbf{Translational research/medicine} aims to improve the health and longevity of the world's populations and depends on developing broad-based 
-teams of scientists and scholars who are able to focus their efforts to link basic scientific discoveries with the arena of clinical investigation, 
-and translating the results of clinical trials into changes in clinical practice, informed by evidence from the social and political sciences.' (Source:Wikipedia).
-Since clinical trials can be connected to drugs, chemical molecules, even all of translational research and biobanking could be considered as a field
-of cheminformatics, which would be on the other hand just a small contribution to a full knowledge management in this field \cite{Szalma2010}.
+  built on top of it. The use of quantum mechanics allows one to
+  describe molecules in terms of electron density, and hence calculate
+  molecular properties (spectra, energies et.) in a physically
+  accurate manner.  The results of quantum chemistry calculations are
+  used in molecular modeling (energy force field parameters) and
+  cheminformatics (atom partial charges, or full molecule properties,
+  e.g molecule polarizabilities).
+\item \textbf{Molecular modeling} or \textbf{Computational chemistry}
+  can be considered an approximation of quantum chemistry and aims to
+  evaluate many of the properties considered by QM methods. The key
+  difference is that these methods employ a variety of
+  parametrizations (usually, but not always, derived from QM studies),
+  allowing one to evaluate energies for small molecules very rapidly
+  as well as handle larger systems (such as proteins) that are too
+  time consuming for QM methods. A variety of techniques including
+  semi-empirical methods, molecular mechanics and docking belong to
+  this category. While it is true that many of these methods involve
+  cheminformatics concepts (choice of tautomer, partial charge
+  assignments, etc.), the methodologies are fundamentally physical in
+  nature. We note that computational chemistry has close ties to
+  topics such as x-ray crystallography and NMR structure elucidation.
+\item \textbf{Chemometrics} is a focused application of statistical
+  methods to problems in analytical chemistry, such as infrared, mass
+  and NMR spectroscopy.
+\item \textbf{Translational research/medicine} aims to make more
+  direct links between academic (or early stage) research and clinical
+  practice in an effort to speed up the results of research into
+  actual treatments. When applied to medical research this usually
+  implies efforts to speed up the process by which a compounds goes
+  from the lead stage ot the clinical trial stage. Naturally,
+  cheminformatics plays a role at various stages of this process (lead
+  identification, lead optimization, ADMET modeling) as well as more
+  broadly such as in drug repurposing efforts.
 \end{itemize}
-If we consider all information, analysis, and optimization of a chemical molecule as 'cheminformatics', then the field is very large, since a chemical
-molecule plays the central role in many related disciplines. Still, for keeping it practical the aim of this review is not being exhaustive, but rather to 
-point the reader to more detailed references and to highlight some historic milestones. 
+If we consider all information, analysis, and optimization of a
+molecule as ``cheminformatics'', then the field is very large, since a
+molecule plays the central role in many related disciplines. Clearly,
+this article is not mean to be an exhaustive overview; rather, we
+point the reader to more detailed references and to highlight some
+historic milestones.
 
-One of the most comprehensive cheminformatic series was published by Prof. Gasteiger in 2003 \cite{Gasteiger2003}, one of the pioniers in the field.
-Compacter introductory books followed from Gasteiger/Engel \cite{gasteigerengel2003} and Leach/Gillet \cite{leachgillet2007}.
-The books of Bajorath \cite{Bajorath2004} and Oprea \cite{oprea2005} focus on the applications of cheminformatics in drug design.
-The first books discussing chemical graph theory and algorithms were published in 1989 by Zupan \cite{zupan1989}, 
-1991 by Bonchev/Rouvrey \cite{bonchevrouvrey1991,bonchevrouvrey2003} and 1992 by Trinastic \cite{Trinajstic1992}. 
-The most recent one was published by Faulon/Bender \cite{faulon2010}.
-Other books focus more on specific fields/applications like mathematical challenges \cite{mathchallenges1995}, 
-molecular diversity \cite{moleculardiversity1999}, factor analysis \cite{Malinowski2002}, evolutionary algorithms \cite{clark2000},
-molecular descriptors \cite{todeschini2000}.
+One of the most comprehensive cheminformatic series was published by
+Prof. Gasteiger in 2003 \cite{Gasteiger2003}, one of the pioniers in
+the field.  Compacter introductory books followed from Gasteiger/Engel
+\cite{gasteigerengel2003} and Leach/Gillet \cite{leachgillet2007}.
+The books of Bajorath \cite{Bajorath2004} and Oprea \cite{oprea2005}
+focus on the applications of cheminformatics in drug design.  The
+first books discussing chemical graph theory and algorithms were
+published in 1989 by Zupan \cite{zupan1989}, 1991 by Bonchev/Rouvrey
+\cite{bonchevrouvrey1991,bonchevrouvrey2003} and 1992 by Trinastic
+\cite{Trinajstic1992}.  The most recent one was published by
+Faulon/Bender \cite{faulon2010}.  Other books focus more on specific
+fields/applications like mathematical challenges
+\cite{mathchallenges1995}, molecular diversity
+\cite{moleculardiversity1999}, factor analysis \cite{Malinowski2002},
+evolutionary algorithms \cite{clark2000}, molecular descriptors
+\cite{todeschini2000}.
 
 \section{Historic milestones}
 The first chemical graphs were drawn by the Scottish chemist Willam Cullen in 1758 \cite{bonchevrouvrey1991}, which called them initially affinity graphs.

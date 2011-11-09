@@ -70,7 +70,7 @@ Egon Willighagen (Karolinska Institutet, Stockholm, Sweden, email: {\texttt{egon
   of the the data and some of the techniques employed in the
   cheminformatics field have been closely guarded secrets of companies
   whose financial success depended on being the first to produce the
-  new ``miracle molecule.''  Only within the last decade---and as an
+  new therapeutic molecules.  Only within the last decade---and as an
   effect of a change in mindsets, government-mandated policy changes
   and last but not least because of chemists volunteering their time
   for an Open Science ``movement''---have researchers gained access to
@@ -436,14 +436,15 @@ The underlying computational complexity and potential intractability
 of molecular enumeration may not be a bottleneck after all, as
 computational chemists have developed and successfully used
 enumeration tools to generate large chemical libraries such as GDB-13,
-comprising almost a trillion chemical
-structures~\cite{GDB}. Yet,
-the current enumeration software products do not generally produce
+comprising almost a billion chemical structures~\cite{GDB}. Yet, the
+current enumeration software products do not generally produce
 stereoisomers or tautomers; these require specific enumeration
 procedures, which are still the subject of investigations by the
-cheminformatics community. In addition, GDB-13 only enumerates molecules up to 13 heavy atoms---given the possibly
-exponential increase in search space with the number of atoms, it seems unlikely that the practically relevant chemical
-space of about 30 heavy atoms will be exhaustively enumerated in the near future.
+cheminformatics community. In addition, GDB-13 only enumerates
+molecules up to 13 heavy atoms---given the possibly exponential
+increase in search space with the number of atoms, it seems unlikely
+that the practically relevant chemical space of about 30 heavy atoms
+will be exhaustively enumerated in the near future.
 
 %GDB-13 along with other databases such as PubChem (NCBI/NIH) or ZINC
 %(UCSF) are valuable resources to search for new drugs. For instance
@@ -496,17 +497,25 @@ cheminformatics and bioinformatics.
 \label{sec:activity-mining}
 
 
-The basis of predictive modeling in cheminformatics is that
-\emph{chemical structure implies biological activity}. Thus, the goal
-of any modeling approach is to capture and characterize the
-correlations between structural features and the observed biological
-activities. The goal is to describe cause-effect relationships with
-the lowest possible risk, and also to describe the likelihood of error
-(confidence) when using such models for decision making.  Figure~\ref{figure:applicability-domain} (in the Appendix) illustrates the use of substructure matching to produce a space of chemical structures that are likely to share similar biological activity; this is called the generation of an \emph{applicability domain}.
+The basis of predictive modeling in cheminformatics is that the
+biological activity of a molecule is a function of its chemical
+structure. Together with the \emph{similarity property principle}
+\cite{Johnson:1990ys} that states that structurally similar molecules
+will exhibit similar properties, the goal of any modeling approach is
+to capture and characterize the correlations between structural
+features and the observed biological activities. Simultaneously, such
+approaches must also describe the likelihood of error (confidence)
+when using such models for decision making.  A variety of approaches
+can be employed to assess the error in (or conversely, the reliability
+of) a prediction, ranging from statistical approaches (XXX) to more
+empirical approaches such as defining an \emph{applicability domain} -
+the region of the input (i.e., chemical structures) that can be
+reliably predicted, usually deliniated using some form of similarity
+to the training set.  
 
 In many cases, the activity of a small molecule is due to its interaction with
 a receptor. Traditional ``QSAR'' approaches ignore receptor interactions,
-focusing only on small molecule features, and therefore loose valuable
+focusing only on small molecule features, and therefore lose valuable
 information. As a result, techniques such as proteochemometric
 modeling have been designed to take into account both ligand and
 receptor structures.

@@ -13,7 +13,7 @@
 
 
 \begin{document}
-
+\pagenumbering{arabic}
 
 
 \title{Cheminformatics: The Computer Science of Chemical Discovery}
@@ -55,25 +55,31 @@ Egon Willighagen (Karolinska Institutet, Stockholm, Sweden, email: {\texttt{egon
 
 \maketitle
 \begin{abstract}
-One of the most prominent success stories in all the sciences over the last decade has
-  been the advance of bioinformatics: The interdisciplinary collaboration between
- computer scientists and molecular biologists led as one of its major accomplishments to the sequencing of the human
- genome, where researchers connected biological concepts to the theory of string algorithms. However, despite this
- great
-  success, few computer scientists are familiar with a related (and older!)
-  discipline: cheminformatics, the use of computers to represent
- the structures of small molecules and analyze their properties.
-  Cheminformatics has wide applicability, from the discovery of novel drug candidates to the optimization of
-  certain physicochemical properties of small molecules. Until
- recently, the data and techniques employed in the cheminformatics field have been closely guarded
-  secrets of companies whose financial success depended on being the first to produce
-  the new ``miracle molecule.'' Only within the last decade---and as an effect of a change in mindsets,
-  government-mandated policy changes and last but not least because of  chemists volunteering their time for an Open
-  Science ``movement''---have researchers gained access to freely available software packages and databases of tens of
-  millions of chemicals. Academic chemists now confront a variety of unsolved
-  algorithmic problems that could not have been tackled a decade ago, but whose
-  solutions are critical to research ranging from determining the behavior of small
-  molecules in biological pathways, to finding a cure for malaria and other ``neglected'' diseases.
+  One of the most prominent success stories in all the sciences over
+  the last decade has been the advance of bioinformatics: The
+  interdisciplinary collaboration between computer scientists and
+  molecular biologists led as one of its major accomplishments to the
+  sequencing of the human genome, where researchers connected
+  biological concepts to the theory of string algorithms. However,
+  despite this great success, few computer scientists are familiar
+  with a related (and older!)  discipline: cheminformatics, the use of
+  computers to represent the structures of small molecules and analyze
+  their properties.  Cheminformatics has wide applicability, from the
+  discovery of novel drug candidates to the optimization of certain
+  physicochemical properties of small molecules. Until recently, the
+  data and techniques employed in the cheminformatics field have been
+  closely guarded secrets of companies whose financial success
+  depended on being the first to produce the new ``miracle molecule.''
+  Only within the last decade---and as an effect of a change in
+  mindsets, government-mandated policy changes and last but not least
+  because of chemists volunteering their time for an Open Science
+  ``movement''---have researchers gained access to freely available
+  software packages and databases of tens of millions of
+  chemicals. Academic chemists now confront a variety of unsolved
+  algorithmic problems that could not have been tackled a decade ago,
+  but whose solutions are critical to research ranging from
+  determining the behavior of small molecules in biological pathways,
+  to finding a cure for malaria and other ``neglected'' diseases.
 \end{abstract}
 
 \category{J.2}{Computer Applications}{Physical Sciences and Engineering}[Chemistry]
@@ -83,35 +89,40 @@ data}
 
 \section{Is Cheminformatics the New \\Bioinformatics?}
 
-Novel technologies in the life sciences churn out information at an ever
-increasing rate---public data stores such as the one at the European Bioinformatics
-Institute (EBI) contain on the order of 10 petabytes of biological information.
-However, while biological information has been publicly available for decades,
-the same has not been true for chemical information, until recently. It was
-not until 2004 that a large public small molecule structure repository (PubChem)
-became freely available. This was followed by other databases, as discussed later
-in this article. In the same vein, open source software and the publication of
-algorithms have only recently become a main focus of the field
-\cite{faulon2010}.
+Novel technologies in the life sciences churn out information at an
+ever increasing rate---public data stores such as the one at the
+European Bioinformatics Institute (EBI) contain on the order of 10
+petabytes of biological information.  While biological
+information has been publicly available for decades, the same has not
+been true for chemical information, until recently. It was not until
+2004 that a large public small molecule structure repository (PubChem)
+became freely available. This was followed by other databases, as
+discussed later in this article. In the same vein, open source
+software and the publication of algorithms have only recently become a
+main focus of the field \cite{faulon2010}.
 
 So why should we actually care about chemical information being made
 public---and how does this relate to the field of computer science?
 
-Making chemical information public is important because the
-drugs we take are the result of intensive and costly research,
-which is facilitated by the amount of information available. The
-more information is shared (a process very hard to achieve
-in pharmaceutical companies), the more information is available to each
-researcher, facilitating the development of
-novel treatments. The relevance of computer
-science to this research becomes clear when we consider the quantity of data available---
-currently 74 million different molecules are stored in
-public databases (such as PubChem), together with an even larger number of annotations.
-The design of data structures for this chemical information, as well as subsequent
-data mining of this information, are areas where expertise in computer
-science is urgently needed. (For a recent, detailed introduction to
-cheminformatics, written for computer scientists, see
-\cite{brown2009}).
+Making chemical information public is important because the drugs we
+take are the result of intensive and costly research, which is
+facilitated by the amount of information available. The more
+information is shared (a process very hard to achieve in
+pharmaceutical companies), the more information is available to each
+researcher, facilitating the development of novel treatments. The
+relevance of computer science to this research becomes clear when we
+consider the quantity and types of data available--- currently a
+single data base such as PubChem contains more than 34 million
+chemical structure records, along with an even larger number of
+annotations such as synonyms, known targets, mode of action,
+regulatory approval status and so on.  Simply considering the synonym
+list, PubChem stores 50.1 million synonym for 19.6 million compounds.
+
+The design of data structures for this chemical information, as well
+as subsequent data mining of this information, are areas where
+expertise in computer science is urgently needed. (For a recent,
+detailed introduction to cheminformatics, written for computer
+scientists, see \cite{brown2009}).
 
 Cheminformatics comprises different areas, which broadly speaking can be divided
 into three fields: \emph{capturing data} (using lab notebooks or potentially using

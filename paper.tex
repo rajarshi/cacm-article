@@ -160,19 +160,19 @@ different elemental atom type, can have similar
 properties---\emph{e.g.}, both oxygen and nitrogen carry an ``On''
 label in this graph.
 
-\begin{figure}
-\centering
-\includegraphics[height=2in]{chemical-structures.png}
-\caption{The many different facets of representing chemical structures. Shown
-are a chemist's usual representation of a molecule (top left) and a
-graph-based representation amenable to data mining (top right). These
-representations are supplemented by a 3D representation of the same molecule
-(bottom left) that is closer to reality and a representation using surface
-properties (bottom right), which is often more relevant for the properties the
-molecule exhibits in an experimental setup (such as when measuring its
-solubility, or bioactivity).}
-\label{figure:chemical-structures}
-\end{figure}
+% \begin{figure}
+% \centering
+% \includegraphics[height=2in]{chemical-structures.png}
+% \caption{The many different facets of representing chemical structures. Shown
+% are a chemist's usual representation of a molecule (top left) and a
+% graph-based representation amenable to data mining (top right). These
+% representations are supplemented by a 3D representation of the same molecule
+% (bottom left) that is closer to reality and a representation using surface
+% properties (bottom right), which is often more relevant for the properties the
+% molecule exhibits in an experimental setup (such as when measuring its
+% solubility, or bioactivity).}
+% \label{figure:chemical-structures}
+% \end{figure}
 
 Graph mining algorithms can be applied to this type of annotated graph
 (employing large databases of thousands of molecules), to discover
@@ -294,12 +294,12 @@ particular in case of stereochemically related molecules clashes of the InChI ke
 cases.) Figure~\ref{figure:smiles} illustrates the SMILES, InChI and InChIKey for
 lipoic acid.
 
-\begin{figure}
-\centering
-\includegraphics[height=1in]{lipoicacid.png}
-\caption{The standard chemical graph illustration together with the SMILES, InChI and InChIKey codes for lipoic acid. Note that the SMILES is much more human-readable than the others.}
-\label{figure:smiles}
-\end{figure}
+% \begin{figure}
+% \centering
+% \includegraphics[height=1in]{lipoicacid.png}
+% \caption{The standard chemical graph illustration together with the SMILES, InChI and InChIKey codes for lipoic acid. Note that the SMILES is much more human-readable than the others.}
+% \label{figure:smiles}
+% \end{figure}
 
 The InChI is now widely used for matching identical chemical structures, but it
 is still limited. For example, it cannot differentiate between
@@ -819,7 +819,14 @@ into account (only one identifier and isomer possible per molecule),
 but also their complex relationships, transformations, and
 combinatorial challenges.
 
-In 2010, drug company Glaxo made public over 13,000 compounds that they have investigated as potential cures for malaria~\cite{glaxo-malaria}.  (Malaria has traditionally been a ``neglected'' disease in drug research, because the populations who suffer from it tend not to have enough money to be a stable consumer base for a new pharmaceutical.)  Perhaps we will now be able to find cures for some of these neglected diseases, by using the open source, open data approach to the computer science of chemical discovery.
+In 2010, drug company Glaxo made public over 13,000 compounds that
+they have investigated as potential cures for
+malaria~\cite{glaxo-malaria}.  (Malaria has traditionally been a
+neglected disease in drug research, because the populations who
+suffer from it tend not to have enough money to be a stable consumer
+base for a new pharmaceutical.)  Perhaps we will now be able to find
+cures for some of these neglected diseases, by using the open source,
+open data approach to the computer science of chemical discovery.
 
 \section{Acknowledgements}
 We would like to thank Danny Verbinnen for sharing his insights into
@@ -988,18 +995,18 @@ Relevant Market Need   & and they possess the means  &  companies (but often to 
   \label{tab:features}
 \end{table*}
 %
-\begin{figure}
-\centering
-\includegraphics[height=1.3in]{platins.png}
-\caption{The generated InChI is the same for the stereoisomers cisplatin and transplatin.}
-\label{figure:cistrans}
-\end{figure}
-%
-\begin{figure}
-\centering
-\includegraphics[height=2in]{CACM_ApplicabilityDomain.pdf}
-\caption{Illustration of the ``Applicability Domain'' concept. In order to estimate whether model predictions are reliable, it is crucial to define areas of ``chemical space'' where the model is applicable, and where it is not. In this case, the ``model domain'' includes the molecule at the top. The (relatively similar) molecules to the left are likely to be included in the Applicability Domain of the model, while the (more dissimilar) molecules to the right are likely located outside this domain, hence the generated model is probably not applicable.}
-\label{figure:applicability-domain}
-\end{figure}
-%
+% \begin{figure}
+% \centering
+% \includegraphics[height=1.3in]{platins.png}
+% \caption{The generated InChI is the same for the stereoisomers cisplatin and transplatin.}
+% \label{figure:cistrans}
+% \end{figure}
+% %
+% \begin{figure}
+% \centering
+% \includegraphics[height=2in]{CACM_ApplicabilityDomain.pdf}
+% \caption{Illustration of the ``Applicability Domain'' concept. In order to estimate whether model predictions are reliable, it is crucial to define areas of ``chemical space'' where the model is applicable, and where it is not. In this case, the ``model domain'' includes the molecule at the top. The (relatively similar) molecules to the left are likely to be included in the Applicability Domain of the model, while the (more dissimilar) molecules to the right are likely located outside this domain, hence the generated model is probably not applicable.}
+% \label{figure:applicability-domain}
+% \end{figure}
+% %
 \end{document}

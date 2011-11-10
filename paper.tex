@@ -306,18 +306,23 @@ is still limited. For example, it cannot differentiate between
 certain types of stereoisomers: Figure~\ref{figure:cistrans} (in the Appendix) illustrates two stereoisomers for which
 the generated InChI is the same.
 
-InChI or other identity-mapping algorithms allow for exact searching (within the
-limitations of the algorithms). However, two other practically relevant algorithms for scientific
-discovery based on chemical databases are \emph{substructure searching} and \emph{similarity
-searching}, which are required to generalize from the data points contained in a particular database to other, related
-molecules. In substructure searching, the database is searched for a specified
-wholly contained part of the structures in the database, while in similarity
-searching, the database is searched for structures similar (in some property space) to a provided search, or query,
-structure. Chemical search packages are often implemented and optimized for a
-given database technology; for example, the OrChem package is an open source
-chemical search package for the Oracle database \cite{rijnbeek2009}.
+InChI or other identity-mapping algorithms allow for exact searching
+(within the limitations of the algorithms). However, two other
+practically relevant algorithms for scientific discovery based on
+chemical databases are \emph{substructure searching} and
+\emph{similarity searching}, which are required to generalize from the
+data points contained in a particular database to other, related
+molecules. In substructure searching, the database is searched for a
+specified wholly contained part of the structures in the database,
+while in similarity searching, the database is searched for structures
+similar (in some property space) to a provided search, or query,
+structure. Chemical search packages are often implemented and
+optimized for a given database technology; for example, the OrChem
+package is an open source chemical search package for the Oracle
+database \cite{rijnbeek2009}.
 
-Graph substructure matching is a variant of \emph{graph isomorphism detection}, which is widely believed to be computationally
+Graph substructure matching is a variant of \emph{graph isomorphism
+  detection}, which is widely believed to be computationally
 intractable~\cite{cordella2001}. To execute a graph isomorphism search
 across a full chemical database of thousands or even millions of
 structures is infeasible. For that reason, complex heuristics must be
@@ -413,20 +418,24 @@ enumeration has taken a central role as it allows computational chemists to
 construct virtual libraries and test hypotheses, and it provides guidance in the
 design of optimal combinatorial experiments.
 
-The major difficulty with enumeration (apart from the size of the search space, which is thought to be in the order of
-$10^{60}$ molecules for 30 heavy atoms) is that the \emph{in silico}
-representation of molecules, the so-called molecular graphs, are
-labeled objects (i.e. labeled graphs), while the atoms of a molecule
-are of course not uniquely labeled. The mathematical concept to tackle
-this problem is to consider orbits of labeled molecular graphs under
-the operation of the symmetric group. However, when enumerating molecular
-structures, one has thus to solve the so--called isomorphism problem, where molecules that seem different are actually
-equivalent (i.e., their atoms can be mapped on top of each other by keeping the connectivity between atoms intact).
-The good news is that isomorphism can be solved in polynomial time for
+The major difficulty with enumeration (apart from the size of the
+search space, which is thought to be in the order of $10^{60}$
+molecules for 30 heavy atoms \cite{Bohacek:1996ve}) is that the
+\emph{in silico} representation of molecules, the so-called molecular
+graphs, are labeled objects (i.e. labeled graphs), while the atoms of
+a molecule are of course not uniquely labeled. The mathematical
+concept to tackle this problem is to consider orbits of labeled
+molecular graphs under the operation of the symmetric group. However,
+when enumerating molecular structures, one has thus to solve the
+so--called isomorphism problem, where molecules that seem different
+are actually equivalent (i.e., their atoms can be mapped on top of
+each other by keeping the connectivity between atoms intact).  The
+good news is that isomorphism can be solved in polynomial time for
 molecular graphs due to the fact that molecules belong to a restricted
 class of graphs known as \emph{bounded valence graphs}; however, that
 same restriction prevents applying to a molecular graph the polynomial
-delay enumeration results obtained for general graphs (Chapter 8 in~\cite{faulon2010}). While the complexity of molecular graph
+delay enumeration results obtained for general graphs (Chapter 8
+in~\cite{faulon2010}). While the complexity of molecular graph
 enumeration remains an open problem it has nonetheless been shown that
 molecules can be sampled efficiently~\cite{goldberg1999}. Sampling
 procedures based on the Metropolis or the Genetic Algorithms have been

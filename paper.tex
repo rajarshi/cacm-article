@@ -329,8 +329,7 @@ differentiate between certain types of stereoisomers:
 Figure~\ref{figure:cistrans} (in the Appendix) illustrates two
 stereoisomers for which the generated InChI is the same.
 
-InChI or other identity-mapping algorithms allow for exact searching
-(within the limitations of the algorithms). However, two other
+InChI or other identity-mapping algorithms allow for exact searching. However, two other
 practically relevant algorithms for scientific discovery based on
 chemical databases are \emph{substructure searching} and
 \emph{similarity searching}, which are required to generalize from the
@@ -344,28 +343,38 @@ optimized for a given database technology; for example, the OrChem
 package is an open source chemical search package for the Oracle
 database \cite{rijnbeek2009}.
 
-Graph substructure matching is a variant of \emph{graph isomorphism
-  detection}, which is widely believed to be computationally
+Graph substructure matching is a variant of \emph{graph isomorphism},
+which is widely believed to be computationally
 intractable~\cite{cordella2001}. To execute a graph isomorphism search
 across a full chemical database of thousands or even millions of
-structures is infeasible \cite{Weininger:2011ly}. For that reason,
-heuristics must be used to drastically filter the candidate search
-space. Structure-based \emph{fingerprints} are commonly used for this
-purpose. Fingerprints encode characteristic features of a given
-chemical structure in a Boolean array, or bitmap, and they can be
-implemented in a variety of ways. Common fingerprints are created by
-an algorithm which generates bitmap patterns for each atom in the
-structure; then each atom and its nearest neighbors, including the
-bonds between them; then each group of atoms connected by paths of
-increasing lengths up to the maximum implemented for the algorithm
-(commonly around eight). In this way, characteristic parts of molecule
-are captured and the bitmap patterns are added together into the final
-fingerprint. If all bits in a query fingerprint are also present in
-the target fingerprint of a stored database structure, only then is
-the structure subjected to the computationally expensive subgraph
-matching algorithm. Bit operations are very fast and independent of
-the number of atoms in a structure due to the fixed length of the
-fingerprint.
+structures is infeasible \cite{Weininger:2011ly}. Speedups can be
+obtained via the use of heuristics such as structural
+\emph{fingerprints}. Fingerprints encode characteristic features of a
+given chemical structure, usually in a fixed-length
+bitmap. Fingerprints fall broadly into two categories: structure keys
+and hashed keys. In the former, each bit position corresponds to a
+distinct substructure such as an alcohol or keto group. Examples
+include MACCS and PubChem keys. The latter class are designed such
+that substructural patterns are represented as strings and then hashed
+to a random bit position. As a result, a given position can encode
+multiple substructures. The advantage of such fingerprints is that
+they can cover an arbitrarily large collection of substructures such
+as paths of length $N$ or circular environments and so on. Examples
+include ECFPs and Daylight fingerprints.
+
+Given a binary fingerprint, we can first ``pre-screen'' a database, to
+ignore molecules that cannot possibly match the query. This is
+achieved by requiring that all bits in a query fingerprint must also
+be present in the target fingerprint. Since the target fingerprints
+are pre-computed, comparing binary strings can be performed extremely
+rapidly on modern hardware. As a result, we apply the actual
+isomoprhism test only on those molecules that pass the
+screen. Fingerprints can also be used to rapidly search databases for
+similar molecules, in which case a similarity metric such as the
+Tanimoto coefficient is used to compare the query and target
+fingerprints. While fast, heuristics have been developed
+\cite{Swamidass:2007ve} to further
+speed up similarity searches.
 
 %Fingerprints also facilitate the rapid calculation of quantitative
 %structure-based similarity measures. An example measure of similarity is the
@@ -419,7 +428,7 @@ Joshua Lederberg, Carl Djerassi, Edward Feigenbaum and others from
 Stanford University started developing codes to explicitly enumerate
 molecules. DENDRAL is generally quoted in artificial intelligence
 textbooks as a pioneer project that produced the first expert
-system~\cite{DENDRAL}. However, even before that
+system~\cite{DENDRAL}. 
 
 Enumerating molecules is not only an interesting academic exercise but
 has practical utility as well. The foremost application of enumeration

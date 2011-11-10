@@ -707,51 +707,40 @@ room to grow. Solving challenges is one thing (science and technical),
 ensuring that the contributing partners get rewarded by their
 contribution another (legal).
 
-\section{The Role of Open Source \& Open Data}
-\label{sec:role-open-source}
+\section{Support for the Development of Novel Algorithms}
+\label{sec:development-support}
 
-A key aspect of cheminformatics is that much of its development
-requires access to collections of molecular structures (and, usually,
-associated bioactivity data). As has been noted, it is only recently
-that large structure and bioactivity data collections have become
-available. As a result, this enables much more robust validation of
-cheminformatics methodologies as well as large scale
-\emph{benchmarking of algorithms}. The latter is especially relevant
-for the plethora of data mining techniques that are employed in
-cheminformatics. At this point, the nature of Open Data focuses
-primarily on structure and activity data types. On the other hand,
-there is a distinct lack of textual data (such as journal articles)
-that are ``Open'' in nature. While PubMed abstracts serve as a proxy
-for journal articles, text mining methods in cheminformatics are
-hindered by not being able to mine the full text of many scientific
-publications.  Interestingly, patent information is publicly
-accessible (cf. Google Patents) and there have been efforts to mine
-these for chemical information using Open tools.
+For researchers interested in the development of new algorithms in the
+field, a software library that handles chemical structures and related
+data is essential. A wide variety of such chemical toolkits are
+available, both commercial (which may offer free academic
+licenses) and Open Source. 
 
-Obviously freely accessible data is important for research; but
-equally important are the tools to work with chemical data---more
-specifically, chemical structures. Chemical toolkits are the workhorses
-of cheminformatics research and a variety of toolkits are available,
-both commercial (which, in many cases, provide free academic
-licenses) and Open Source. In this article we do not debate the
-arguments for and against Open Source; rather, we focus on Open Source
-tools, since this ensures that a reader will be able to explore
+Due to the importance of cheminformatics to the pharmaceutical
+industry in particular, numerous commercial vendors provide libraries,
+applications and database cartridges to handle a wide variety of
+needs including Accelrys, BioSolveIT, ChemAxon, Chemical Computing Group,
+Daylight, Open Eye, Schrodinger, Tripos, and Xemistry. More recently
+there has been a growth in the development of Open
+Source cheminformatics software, and this presents opportunities for
+the rapid development and implementation of novel algorithms which can
+build on the existing Open Source ecosystem. In this article we do not debate the
+arguments for and against Open Source; we focus on Open Source
+tools simply because this ensures that a reader will be able to explore
 cheminformatics problems with a minimum of encumbrances.
-
-\subsection{Open Source Chemical Toolkits}
-\label{sec:toolkits}
 
 The extent of open-source software in cheminformatics has somewhat
 lagged behind related fields such as bioinformatics, partly
 due to the existence of a lucrative pharmaceutical market for
 proprietary software. However, in recent years there has been a
 rise in the amount of open-source cheminformatics software. One
-contribution to this has been the Blue Obelisk group
+contribution to this has been the Blue Obelisk
+group~\cite{BlueObelisk2011}
 (\url{http://blueobelisk.org}) of chemists, who have worked together to
 create interoperable open-source chemistry software (among other
-activities). Now there are a number of open-source toolkits available
+activities). Now there are a number of Open-Source chemical toolkits available
 including the Chemistry Development
-Kit (CDK)~\cite{steinbeck2003}, Open Babel, RDKit and Indigo. These toolkits are written in
+Kit (CDK)~\cite{steinbeck2003}, Open Babel~\cite{openbabel2011}, RDKit and Indigo. These toolkits are written in
 Java or C++ (though toolkits written in the latter invariably have
 bindings to a variety of languages). Such toolkits are used, for
 example, to read/write chemical file formats, manipulate chemical
@@ -765,58 +754,49 @@ cheminformaticians in their day-to-day work, many applications have
 been developed that rely on these toolkits to handle chemical data;
 for example, the molecular viewer Avogadro
 (\url{http://avogadro.openmolecules.net}) uses Open Babel, while the
-molecular workbench Bioclipse \cite{Bioclipse2} uses the CDK.
+molecular workbench Bioclipse~\cite{Bioclipse2} uses the CDK.
 
 The various toolkits have many features in common and at the same time
 have certain distinguishing features. For example, the CDK implements
 a large collection of molecular descriptors. On the other hand,
 Open Babel has robust support for 3D structure generation and
 optimization and supports the interconversion of a huge number of
-chemical file formats.  Table~\ref{tab:features} (in the Appendix) compares features offered by the open-source toolkits currently available.
+chemical file formats. Table~\ref{tab:features} (in the Appendix) compares features offered by the open-source toolkits currently available.
+Given that there is ample scope for software engineering (algorithm
+implementation, code quality and analysis, build systems etc), both
+the CDK and Open Babel are open to new contributions. Both are driven
+via public, active mailing lists and public issue tracking systems.
 
-While algorithmic challenges are certainly faced by toolkits, software
-engineering challenges probably affect the use and development of the
-toolkits on a daily basis. Examples include verifying code coverage,
-thread safety, documentation quality and so on. Some projects such as
-the CDK employ a variety of tools to address some of these issues.
-Examples include the use of PMD to analyze code quality and JUnit to
-perform unit testing. At the level of implementation, there are still
-inefficiencies in some toolkits. For example the CDK employs a JJTree
-parser to implement the SMARTS specification, but employs a hand built
-parser to handle SMILES. The latter is essentially a complex tangle of
-\emph{if \ldots then} statements and is not easily maintainable.
-
-It is also important to note that certain challenges faced by nearly
+It is important to note that certain challenges faced by nearly
 all cheminformatics toolkits stem from the graph representation of
 chemistry. This representation, while succinct and amenable to
 computation, is only an approximation of reality---and edge cases
 abound. Existing areas of interest are enumeration of colored graphs,
 taking into account symmetry, and symmetry detection itself, which not
 merely derives from the chemical graph, but typically also from the 3D
-geometry of the chemical. However, more challenging is that chemical
-representation of a molecule really needs to capture non-static
-graphs, in order to take into account delocalisation and the tautomeric
-phenomena molecules can undergo in practice. It is important to
+geometry of the chemical. It is important to
 realize that although chemical representations have increased in
 sophistication over the years, many chiral molecules cannot be
-satisfactorily handled by current representation systems.
+satisfactorily handled by current representation systems. Perhaps a more challenging aspect is that
+the chemical representation of a molecule really needs to capture non-static
+graphs, in order to take into account delocalisation and the tautomeric
+phenomena molecules can undergo in practice. 
 
-
-Given that there is ample scope for software engineering (algorithm
-implementation, code quality and analysis, build systems etc), both
-the CDK and Open Babel are open to new contributions. Both are driven
-via public, active mailing lists and public issue tracking systems.
-Development questions are actively and openly discussed to arrive at a
-consensus and contributors are encouraged to get involved with any of
-the following areas: development of new features, improvement of
-existing features, performance optimization, fixing bugs,
-documentation, website development, reporting bugs, and helping users
-on the mailing list. Anyone interested should email the respective
-developers' mailing list (either \texttt{cdk-devel@lists.sf.net} or
-\texttt{openbabel-devel@lists.sf.net}) with their interests and
-background, and a mentor will be assigned to help them join the
-project.
-%
+Of equal importance to the development of new algorithms is freely
+available data on which to train and test new methods. As has been noted, recently
+large structure and bioactivity data collections have become
+available. As a result, this enables much more robust validation of
+cheminformatics methodologies as well as large scale \emph{benchmarking of
+algorithms}. The latter is especially relevant for the plethora of
+data mining techniques that are employed in cheminformatics. At this
+point, the nature of Open Data focuses primarily on structure and
+activity data types. On the other hand, there is a distinct lack of
+textual data (such as journal articles) that are ``Open'' in nature. While
+PubMed abstracts serve as a proxy for journal articles, text mining
+methods in cheminformatics are hindered by not being able to mine the full text of many scientific publications.
+Interestingly, patent information is publicly accessible (cf. Google
+Patents) and there have been efforts to mine these for chemical
+information using Open tools.
 
 %
 \section{Conclusions}

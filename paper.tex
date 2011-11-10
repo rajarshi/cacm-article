@@ -727,26 +727,26 @@ tools simply because this ensures that a reader will be able to explore
 cheminformatics problems with a minimum of encumbrances.
 
 The extent of open-source software in cheminformatics has somewhat
-lagged behind related fields such as bioinformatics, partly
-due to the existence of a lucrative pharmaceutical market for
-proprietary software. However, in recent years there has been a
-rise in the amount of open-source cheminformatics software. One
-contribution to this has been the Blue Obelisk
-group~\cite{BlueObelisk2011}
-(\url{http://blueobelisk.org}) of chemists, who have worked together to
-create interoperable open-source chemistry software (among other
-activities). Now there are a number of Open-Source chemical toolkits available
-including the Chemistry Development
-Kit (CDK)~\cite{steinbeck2003}, Open Babel~\cite{openbabel2011}, RDKit and Indigo. These toolkits are written in
-Java or C++ (though toolkits written in the latter invariably have
-bindings to a variety of languages). Such toolkits are used, for
-example, to read/write chemical file formats, manipulate chemical
-structures, measure similarity of molecules, search for substructures,
-and generate 2D diagrams. The underlying algorithms used include graph
-algorithms (e.g. maximal common substructure, canonical labelling of
-graphs), geometrical methods (e.g. Kabsch alignment) and vector
-manipulation (e.g. converting coordinates in various systems, 3D
-structure generation). As well as being of direct use to practising
+lagged behind related fields such as bioinformatics, partly due to the
+existence of a lucrative pharmaceutical market for proprietary
+software. However, in recent years there has been a rise in the amount
+of open-source cheminformatics software. One contribution to this has
+been the Blue Obelisk group~\cite{BlueObelisk2011}
+(\url{http://blueobelisk.org}) of chemists, who have worked together
+to create interoperable open-source chemistry software (among other
+activities). Now there are a number of Open-Source chemical toolkits
+available including the Chemistry Development Kit
+(CDK)~\cite{steinbeck2003}, Open Babel~\cite{openbabel2011}, RDKit and
+Indigo. These toolkits are written in Java or C++ (though toolkits
+written in the latter invariably have bindings to a variety of
+languages). Such toolkits are used, for example, to read/write
+chemical file formats, manipulate chemical structures, measure
+similarity of molecules, search for substructures, and generate 2D
+diagrams. The underlying algorithms used include graph algorithms
+(e.g. maximal common substructure, canonical labelling of graphs),
+geometrical methods (e.g. Kabsch alignment) and vector manipulation
+(e.g. converting coordinates in various systems, 3D structure
+generation). As well as being of direct use to practising
 cheminformaticians in their day-to-day work, many applications have
 been developed that rely on these toolkits to handle chemical data;
 for example, the molecular viewer Avogadro
@@ -755,45 +755,47 @@ molecular workbench Bioclipse~\cite{Bioclipse2} uses the CDK.
 
 The various toolkits have many features in common and at the same time
 have certain distinguishing features. For example, the CDK implements
-a large collection of molecular descriptors. On the other hand,
-Open Babel has robust support for 3D structure generation and
-optimization and supports the interconversion of a huge number of
-chemical file formats. Table~\ref{tab:features} (in the Appendix) compares features offered by the open-source toolkits currently available.
-Given that there is ample scope for software engineering (algorithm
+a large collection of molecular descriptors. On the other hand, Open
+Babel has robust support for 3D structure generation and optimization
+and supports the interconversion of a huge number of chemical file
+formats. Table~\ref{tab:features} (in the Appendix) compares features
+offered by the open-source toolkits currently available.  Given that
+there is ample scope for software engineering (algorithm
 implementation, code quality and analysis, build systems etc), both
 the CDK and Open Babel are open to new contributions. Both are driven
 via public, active mailing lists and public issue tracking systems.
 
-It is important to note that certain challenges faced by nearly
-all cheminformatics toolkits stem from the graph representation of
+It is important to note that certain challenges faced by nearly all
+cheminformatics toolkits stem from the graph representation of
 chemistry. This representation, while succinct and amenable to
 computation, is only an approximation of reality---and edge cases
 abound. Existing areas of interest are enumeration of colored graphs,
 taking into account symmetry, and symmetry detection itself, which not
 merely derives from the chemical graph, but typically also from the 3D
-geometry of the chemical. It is important to
-realize that although chemical representations have increased in
-sophistication over the years, many chiral molecules cannot be
-satisfactorily handled by current representation systems. Perhaps a more challenging aspect is that
-the chemical representation of a molecule really needs to capture non-static
-graphs, in order to take into account delocalisation and the tautomeric
-phenomena molecules can undergo in practice. 
+geometry of the chemical. It is important to realize that although
+chemical representations have increased in sophistication over the
+years, many chiral molecules cannot be satisfactorily handled by
+current representation systems. Perhaps a more challenging aspect is
+that the chemical representation of a molecule really needs to capture
+non-static graphs, in order to take into account delocalisation and
+the tautomeric phenomena molecules can undergo in practice.
 
 Of equal importance to the development of new algorithms is freely
-available data on which to train and test new methods. As has been noted, recently
-large structure and bioactivity data collections have become
-available. As a result, this enables much more robust validation of
-cheminformatics methodologies as well as large scale \emph{benchmarking of
-algorithms}. The latter is especially relevant for the plethora of
-data mining techniques that are employed in cheminformatics. At this
-point, the nature of Open Data focuses primarily on structure and
-activity data types. On the other hand, there is a distinct lack of
-textual data (such as journal articles) that are ``Open'' in nature. While
-PubMed abstracts serve as a proxy for journal articles, text mining
-methods in cheminformatics are hindered by not being able to mine the full text of many scientific publications.
-Interestingly, patent information is publicly accessible (cf. Google
-Patents) and there have been efforts to mine these for chemical
-information using Open tools.
+available data on which to train and test new methods. As has been
+noted, recently large structure and bioactivity data collections have
+become available. As a result, this enables much more robust
+validation of cheminformatics methodologies as well as large scale
+\emph{benchmarking of algorithms}. The latter is especially relevant
+for the plethora of data mining techniques that are employed in
+cheminformatics. At this point, the nature of Open Data focuses
+primarily on structure and activity data types. On the other hand,
+there is a distinct lack of textual data (such as journal articles)
+that are ``Open'' in nature. While PubMed abstracts serve as a proxy
+for journal articles, text mining methods in cheminformatics are
+hindered by not being able to mine the full text of many scientific
+publications.  Interestingly, patent information is publicly
+accessible (cf. Google Patents) and there have been efforts to mine
+these for chemical information using Open tools.
 
 %
 \section{Conclusions}
@@ -833,11 +835,11 @@ relationships, transformations, and combinatorial challenges.
 In 2010, drug company Glaxo made public over 13,000 compounds that
 they have investigated as potential cures for
 malaria~\cite{glaxo-malaria}.  (Malaria has traditionally been a
-neglected disease in drug research, because the populations who
-suffer from it tend not to have enough money to be a stable consumer
-base for a new pharmaceutical.)  Perhaps we will now be able to find
-cures for some of these neglected diseases, by using the open source,
-open data approach to the computer science of chemical discovery.
+neglected disease in drug research, because the populations who suffer
+from it tend not to have enough money to be a stable consumer base for
+a new pharmaceutical.)  Perhaps we will now be able to find cures for
+some of these neglected diseases, by using the open source, open data
+approach to the computer science of chemical discovery.
 
 \section{Acknowledgements}
 We would like to thank Danny Verbinnen for sharing his insights into

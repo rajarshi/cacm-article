@@ -111,6 +111,23 @@ followed by the typical pitfalls and how they are assessed?}
   result, there should be no differing InChI representations for a
   given input structure.}
 
+\comment{P3, c2, l42: is this true given the lower complexity of
+  molecular graphs compared with other much larger and denser graphs?
+  I think a reference to a known paper that states the problem clearly
+  would be of benefit here.}
+\response{While it is true that isomorphism on smaller graphs that are
+  characteristic of small molecule is in an absolute sense, not very
+  slow, there are a number of cases (polycyclic hydrocarbons, steroids
+  etc.) that can take significantly longer. More generally, the fact
+  that subgraph isomorphism is NP-complete, means that no time guarantees
+  can be provided. Thus when performing this on \emph{millions} of
+  molecules as in a database search, we may not be able to complete
+  the operation. In practice this is usually not the case, but still,
+  isomorphism algorithms do take longer than fingerprint
+  screening. Hence in practice performing isomorphsim tests for large
+  databases is infeasible. We have included a reference that
+  explicitly talks about this problem.}
+
 \comment{P4, c2, l17: citation needed on the size of chemistry space.}
 \response{The appropriate reference has been added}
 

@@ -1,6 +1,6 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage{times}
-
+\usepackage{fullpage}
 \setlength{\parindent}{0cm}
 
 
@@ -9,7 +9,7 @@
 \newcommand{\response}[1]{#1\vspace{1em}}
 
 \fbox{\textbf{Reviewer 1}}
-\
+
 \comment{when the authors state 'together with an even larger number
   of annotations', they shold explain what are annotations and how
   much is the large number;} 
@@ -28,6 +28,154 @@ including a number of texts covering cheminformatics broadly.}
 
 \fbox{\textbf{Reviewer 2}}
 
+\comment{The authors mention limitations of SMILES implementations,
+  but do not mention canonicalization in this context, often using the
+  Morgan algorithm published in 1965 in J. Chem. Doc.}
+\response{We have updated the text on page 3 to note the Morgan
+  algorithm in the context of chemical structure representation}
+
+\comment{The authors state that 3D information is lost when only
+  considering the molecular graph. However, they do not make it clear
+  that the 3D space is implicitly encoded in the molecular graph –
+  this is essential to cover properly.}
+\response{We have update the text on page 2 to note that 3D
+  information is implicit in 2D representations}
+
+\comment{If this manuscript were to be published it would be
+  completely rewriting the history of cheminformatics}
+\response{While we agree with the reviewer that some key milestones in
+  the history of cheminformatics were not included in the original
+  article, we believe that the addition of the supplemental history
+  addresses this problem. Furthermore, our original aim was \emph{not}
+  to provide a complete historical overview of the field. Others have
+  already provided such overviews. Our aim was to present a brief
+  overview of \emph{topics} in cheminformatics, selected because we
+  believed that they represent on going challenges for the field and
+  thus amenable to coss-disciplinary efforts.}
+
 \fbox{\textbf{Reviewer 3}}
 
+\comment{page 1, column 1, line 24: the authors need to provide a
+  reference for the assertion that cheminformatics is an older field,
+  particularly given the comments later in this
+  manuscript.}
+\response{We have removed the assertion that cheminformatics is older
+  than bioinformatics. Primarily, because there is no obvious
+  reference that claims this. But alse because, depending on what one
+  considers bioinformatics and cheminformatics, one field can be
+  identified as being older or younger than the other. We feel that
+  claims on age do not strengthen the paper and have thus removed it}
+
+\comment{p1, c1, l29-37: I would dispute that until recently the
+  cheminformatics techniques have been closely guarded
+  secrets. J. Chem. Doc. was founded in 1961 and other techniques even
+  older, such as the Wiener index (1947), Wiswesser Line Notation
+  (1949), etc. Not to mention the actual foundations of what we call
+  cheminformatics back to the atomistic theory of the 19th century.}
+\response{We have the updated the text on page 1 to attenuate this
+  statement, stressing on the fact that much of the data in
+  cheminformatics is proprietary, whereas only some of the techniques (such
+  as SMILES canonicalization) are. Regarding the statement that atomistic
+  theory laid the foundations of cheminformatics - this is certainly
+  true in a very broad sense. For that matter the atomistic theory
+  laid the ground for computational chemistry in general. In the
+  supplemental history document, we make a distinction between
+  computational chemistry and cheminformatics}
+
+\comment{p1, c1, l32: I think the phrase miracle molecule could be
+  more usefully replaced with new drugs or new small molecule
+  therapeutics.}
+\response{The text has been updated to use the term ``therapeutic
+  molecule''}
+
+\comment{p2, c2, l57: it might be worthwhile here clarifying in the text
+precisely the properties that require satisfaction to deliver a small
+molecule therapeutic, not ?promising?. A drug must be safe and
+efficacious ultimately; perhaps this should be mentioned first
+followed by the typical pitfalls and how they are assessed?}
+\response{The text has been updated to provide some examples of
+  properties that would characterize a therapeutically useful small molecule}
+
+\comment{P3, c1, l41: the authors need to cover the Morgan algorithm
+  (published in 1965) here and explain the canonicalization
+  process. The issues mentioned in different canonicalization
+  implementations providing different SMILES strings is also a
+  challenge with InChI codes with different softwares giving different
+  representation. Therefore, this is still not a solved problem as
+  suggested here. Could the authors clarify this in the text?}
+\response{We have updated the text to reference the Morgan
+  algorithm. Regarding the issue of InChI codes, we believe that this
+  is not the case. Currently, there is only one implementation of the
+  InChI algorithm and even if alternative implementations were to be
+  developed, the InChI specification is publically available. As a
+  result, there should be no differing InChI representations for a
+  given input structure.}
+
+\comment{P4, c2, l17: citation needed on the size of chemistry space.}
+\response{The appropriate reference has been added}
+
+\comment{P4, c2, l23: the isomorphism problem has already been
+  mentioned previously in this manuscript.}
+\response{The text has been updated and simplified}
+
+\comment{P4, c2, l41: the GDB-13 database contains 970 million
+  molecules, which is nearly a billion, not a trillion.}
+\response{The text has been updated to use the correct number}
+
+
+\comment{P5, c1, l29: the normal phrase used to describe this concept
+  is the similar property principle. The authors should also provide a
+  reference.}
+\response{This portion of the text has been restructured to refer to
+  the similarity property principle and also include the relevant
+  reference}
+
+\comment{P5, c1, l40: QSAR should be referenced to Hansch et al. Also
+  perhaps some discussion on what the authors mean by referring to
+  these approaches as traditional.}
+\response{We have updated text to include references to Hansch and
+  Free \& Wilson. Regarding the use of ``traditional'', we believe the
+  text explicitly explains why - the fact that QSAR as originaly
+  defined only considers ligand features. However, we have rephrased it to use
+  ``traditionally'' since one can argue that methods such as docking
+  and pharmacophores are also QSAR methods, but consider both ligand
+  and receptor.}
+
+\comment{P5, c1, l41: I would dispute the assertion that these methods
+  "ignore reception interactions" since the aim is to identify a
+  correlation of biological response (e.g. pIC50) with chemical
+  structure. The biological response is an explicit measurement of
+  receptor interactions on the protein.}  
+\response{We have updated
+  the text to explicitly note that QSAR models do not usually take
+  into account \emph{receptor features}. However we note that while
+  receptor information is implicit in the $IC_{50}$, the value also
+  includes other non-receptor related features such as
+  permeability. Furthermore, lack of receptor information in QSAR
+  models has been noted as the origin of activity cliffs (Guha and Van
+  Drie, \textit{J.~Chem.~Inf.~Model.}, \textbf{2008}, \textit{48},
+  1716--1728), thus supporting the statement that traditional QSAR
+  models do indeed miss important information on receptor-ligand
+  interactions.}
+
+\comment{P5, c2, l22: I would mention naive Bayesian classifiers as well as
+this is perhaps the most widely applied method in the field.}
+\response{We have included the Na\"{i}ve Bayes as well}
+
+\comment{P5, c2, l42: formal citation for one of Hopfinger?s papers is
+  required here.}
+\response{The relevant reference has been added}
+
+\comment{P5, c2, l58: this assertion is made with no evidence to back
+  it up. Why should multi-target models be more reliable? It is not
+  clear to me that they should.}\marginpar{\textbf{Needs more work}}
+\response{We have rephrased this statement to be less dogmatic}
+
+\comment{P7, c2, l51: why is chemically in inverted commas and not
+  algorithmically? I would prefer inverted commas for neither.}
+\response{Quotes have been removed}
+
+\comment{P8, c1, l10: ELN's should be ELNs.}
+\response{Corrected}
+ 
 \end{document}

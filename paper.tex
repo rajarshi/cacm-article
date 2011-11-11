@@ -70,16 +70,16 @@ Egon Willighagen (Karolinska Institutet, Stockholm, Sweden, email: {\texttt{egon
   of the the data and some of the techniques employed in the
   cheminformatics field have been closely guarded secrets of companies
   whose financial success depended on being the first to produce the
-  new therapeutic molecules.  Only within the last decade---and as an
+  new therapeutic molecules.  Only within the last decade -- and as an
   effect of a change in mindsets, government-mandated policy changes
   and last but not least because of chemists volunteering their time
-  for an Open Science ``movement''---have researchers gained access to
+  for an Open Science ``movement'' -- have researchers gained access to
   freely available software packages and databases of tens of millions
   of chemicals. Academic chemists now confront a variety of unsolved
   algorithmic problems that could not have been tackled a decade ago,
   but whose solutions are critical to research ranging from
   determining the behavior of small molecules in biological pathways,
-  to finding a cure for malaria and other ``neglected'' diseases.
+  to finding therapies for rare and neglected diseases.
 \end{abstract}
 
 \category{J.2}{Computer Applications}{Physical Sciences and Engineering}[Chemistry]
@@ -112,7 +112,7 @@ information is shared (a process very hard to achieve in
 pharmaceutical companies), the more information is available to each
 researcher, facilitating the development of novel treatments. The
 relevance of computer science to this research becomes clear when we
-consider the quantity and types of data available--- currently a
+consider the quantity and types of data available -- currently a
 single data base such as PubChem contains more than 34 million
 chemical structure records, along with an even larger number of
 annotations such as synonyms, known targets, mode of action,
@@ -147,31 +147,30 @@ difficult to standardize.
 To illustrate the difficulty of standardizing chemical structures,
 different representations of the same chemical structure are shown in
 Figure~\ref{figure:chemical-structures}. The top left hand corner
-shows a structure a chemist would draw it---every ``corner''
+shows a structure a chemist would draw it -- every ``corner''
 representing a carbon atom (which can also be represented as a C),
 every O denoting oxygen, every N nitrogen, every H hydrogen, and so
 on. This is the standard format chemists use when exchanging
 information with their peers.  However, this format is not directly
-amenable to data mining---different atoms might be collapsed into one
+amenable to data mining -- different atoms might be collapsed into one
 node, and sets of atoms might have the same relevant properties
 assigned. Hence, the top right hand corner of
 Figure~\ref{figure:chemical-structures} shows an annotated graph
 representation, taking into account that atoms, though being of
 different elemental atom type, can have similar
-properties---\emph{e.g.}, both oxygen and nitrogen carry an ``On''
+properties -- \emph{e.g.}, both oxygen and nitrogen carry an ``On''
 label in this graph.
 
 \begin{figure}
 \centering
-\includegraphics[height=2in]{chemical-structures.png}
-\caption{The many different facets of representing chemical structures. Shown
-are a chemist's usual representation of a molecule (top left) and a
-graph-based representation amenable to data mining (top right). These
-representations are supplemented by a 3D representation of the same molecule
-(bottom left) that is closer to reality and a representation using surface
-properties (bottom right), which is often more relevant for the properties the
-molecule exhibits in an experimental setup (such as when measuring its
-solubility, or bioactivity).}
+\includegraphics[height=2in]{chemstructs.png}
+\caption{A hierarchy of chemical structure representations, increasing
+  in information content from left to right and top to bottom. A
+  chemists traditional 2D depiction (A), a labeled graph (B), a 3D
+  conformation (C) and a surface represention (D). All show differing
+  (and valid) aspects of the same molecule and are suited for
+  differing purposes. The choice of representation is guided by the
+  intended use of the structure data.}
 \label{figure:chemical-structures}
 \end{figure}
 
@@ -201,7 +200,7 @@ states, nor different charge states are encoded) and thus often other
 chemical system \cite{bender2004}. Hence, one of the difficulties of a
 cheminformatician is that the equivalence of particular atoms (or sets
 of atoms) is usually not known from the onset but it rather depends on
-the particular system considered---involving a large amount of
+the particular system considered -- involving a large amount of
 trial-and-error in the choice of a ``proper'' description for
 molecules in a particular case.
 
@@ -215,7 +214,7 @@ metabolites of a structure in humans in different tissues), the
 complexity of collecting, storing, and mining these data increases
 dramatically. For the field of cheminformatics to flourish, we need
 closer collaboration between chemists (or, more generally, life
-scientists) and computer scientists---where the former need to be able
+scientists) and computer scientists -- where the former need to be able
 to pose their problems in a way relevant for practical applications;
 and where the latter are able to devise ways of capturing, storing,
 and analyzing chemical data which achieve optimal balances between the different risks in
@@ -271,7 +270,7 @@ ChEMBL and NCBI-PubChem, which are both freely available and contain in the orde
 millions (PubChem) of data points each. Still, the integration
 of chemical databases with each other remains a challenge, not only due to the
 normalization problems in the chemical and bioactivity landscape, but also due
-to sheer data volume. One problem is the annotation with the ``protein targets'' a molecule binds to---here dozens of
+to sheer data volume. One problem is the annotation with the ``protein targets'' a molecule binds to -- here dozens of
 protein and gene identifiers exist, generally without the availability of a one-to-one mapping from each ontology, which makes merging databases often a cumbersome exercise.
 
 Given the requirement to ``make sense'' of as much chemical data at
@@ -436,8 +435,8 @@ has practical utility as well. The foremost application of enumeration
 is \emph{structure elucidation} of natural compounds such as
 metabolites. Metabolites are small molecules that can be found an
 organism (such as a human) and which in many cases indicate the state
-the organism is in---such as indicating a disease, or a fasted state,
-etc.---and with a sufficiently large database the idea is to be able
+the organism is in -- such as indicating a disease, or a fasted state,
+etc. -- and with a sufficiently large database the idea is to be able
 to detect the chemical composition of body fluids and to arrive at
 conclusions regarding the particular state of the organism at this
 point in time.  Ideally, the wishful bench chemist collects
@@ -481,7 +480,7 @@ current enumeration software products do not generally produce
 stereoisomers or tautomers; these require specific enumeration
 procedures, which are still the subject of investigations by the
 cheminformatics community. In addition, GDB-13 only enumerates
-molecules up to 13 heavy atoms---given the possibly exponential
+molecules up to 13 heavy atoms -- given the possibly exponential
 increase in search space with the number of atoms, it seems unlikely
 that the practically relevant chemical space of about 30 heavy atoms
 will be exhaustively enumerated in the near future.
@@ -778,7 +777,7 @@ via public, active mailing lists and public issue tracking systems.
 It is important to note that certain challenges faced by nearly all
 cheminformatics toolkits stem from the graph representation of
 chemistry. This representation, while succinct and amenable to
-computation, is only an approximation of reality---and edge cases
+computation, is only an approximation of reality -- and edge cases
 abound. Existing areas of interest are enumeration of colored graphs,
 taking into account symmetry, and symmetry detection itself, which not
 merely derives from the chemical graph, but typically also from the 3D
@@ -978,7 +977,7 @@ Existence of  & treated by the drug exist & when drugs are developed in private 
 Relevant Market Need   & and they possess the means  &  companies (but often to a lesser extent \\
 & to buy the drug &  in government-owned pharmaceutical research laboratories) \\  \hline
 \end{tabular}
-\caption{Some of the properties potential drug candidates need to have to be considered as ``promising,'' either in the different research and development stages, as well as a drug that is finally admitted to the market. Note that the particular requirements are also heavily project-dependent, and that also in cases where cheminformatics approaches can be employed in drug design an experimental confirmation of the prediction is required---the computer can hence decrease the experimental burden, but not replace it altogether.}
+\caption{Some of the properties potential drug candidates need to have to be considered as ``promising,'' either in the different research and development stages, as well as a drug that is finally admitted to the market. Note that the particular requirements are also heavily project-dependent, and that also in cases where cheminformatics approaches can be employed in drug design an experimental confirmation of the prediction is required -- the computer can hence decrease the experimental burden, but not replace it altogether.}
 \label{table:properties}
 \end{table*}
 %

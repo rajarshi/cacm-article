@@ -160,7 +160,7 @@ datasets \cite{wegner2006,horst2009}.
 
 \begin{figure}
 \centering
-\includegraphics[height=2in]{chemstructs.png}
+\includegraphics[height=2in]{chemical-structures.png}
 \caption{A hierarchy of chemical structure representations, increasing
   in information content from left to right and top to bottom. A
   chemists traditional 2D depiction (A), a labeled graph (B), a 3D
@@ -337,7 +337,7 @@ practically relevant algorithms for scientific discovery based on
 chemical databases are \emph{substructure searching} and
 \emph{similarity searching}, which are required to generalize from the
 data points contained in a particular database to other, related
-molecules. In substructure searching, the database is searched for a  
+molecules. In substructure searching, the database is searched for a
 specified wholly contained part of the structures in the database,
 while in similarity searching, the database is searched for structures
 similar (in some property space) to a provided search, or query,
@@ -431,7 +431,7 @@ Joshua Lederberg, Carl Djerassi, Edward Feigenbaum and others from
 Stanford University started developing codes to explicitly enumerate
 molecules. DENDRAL is generally quoted in artificial intelligence
 textbooks as a pioneer project that produced the first expert
-system~\cite{DENDRAL}. 
+system~\cite{DENDRAL}.
 
 Enumerating molecules is not only an interesting academic exercise but
 has practical utility as well. The foremost application of enumeration
@@ -527,7 +527,7 @@ and bioinformatics.
 The basis of predictive modeling in cheminformatics is that the
 biological activity of a molecule is a function of its chemical
 structure. Together with the \emph{similarity property principle}
-\cite{Johnson:1990qf} (structurally similar molecules will exhibit  
+\cite{Johnson:1990qf} (structurally similar molecules will exhibit
 similar properties), the goal of any modeling approach is to capture
 and characterize the correlations between structural features and the
 observed biological activities. Simultaneously, such approaches must
@@ -635,7 +635,7 @@ medicine'' concept (\emph{e.g.}, drug-drug interaction profiles).
 The relevance of scientific knowledge management is increasing not
 only for reducing the risk in current research, but also for enabling
 new collaboration/innovation opportunities with internal partners and
-a rapidly growing number of external/public partners. In fact, in
+a rapidly growing number of external/public partners. In
 cheminformatics and chemistry, scientists already switched many years
 ago from paper lab-notebooks to online collaboration platforms, called
 ELNs (Electronic Lab Notebooks). So, what were the drivers behind
@@ -661,26 +661,44 @@ increasing the integration of scientific and business workflows for
 reducing the risk due to irrational or bounded-rational decision
 making and increasing decision making efficiency.
 
-ELNs are typically much more accepted and used within the
-cheminformatics domain than in the bioinformatics domain, which is
-picking up speed lately, the question being why this is the case. In
-chemistry, every experiment requires a lot of expert
+While ELNs technically existed as long ago as the 1990s, chemists
+adopted their use in large numbers in 2004 and 2005, and the market is
+still growing~\cite{ELNstatus}. As one report notes, ``The initial
+drive for the development of ELNs came from the field of chemistry,
+perhaps driven by the early adoption by chemists of computer
+technologies for drawing chemical structures and for storing and
+searching them graphically within databases.... The pharmaceutical
+industry shifted from a position of `if we get an ELN' to `when we get
+an ELN'.''~\cite{ELNstatus} ELNs are typically much more accepted and
+used within the cheminformatics domain than in the bioinformatics
+domain, which is picking up speed lately, the question being why this
+is the case. In chemistry, every experiment requires a lot of expert
 knowledge. Therefore, approaches for reducing risks by communicating
 with fellow chemists about similar reactions or compounds is
 critical. This requires capturing the reaction details, compound
 details, and time consuming analysis details which ensure quality
 data, such that these data can be searched by others.
 
-It is worth mentioning that chemistry is traditionally a field where many people
-have been used to huge bookshelves of reactions and compounds. Chemists changed
-to online ELN collaboration not only to increase efficiency, but also
-because it allowed collaboration with trusted colleagues. Third party paper
-catalogs and academic publications proved to be
-inefficient, and even more critically, they did not take compounds of trusted
-colleagues into account. Overall the change of management to ELNs, similar to
+At this point, ``electronic lab notebooks have replaced the
+traditional paper lab book across the pharmaceutical industry,'' but
+are not yet common in academia, because of their high
+cost~\cite{WavingGoodbye}.  It is worth mentioning that chemistry is
+traditionally a field where many people have been used to huge
+bookshelves of reactions and compounds. Chemists changed to online ELN
+collaboration not only to increase efficiency, but also because it
+allowed collaboration with trusted colleagues. Third party paper
+catalogs and academic publications proved to be inefficient, and even
+more critically, they did not take compounds of trusted colleagues
+into account. Overall the change of management to ELNs, similar to
 ``Enterprise 2.0,'' required delivering on the promise to increase
-interconnectivity, and to improve collaboration
-opportunities, and indeed it already performed these functions many years ago.
+interconnectivity, and to improve collaboration opportunities.  The
+leading players in this area include CambridgeSoft's E-Notebook and
+Accelrys' Symyx Notebook, but there are at least 35 different
+companies producing ELNs as of February 2011~\cite{ELNreview}, for use
+in chemistry, biology, quality control, and other research.  Another
+knowledge management tool specifically for chemists is the web-based
+service Reaxys, founded in 2009, whose company goal is to provide ``a
+single, fully integrated chemical workflow solution.''
 
 However, the future still leaves many challenges ahead. Using
 external/public databases with chemical and bioactivity data remains a
@@ -723,7 +741,7 @@ For researchers interested in the development of new algorithms in the
 field, a software library that handles chemical structures and related
 data is essential. A wide variety of such chemical toolkits are
 available, both commercial (which may offer free academic
-licenses) and Open Source. 
+licenses) and Open Source.
 
 Due to the importance of cheminformatics to the pharmaceutical
 industry in particular, numerous commercial vendors provide libraries,

@@ -259,7 +259,7 @@ appropriately soluble, exhibiting minimal toxicity and being selective
 for the intended target) and sketches the role of cheminformatics at
 each stage of drug development.
 %
-\subsection{Databases \& Ontologies}
+\subsection{Representing and Searching Structures}
 \label{sec:databases}
 %
 Most cheminformatics applications rely on large databases of chemical structures,
@@ -268,13 +268,17 @@ Organizing and maintaining such databases, as well as searching and clustering s
 are essential  to enable many scientific applications. Yet, each one of
 those areas poses its unique computer science challenges.
 
-There is considerable progress in open chemical and bioactivity databases like
-ChEMBL and NCBI-PubChem, which are both freely available and contain in the order of millions (ChEMBL) and tens of
-millions (PubChem) of data points each. Still, the integration
-of chemical databases with each other remains a challenge, not only due to the
-normalization problems in the chemical and bioactivity landscape, but also due
-to sheer data volume. One problem is the annotation with the ``protein targets'' a molecule binds to -- here dozens of
-protein and gene identifiers exist, generally without the availability of a one-to-one mapping from each ontology, which makes merging databases often a cumbersome exercise.
+There is considerable progress in open chemical and bioactivity
+databases like ChEMBL and NCBI-PubChem, which are both freely
+available and contain in the order of millions (ChEMBL) and tens of
+millions (PubChem) of data points each. Still, the integration of
+chemical databases with each other remains a challenge, not only due
+to the normalization problems in the chemical and bioactivity
+landscape, but also due to sheer data volume. One problem is the
+annotation with the ``protein targets'' a molecule binds to -- here
+dozens of protein and gene identifiers exist, generally without the
+availability of a one-to-one mapping from each ontology, which makes
+merging databases often a cumbersome exercise.
 
 Given the requirement to ``make sense'' of as much chemical data at
 hand as possible, we have to be able to search in complex data, for
@@ -332,19 +336,19 @@ differentiate between certain types of stereoisomers:
 Figure~\ref{figure:cistrans} (in the Appendix) illustrates two
 stereoisomers for which the generated InChI is the same.
 
-InChI or other identity-mapping algorithms allow for exact searching. However, two other
-practically relevant algorithms for scientific discovery based on
-chemical databases are \emph{substructure searching} and
-\emph{similarity searching}, which are required to generalize from the
-data points contained in a particular database to other, related
-molecules. In substructure searching, the database is searched for a
-specified wholly contained part of the structures in the database,
-while in similarity searching, the database is searched for structures
-similar (in some property space) to a provided search, or query,
-structure. Chemical search packages are often implemented and
-optimized for a given database technology; for example, the OrChem
-package is an open source chemical search package for the Oracle
-database \cite{rijnbeek2009}.
+InChI or other identity-mapping algorithms allow for exact
+searching. However, two other practically relevant algorithms for
+scientific discovery based on chemical databases are
+\emph{substructure searching} and \emph{similarity searching}, which
+are required to generalize from the data points contained in a
+particular database to other, related molecules. In substructure
+searching, the database is searched for a specified wholly contained
+part of the structures in the database, while in similarity searching,
+the database is searched for structures similar (in some property
+space) to a provided search, or query, structure. Chemical search
+packages are often implemented and optimized for a given database
+technology; for example, the OrChem package is an open source chemical
+search package for the Oracle database \cite{rijnbeek2009}.
 
 Graph substructure matching is a variant of \emph{graph isomorphism},
 which is widely believed to be computationally
@@ -379,39 +383,73 @@ fingerprints. While fast, heuristics have been developed
 \cite{Swamidass:2007ve} to further
 speed up similarity searches.
 
-%Fingerprints also facilitate the rapid calculation of quantitative
-%structure-based similarity measures. An example measure of similarity is the
-%\emph{Tanimoto coefficient}, calculated as the ratio $T(a,b) = \frac{c}{(a+b-c)}$,
-%where $c$ is the count of bits on in the same position in both the two
-%fingerprints, $a$ is the count of bits on in the first structure, and $b$ is the
-%count of bits on in the second structure. Historically, this coefficient originated from the comparison of ecosystems
-%around lakes, where a measure was needed to describe how similar those ecosystems are with respect to the animals,
-%plants etc. they contain. However, it can be applied to every other system as well where features can be described in a
-%binary manner. The Tanimoto coefficient varies in the
-%range 0.0 -- 1.0, with a score of 1.0 indicating that the two structures are either very
-%similar or even identical (i.e. their fingerprints are the same).
+\subsection{Linking Molecules to Other Data}
+\label{sec:prof-ident}
+
+The preceding section focuses on the choice of representation of
+chemical structures. With the profusion of databases that contain
+details of small molecules, an emerging problem is the integration of
+such databases. Such integration forms the basis of ``systems'' level
+investigations of biological systems. A current challege in
+cheminformatics is how to identify ``equivalent'' objects across data
+sources. At one level, equivalent compounds can be identified via
+canonical structure representations (InChI). But there are other
+equivalences beyond structure. For example, compounds may bind to the
+same or similar targets; they may be have similar biological function
+(say, anti-neoplastic) and so on. To assess such higher level
+characteristics, ontologies and semantic technologies have been
+employed, to first, support annotations of chemical systems and
+second, enable semantic analyses of chemical systems in conjunction
+with other biological systems (such as pathways). A number of
+challenges remain in this area - the use of ontologies allows one to
+build a semntic network of concepts that links molecules to other
+molecules as well as other objects such as targets, genes and
+pathways. How does one evaluate similarities in such a heterogenous
+network \cite{couto2010}? How does one integrate chemical structure
+information with ontologies \cite{hastingsowled2010}? Integrating
+small molecule data with other biological data types will be key to
+acheiving a systems level understanding of small
+molecules \cite{Oprea:2007fk}.
+
+
+% Fingerprints also facilitate the rapid calculation of quantitative
+% structure-based similarity measures. An example measure of
+% similarity is the \emph{Tanimoto coefficient}, calculated as the
+% ratio $T(a,b) = \frac{c}{(a+b-c)}$, where $c$ is the count of bits
+% on in the same position in both the two fingerprints, $a$ is the
+% count of bits on in the first structure, and $b$ is the count of
+% bits on in the second structure. Historically, this coefficient
+% originated from the comparison of ecosystems around lakes, where a
+% measure was needed to describe how similar those ecosystems are with
+% respect to the animals, plants etc. they contain. However, it can be
+% applied to every other system as well where features can be
+% described in a binary manner. The Tanimoto coefficient varies in the
+% range 0.0 -- 1.0, with a score of 1.0 indicating that the two
+% structures are either very similar or even identical (i.e. their
+% fingerprints are the same).
 %
-Structure-based similarity is however of limited use in grouping of
-chemicals based on non-structural features, such as shared bioactivity
-profiles. For this purpose, a large-scale and flexible classification
-structure is needed for chemicals and their linked biological
-information. One such answer to this need is provided in the form of
-\emph{ontologies}.  An ontology is a formal specification of entities
-and their relationships in a domain of interest. It is structured
-around an underlying logical representation such as Description
-Logics~\cite{baaderdl2007}. The logic-based representation allows
-automated reasoning to derive new knowledge (inferences) from the
-knowledge encoded, making the representation both compact and
-powerful.  Ontologies are already in widespread use across the
-biomedical domain, and in the cheminformatics field ontologies
-relating to the chemical structures themselves and the protein targets
-the molecules are active against are probably most common. A
-similarity measure based on the information encoded in ontologies is
-termed \emph{semantic similarity}, and such measures have already been
-applied to enhance chemical classification in several problem areas
-\cite{couto2010}. Many open questions still remain about the best way
-to combine the information encoded in chemical structures with
-chemical ontologies \cite{hastingsowled2010}.
+
+% Structure-based similarity is however of limited use in grouping of
+% chemicals based on non-structural features, such as shared bioactivity
+% profiles. For this purpose, a large-scale and flexible classification
+% structure is needed for chemicals and their linked biological
+% information. One such answer to this need is provided in the form of
+% \emph{ontologies}.  An ontology is a formal specification of entities
+% and their relationships in a domain of interest. It is structured
+% around an underlying logical representation such as Description
+% Logics~\cite{baaderdl2007}. The logic-based representation allows
+% automated reasoning to derive new knowledge (inferences) from the
+% knowledge encoded, making the representation both compact and
+% powerful.  Ontologies are already in widespread use across the
+% biomedical domain, and in the cheminformatics field ontologies
+% relating to the chemical structures themselves and the protein targets
+% the molecules are active against are probably most common. A
+% similarity measure based on the information encoded in ontologies is
+% termed \emph{semantic similarity}, and such measures have already been
+% applied to enhance chemical classification in several problem areas
+% \cite{couto2010}. Many open questions still remain about the best way
+% to combine the information encoded in chemical structures with
+% chemical ontologies \cite{hastingsowled2010}.
 
 \subsection{Structure Enumeration}
 \label{sec:struct-enum}

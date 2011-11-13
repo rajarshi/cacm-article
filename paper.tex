@@ -156,7 +156,7 @@ usually exchanged informally between chemists, but to actually mine
 chemical structures computationally, something like the latter is
 required.  For example, graph mining algorithms can be applied to
 labeled graph representations, to discover patterns in large-scale
-datasets \cite{wegner2006,horst2009}.
+datasets \cite{horst2009}.
 
 \begin{figure}
 \centering
@@ -177,7 +177,7 @@ distances), many different low energy 3D structures, or conformers,
 may be consistent with the same graph structure. In addition, the 3D
 structure may have a ``secondary'' geometrical arrangement of features
 (such as the presence of a right-handed helix) which cannnot be
-encoded in the graph. Thus we have 3D representations
+encoded in the graph. Thus we have 3D representations  
 (Fig.~\ref{figure:chemical-structures}C) that make the 3D arrangement
 of atoms and bonds explicit. Fig.~\ref{figure:chemical-structures}D
 goes further and represents a molecular surface, encoding some
@@ -414,150 +414,117 @@ generally, how can we achieve automated inferencing in such
 heterogenous linked systems, allowing us to acheive a systems level
 understanding of small molecules \cite{Oprea:2007fk}.
 
-
-% Fingerprints also facilitate the rapid calculation of quantitative
-% structure-based similarity measures. An example measure of
-% similarity is the \emph{Tanimoto coefficient}, calculated as the
-% ratio $T(a,b) = \frac{c}{(a+b-c)}$, where $c$ is the count of bits
-% on in the same position in both the two fingerprints, $a$ is the
-% count of bits on in the first structure, and $b$ is the count of
-% bits on in the second structure. Historically, this coefficient
-% originated from the comparison of ecosystems around lakes, where a
-% measure was needed to describe how similar those ecosystems are with
-% respect to the animals, plants etc. they contain. However, it can be
-% applied to every other system as well where features can be
-% described in a binary manner. The Tanimoto coefficient varies in the
-% range 0.0 -- 1.0, with a score of 1.0 indicating that the two
-% structures are either very similar or even identical (i.e. their
-% fingerprints are the same).
-%
-
-% Structure-based similarity is however of limited use in grouping of
-% chemicals based on non-structural features, such as shared bioactivity
-% profiles. For this purpose, a large-scale and flexible classification
-% structure is needed for chemicals and their linked biological
-% information. One such answer to this need is provided in the form of
-% \emph{ontologies}.  An ontology is a formal specification of entities
-% and their relationships in a domain of interest. It is structured
-% around an underlying logical representation such as Description
-% Logics~\cite{baaderdl2007}. The logic-based representation allows
-% automated reasoning to derive new knowledge (inferences) from the
-% knowledge encoded, making the representation both compact and
-% powerful.  Ontologies are already in widespread use across the
-% biomedical domain, and in the cheminformatics field ontologies
-% relating to the chemical structures themselves and the protein targets
-% the molecules are active against are probably most common. A
-% similarity measure based on the information encoded in ontologies is
-% termed \emph{semantic similarity}, and such measures have already been
-% applied to enhance chemical classification in several problem areas
-% \cite{couto2010}. Many open questions still remain about the best way
-% to combine the information encoded in chemical structures with
-% chemical ontologies \cite{hastingsowled2010}.
-
-\subsection{Structure Enumeration}
-\label{sec:struct-enum}
-
+\subsection{Expanding Chemical Space}
+\label{sec:struct-enum} 
 Enumerating molecules is a combinatorial problem that has fascinated
 chemists, computer scientists and mathematicians alike, for more than
-a century. It is one important risk-reduction element in still being
-able to encode closely-related molecules and for keeping the space
-complexity of databases under (algorithmic) control. Indeed, while
-trying to solve the problem of counting the isomers of paraffin
-structures or counting substituted aromatic compounds, fundamental
-principles in graph theory and combinatorics were developed by Cayley,
-Polya and others. Even terms that are widely-used nowadays, like
-``graph'' and ``tree'', were originally coined in a chemistry context
-(Chapters 1 and 8 in \cite{faulon2010}). More than four decades ago,
-Joshua Lederberg, Carl Djerassi, Edward Feigenbaum and others from
-Stanford University started developing codes to explicitly enumerate
-molecules. DENDRAL is generally quoted in artificial intelligence
-textbooks as a pioneer project that produced the first expert
-system~\cite{DENDRAL}.
+a century. Indeed, many fundamental principles of graph therory and
+cominatorics were developed in the context of counting isomers of
+paraffin by Cayley, Polya and others. In the 1960's, Lederberg
+Dejerassi and others developed algorithms to enumerate structures
+based on spectral data, leading to the development of DENDRAL, widely
+considered as the first expert system \cite{DENDRAL}.
 
-Enumerating molecules is not only an interesting academic exercise but
-has practical utility as well. The foremost application of enumeration
-is \emph{structure elucidation} of natural compounds such as
-metabolites. Metabolites are small molecules that can be found an
-organism (such as a human) and which in many cases indicate the state
-the organism is in -- such as indicating a disease, or a fasted state,
-etc. -- and with a sufficiently large database the idea is to be able
-to detect the chemical composition of body fluids and to arrive at
-conclusions regarding the particular state of the organism at this
-point in time.  Ideally, the wishful bench chemist collects
-experimental data from an unknown compound, the data is fed into a
-code, and the resulting structure is returned. Although that
-streamlined process may not yield a unique solution, there are
-commercial software products such as MOLGEN (\url{http://molgen.de})
-that can, for instance, list all structures matching a given molecular
-formula, or mass spectrometry (MS) data. Another important application
-of enumeration is \emph{molecular design}. Here the problem is to
-design compounds (drugs, for instance) that optimize some physical,
-chemical, or biological property or activity. Although less prolific
-and more recent than structure elucidation, molecular design has
-introduced some novel solutions to molecular enumeration. Finally,
-with the advent of \emph{combinatorial chemistry} (the rapid synthesis
-of different but related molecules), molecular enumeration has taken a
-central role as it allows computational chemists to construct virtual
-libraries and test hypotheses, and it provides guidance in the design
-of optimal combinatorial experiments.
+From a risk reduction point of view efficient methods to enumerate
+structures allows us to explore new regions of chemical space (for
+example, allowing one to bypass patents), generate structures that
+exhibit desired properties, identify molecules matching experimental
+data and so on. It is important to realize that chemical space (the
+abstract, multi-dimensional space occupied by all possible chemical
+structures) is, in principle, infinite. Even considering molecules for
+just 30 heavy atoms, the size of this space is on the order of
+$10^{60}$ \cite{Bohacek:1996ve}. Any method that purports to enumerate
+molecules will inevitably face a combinatorial explosion if
+implemented na\"{i}vely.
 
-The major difficulty with enumeration (apart from the size of the
-search space, which is thought to be in the order of $10^{60}$
-molecules for 30 heavy atoms \cite{Bohacek:1996ve}) is that the
-\emph{in silico} representation of molecules, the so-called molecular
-graphs, are labeled objects (i.e. labeled graphs), while the atoms of
-a molecule are of course not uniquely labeled. The mathematical
-concept to tackle this problem is to consider orbits of labeled
-molecular graphs under the operation of the symmetric group. While the
-complexity of molecular graph enumeration remains an open problem it
-has nonetheless been shown that molecules can be sampled
-efficiently \cite{goldberg1999}. Sampling procedures based on the
-Metropolis or the Genetic Algorithms have been developed and used to
-elucidate natural compounds from NMR data.
+A key application of structure enumeration is the elucidation of
+structures based on spectral data \cite{Kind:2010zr}. This is
+especially relevant for the identifying metabolites, small molecules
+that are the byproducts of metabolic processes and which provide
+insight into the biological state (diseased, fasting, etc.) of an
+organism. Ideally, a chemist would gather spectral (mass, LC/MS, etc.)
+and the algorithm would provide a list of structures that can give
+rise to the observed spectra. Some commercial products such as MOLGEN
+(\url{http://molgen.de}) are able to perform this task in a rapid
+manner.
 
-The underlying computational complexity and potential intractability
-of molecular enumeration may not be a bottleneck after all, as
+Another application of structure enumeration is in the area of Markush
+structures and searches \cite{Barnard:1991vn}, where the user
+specifies a pattern such as ``\emph{\ldots an aromatic ring with two
+  alkyl groups attached to it}.'' Such a pattern is very general: an
+alkyl group can be methyl, ethyl or any chain of $n$ carbons and there
+are three possible positions for them on the ring. Even in this simple
+example there are $3n^2$ possible structures. For more complex
+Markushes, there can be billions of possible structures. Clearly,
+explicit enumeration is not feasible. Thus one challenge is to devise
+methods to search (based on structural or property similarity) through
+the implicit enumerated space. A number of commerical vendors such as
+Digitial Chemistry and ChemAxon provide toolkits to handle these
+problems.
+
+Structure enumeration plays a fundamental role in \emph{molecular
+  design} -- the design of compounds (drugs, for instance) that
+optimize some physical, chemical, or biological property or activity
+\cite{Schneider:2005uq}. A key challenge in this area is to combine
+enumeration algorithms with efficient property prediction and is
+closely related to methods in predictive modeling of chemical
+properties (Section \ref{sec:activity-mining}). This problem is also
+termed \emph{inverse QSAR}, where one must devise a set of features
+that describe a molecule with a specified property, and subsequently
+reconstruct the molecule from those features. As a side note, the
+reconstruction of molecules from feature sets is can be considered a
+cryptography problem. It is relevant to the pharmaceutical industry,
+as it can be necessary to share data on molecules without sharing
+explicit structures. Feature sets that allow easy reconstruction of
+molecular structures are thus undesirable. A number of workers have
+investigated the problem of identify such one-way molecular
+descriptors as well as methods to reconstruct molecules from
+descriptors \cite{Masek:2008kx} and new methods that generate such
+one-way molecular features but still correlate with physicochemical
+properties would be invaluable.
+
+While the complexity of molecular graph enumeration remains an open
+problem, an alternative to enumerating the space is to sample it
+\cite{goldberg1999}. Sampling procedures based on the Metropolis or
+the Genetic Algorithms have been developed and used to elucidate
+natural compounds from NMR data. It should be noted that even in the
+face of the computational complexity of molecular enumeration,
 computational chemists have developed and successfully used
 enumeration tools to generate large chemical libraries such as GDB-13,
-comprising almost a billion chemical structures~\cite{GDB}. Yet, the
-current enumeration software products do not generally produce
-stereoisomers or tautomers; these require specific enumeration
-procedures, which are still the subject of investigations by the
-cheminformatics community. In addition, GDB-13 only enumerates
-molecules up to 13 heavy atoms -- given the possibly exponential
-increase in search space with the number of atoms, it seems unlikely
-that the practically relevant chemical space of about 30 heavy atoms
-will be exhaustively enumerated in the near future.
+comprising almost a billion chemical structures~\cite{GDB} (but only
+considering molecules upto 13 heavy atoms and using only C, N, O, S
+and Cl). Yet, the current enumeration software products do not
+generally produce stereoisomers or tautomers; these require specific
+enumeration procedures, which are still the subject of investigations
+by the cheminformatics community.
 
-Apart from analytical chemistry and compound design, enumeration plays
-a role is in the \emph{generation of chemical reaction networks}. The
-problem here consists of enumerating all the possible compounds that
-can be produced by applying reaction rules to a set of initial
-molecules. By reversing the reaction rules one can also find sets of
-starting compounds necessary for producing a given target. This latter
-process is known in chemistry as \emph{retrosynthesis}, ever since the
-works of E.J. Corey, who received the Nobel Prize in Chemistry in
-1990. Designing new drugs or chemicals, understanding the kinetics of
-combustion and petroleum refining, studying the dynamics of metabolic
-networks, applying metabolic engineering and synthetic biology to
-produce heterologous compounds in microorganisms, all are applications
-that require the enumeration of reaction networks. As reviewed in
-Chapter 11 in \cite{faulon2010} several network enumeration techniques
-have been developed. However, these techniques generally suffer from a
-combinatorial explosion of intermediate compounds being produced. One
-way to limit the number of compounds generated is to simulate the
-dynamics of the network while it is being constructed and remove
-compounds of low concentration. Following that idea, methods have been
-developed based on the Gillespie Stochastic Simulation Algorithm (SSA)
-to compute on-the-fly species concentrations. Chemical reaction
-network enumeration and sampling is an active field of research,
-particularly in the context of metabolism, either to study
-biodegradation, or to propose metabolic engineering strategies to
-biosynthesize compounds of commercial interest. The difficulty with
-metabolic network design is that in addition to network generation
-based on reactions, one also needs to verify that there are enzymatic
-events possible for enabling reactions catalyses. That additional task
-requires encompassing both chemical and sequence information and the
+Another relevant application of enumeration methods is in the
+\emph{generation of chemical reaction networks}. The problem here
+consists of enumerating all the possible compounds that can be
+produced by applying reaction rules to a set of initial molecules. By
+reversing the reaction rules one can also find sets of starting
+compounds necessary for producing a given target, known as
+\emph{retrosynthesis}. Designing new drugs or chemicals, understanding
+the kinetics of combustion and petroleum refining, studying the
+dynamics of metabolic networks, applying metabolic engineering and
+synthetic biology to produce heterologous compounds in microorganisms,
+all involve enumeration of reaction networks. As reviewed in Chapter
+11 in \cite{faulon2010} several network enumeration techniques have
+been developed. However, these techniques generally suffer from a
+combinatorial explosion of product compounds. One way to limit the
+number of compounds generated is to simulate the dynamics of the
+network while it is being constructed and remove compounds of low
+concentration. Following that idea, methods have been developed based
+on the Gillespie Stochastic Simulation Algorithm (SSA) to compute
+on-the-fly species concentrations. Chemical reaction network
+enumeration and sampling is an active field of research, particularly
+in the context of metabolism, either to study biodegradation, or to
+propose metabolic engineering strategies to biosynthesize compounds of
+commercial interest. The difficulty with metabolic network design is
+that in addition to network generation based on reactions, one also
+needs to verify that there are enzymatic events possible for enabling
+reactions catalyses. That additional task requires encompassing both
+chemical structure and protein sequence information and the
 development of tools that are at the interface between cheminformatics
 and bioinformatics.
 
@@ -567,7 +534,7 @@ and bioinformatics.
 
 The basis of predictive modeling in cheminformatics is that the
 biological activity of a molecule is a function of its chemical
-structure. Together with the \emph{similarity property principle}
+structure. Together with the \emph{similar property principle}
 \cite{Johnson:1990qf} (structurally similar molecules will exhibit
 similar properties), the goal of any modeling approach is to capture
 and characterize the correlations between structural features and the

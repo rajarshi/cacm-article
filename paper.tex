@@ -685,22 +685,22 @@ collaboration culture?
 
 Before the year 2000, many chemists were still using paper
 lab-notebooks, multiple compound registration, and search
-tools. Compared to today there were many pitfalls and drawbacks
-associated with this. The overall architecture was too inflexible to
+tools. The overall architecture was too inflexible to
 adopt to fast changing data standards, scientists spent too much time
 with administrative work, chemical data quality was inconsistent, an
 alignment with other working groups was inefficient (\emph{e.g.}, for
-running analytical experiments), a legal dispute required to find data
-in paper lab-notebooks, data synchronization between systems caused
-lag times and access delays, and local silos hampered an efficient
-global collaboration. Now, chemists prefer ELNs, because they can run
-searches in the data across the organization. This does not only allow
-to find experts faster, but also allows access to highly trusted data
-with approved quality workflows. Since this also gives access to
-analytical and legal data directly every new ELN release is aiming at
-increasing the integration of scientific and business workflows for
-reducing the risk due to irrational or bounded-rational decision
-making and increasing decision making efficiency.
+running analytical experiments). Legal disputes would require manual
+searches through many paper lab notebooks and data synchornization was
+painful, hampering large scale collaborations.
+
+%  Now, chemists prefer ELNs, because they can run
+% searches in the data across the organization. This does not only allow
+% to find experts faster, but also allows access to highly trusted data
+% with approved quality workflows. Since this also gives access to
+% analytical and legal data directly every new ELN release is aiming at
+% increasing the integration of scientific and business workflows for
+% reducing the risk due to irrational or bounded-rational decision
+% making and increasing decision making efficiency.
 
 While ELNs technically existed as long ago as the 1990s, chemists
 adopted their use in large numbers in 2004 and 2005, and the market is
@@ -710,15 +710,12 @@ perhaps driven by the early adoption by chemists of computer
 technologies \ldots The pharmaceutical industry shifted from a
 position of `if we get an ELN' to `when we get an
 ELN'.''~\cite{ELNstatus}. The growth of the use of ELNs has been
-driven by many factors including ease of use and regulatory
-compliance. In chemistry, every experiment requires significant domain
-expertise and provenance information (especially in industrial
-settings where an experiment might be a key component of a patent
-filing). ELNs play an important role in reducing the risks associated
-with information loss by allowing easy sharing and retrieval of domain
-knowledge, securing sensitive data, ensuring data is time stamped and
-in general maintaining an audit trail of all experiemnts and data
-involved in a project.
+driven by many factors including ease of use (rapid searches across
+organization-wide data sources, easy sharing of domain knowledge) and
+regulatory compliance (timestamped experimental data, experiment and
+data approvals and QC information). Given that any experiment could
+become the core of a patent filing, ELNs allow organizations to define
+and implement audit trails in a standardized and efficient fashion.
 
 At this point, ``electronic lab notebooks have replaced the
 traditional paper lab book across the pharmaceutical industry,'' but
@@ -726,7 +723,7 @@ are not yet common in academia, because of their high
 cost~\cite{WavingGoodbye}.  It is worth mentioning that chemistry is
 traditionally a field where many people have been used to huge
 bookshelves of reactions and compounds. Chemists changed to online
-ELNs not only to increase efficiency, but also because it allowed easy
+ELNs not only to increase efficiency, but also because it allowed easy  
 collaboration with trusted colleagues. Third party paper catalogs and
 academic publications proved to be inefficient, and even more
 critically, they did not take compounds of trusted colleagues into
@@ -743,37 +740,27 @@ single, fully integrated chemical workflow solution.''
 
 However, the future still leaves many challenges ahead. Using
 external/public databases with chemical and bioactivity data remains a
-challenge due to differences in ontologies, synchronization and
-maintenance, and efficient substructure and similarity search within
-complex data types (compounds). A collaboration with external parties,
-e.g. contract research, poses other problems with duplicate checking
-for compounds (e.g. tautomeric or salt structures) and efficient data
-synchronization, and most often a double-registration is required for
-fulfilling the data quality processes on both sides. If external
-partners are small they often do not even have sufficient IT resources
-themselves and thus rely on external services. Cloud services could
-help not only to provide a service infrastructure for all parties
-involved, but also to provide the required private/public access
-toolbox. Furthermore, there are still many data sources not being
-indexed properly, since chemistry patents are often cryptic and
-image/text mining remains a puzzle. One could argue that the
-image/text mining in scientific journals is less challenging; in fact,
-it remains a huge challenge and many chemists do not trust automated
-non-expert validated mining sources. The closed CAS (Chemical Abstract
+challenge due to differences in identifiers, synchronization, curation
+\& error correctin mechanisms and efficient substructure and
+similarity search within complex data types (compounds). A
+collaboration with external parties, e.g. contract research, poses
+other problems including compound deduplication and efficient data
+synchronization. If external partners are small they often do not even
+have sufficient IT resources themselves and thus rely on external
+services. Cloud services could help not only to provide a service
+infrastructure for all parties involved, but also to provide the
+required private/public access toolbox. Furthermore, there are still
+many data sources not being indexed properly: chemistry patents are
+often cryptic and chemical image and text mining remains a challenge
+(albeit, currently being addressed in academia and industry
+\cite{Jessop:2011fk,Sayle:2009uq}). The closed CAS (Chemical Abstract
 Service) is a highly trusted source, and public chemistry and
 bioactivity space has to improve quality and interconnectivity to
 compare with it. Efforts like ChEMBL and PubChem-BioAssay are on the
 right track. Still, improving data quality and standards between
 public and closed sources will be absolutely critical for ensuring
 constant growth, usage, and collaboration scenarios between private
-and public parties.  In a business context we need to address ROI
-(return-of-investment) questions, not only for single institutions and
-companies, but also for collaboration networks of legal partners.  So,
-only when the technical and scientific questions are solved can we
-ensure that legal questions about contribution metrics will get enough
-room to grow. Solving challenges is one thing (science and technical),
-ensuring that the contributing partners get rewarded by their
-contribution another (legal).
+and public parties.
 
 \section{Support for the Development of Novel Algorithms}
 \label{sec:development-support}

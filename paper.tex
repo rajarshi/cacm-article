@@ -549,14 +549,14 @@ reliably predicted, usually deliniated using some form of similarity
 to the training set.
 
 In many cases, the activity of a small molecule is due to its
-interaction with a receptor. Traditionally, QSAR' \cite{Hansch:1962vn,
+interaction with a receptor. Traditionally, QSAR \cite{Hansch:1962vn,
   Free:1964ys} approaches do not take into account receptor features,
 focusing only on small molecule features, and therefore lose valuable
 information on ligand-receptor interactions. As a result, techniques
 such as docking, pharmacophore modeling and proteochemometric methods
 have been designed to take into account both ligand and receptor
 structures. The last method is an example of an extension of
-statistical QSAR methods to simultaneous model the f receptor and
+statistical QSAR methods to simultaneous model the receptor and
 ligand as first reported by Lapinsh \textit{et  al.}~\cite{lapinsh2001}.
 
 The first step in the predictive modeling of biological activities is
@@ -584,18 +584,16 @@ over 70 million substances.
 In order to judge which predictive modeling approach is applicable in
 every case, we firstly have to consider the goal of a the model in a
 cheminformatics setting. In some cases, pure predictive ability is
-desired -- such as in a virtual screening setting. (Basically, only
-the reliability of the model matters, but other aspects such as
-interpretability are of minor importance.) For such cases, the
+desired -- such as in a virtual screening setting. For such cases, the
 complexity of the modeling approach is immaterial, as it leads to
 accurate and generalizable results. Here a large-scale mining capacity
 is crucial. On the other hand, when working with chemists and
 biologists, the interpretability of a model and risk reduction
-arguments are paramount, since we have to translate better-predicted
-\emph{in silico} compounds into real-world compounds. In such cases,
-``black-box methods'' can be less useful, though attempts have been
-made to interpret vectorial models built using neural networks,
-na\"{i}ve Bayes, Support Vector Machines or random forests as well.
+arguments are paramount, since we have to translate the predicted
+outputs into real-world compounds. In such cases, ``black-box
+methods'' can be less useful, though attempts have been made to
+interpret vectorial models built using neural networks, na\"{i}ve
+Bayes, Support Vector Machines or random forests.
 
 Secondly, the concept of model applicability -- the question of when
 the prediction of the model for a new object is reliable -- has grown
@@ -626,16 +624,16 @@ libraries of compounds can be screened against multiple targets in an
 efficient manner. Such panel assays provide a broad, systems-level
 view of small molecule activities.  Models developed on such data
 afford us the opportunity to identify targets, characterize off-target
-effects and so on. However, most approaches to this problem are rather
-simplistic since they develop multiple individual models
-\cite{Chen:2010zr}, leading to multiple, independent predictions for a
-given input molecule.  Instead, one could imagine an approach that
-takes into account the covariance structure of the multiple observed
-activities and the structural descriptors within a single model. Such
-an approach could lead to more robust predictions for panel
-assays. Finally, this approach also better reflects clinically
-relevant compound profiles~\cite{kuhn2010} and a ``personalized
-medicine'' concept (\emph{e.g.}, drug-drug interaction profiles).
+effects and so on. However, most approaches to this problem temd tp
+develop multiple individual models \cite{Chen:2010zr}, leading to
+multiple, independent predictions for a given input molecule.
+Instead, one could imagine an approach that takes into account the
+covariance structure of the multiple observed activities and the
+structural descriptors within a single model. Such an approach could
+lead to more robust predictions for panel assays. Finally, this
+approach also better reflects clinically relevant compound
+profiles~\cite{kuhn2010} and the ``personalized medicine'' concept
+(\emph{e.g.}, drug-drug interaction profiles).
 
 \subsection{Knowledge Management}
 \label{sec:knowledge-management}
@@ -819,8 +817,8 @@ that are ``Open'' in nature. While PubMed abstracts serve as a proxy
 for journal articles, text mining methods in cheminformatics are
 hindered by not being able to mine the full text of many scientific
 publications.  Interestingly, patent information is publicly
-accessible (cf. Google Patents) and there have been efforts to mine
-these for chemical information using Open tools.
+accessible (cf. Google Patents) and represents an excellent resource
+to support these types of efforts.
 
 %
 \section{Conclusions}

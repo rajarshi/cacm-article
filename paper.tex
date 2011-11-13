@@ -776,7 +776,7 @@ cheminformaticians in their day-to-day work, many applications have
 been developed that rely on these toolkits to handle chemical data;
 for example, the molecular viewer Avogadro
 (\url{http://avogadro.openmolecules.net}) uses Open Babel, while the
-molecular workbench Bioclipse~\cite{Bioclipse2} uses the CDK.
+molecular workbench Bioclipse~\cite{Bioclipse2} uses the CDK. 
 
 The various toolkits have many features in common and at the same time
 have certain distinguishing features. For example, the CDK implements
@@ -826,28 +826,77 @@ these for chemical information using Open tools.
 \section{Conclusions}
 \label{sec:conclusions}
 Cheminformatics, the computer science of chemical discovery, is an
-industrial and academic discipline with roots dating back to the
-1960s, with the creation of DENDRAL, the first expert system of any
-kind.  Much of the development of cheminformatics from the 1960s until
-the new millenium was performed in secret, because of competition in
-the pharmaceutical industry.  While chemists were among the first
-scientists to embrace web-based tools of knowledge management,
-research into fundamental algorithmic questions of structure
-enumeration and database management (and a host of other topics) have
-suffered, because of limited academic access to either tools or data.
-As we enter the second decade of the 21st century, however, this
+industrial and academic discipline with roots dating back to the 19th
+century and flowering in the 1960s with the advent of modern computing
+technologies. While many key cheminformatics techniques have been
+available in the literature since the 1960's, the bulk of
+cheminformatics tools and implementations have been proprietary. In
+addition, most data sources of chemical information have been
+proprietary (usually with restrictive licensing policies) until
+recently. There are many reasons for this, primarily revolving around
+issues of profits, competitive intelligence and intellectual property,
+which are relevant to the pharmaceutical as well as other chemical
+industries. This is in contrast to much of bioinformatics, where the
+data and tools have been freely available since the inception of the
+field. One could argue that the outcomes from cheminformatics methods
+and software have a more direct impact on profits, in terms of
+identifying lead like compounds and improving properties of drug
+candidates. In contrast, much bioinformatics software is employed in
+upstream areas such as target identification.  While certainly
+important, this type of research is not as directly related to
+possible profits as an actual small molecule.
+
+Furthermore, chemical data (structure, activity information etc.) is
+harder to aquire and when done on large scales can be extremely
+intensive in terms of time and effort. Thus much of it has been
+proprietary. Whereas a lot of bioinformatics data (sequences for
+example) are much easier to obtain. While both fields have theoretical
+components, it is possible that the free availability of large amounts
+of data in bioinformatics drove the development of publically
+available tools to handle it. In contrast, the proprietary nature of
+chemical data would imply that tools to process and analyse that data
+were of interest primarily to the owners. As a result, the incentive
+to making cheminformatics software public has been low and since the
+users of it were primarily industrial, commercial software was the
+norm.
+
+Of course, with the advent of systems biology and its large amounts of
+heterogenous data and wide array of (possibly profitable) commercial
+applications and, this may change. Indeed, in this field, the
+requriement to consider small molecules in the context of larger
+biosystems implies that cheminformatics and bioinformatics will both
+be required to address the problems that will be tackled.
+
+As we enter the second decade of the 21st century, the cheminformatics
 landscape is rapidly shifting.  There now exist free-of-charge
-open-source cheminformatics toolkits, and open databases with tens of
-millions of compounds.  We believe the prospects for academic and
-industrial collaboration between chemists and computer scientists are
-bright, and we would like to encourage more computer scientists to
-participate in cheminformatics research.  There is an admittedly steep
-learning curve, as the structural issues faced by chemists are often
-too detailed and subtle to admit as clean an abstraction as
-``algorithms on a string,'' the way many bioinformatics algorithms can
-be abstracted into a computer science framework.  Nevertheless,
-because of the changing landscape, there are many research questions
-we are only now in position to try to answer: for a theorist,
+open-source cheminformatics toolkits, applications and open databases
+with tens of millions of compounds and containing valuable
+experimental bioactivity data. Modern experimental techniques such as
+high throughput sequencing have made the generation of large amounts
+of structure-activity data much more accessible.  We believe the
+prospects for academic and industrial collaboration between chemists
+and computer scientists are bright, and we would like to encourage
+more computer scientists to participate in cheminformatics research.
+
+There is an admittedly steep learning curve, as significant domain
+knowledge is required to attack problems of significance. Indeed, many
+issues faced by chemists are often detailed and subtle and do not
+admit as clean an abstraction as ``algorithms on a string'', the way
+many bioinformatics algorithms can be abstracted into a computer
+science framework.  As a result, while one can certainly make
+significant contributions to cheminformatics by just considering
+structures as graphs, one is limited to somewhat abstract
+problems. Keeping in mind that cheminformatics is fundamentally a
+practical field that serves to help and advance experimental
+chemistry, the key challenges require an understanding of the
+underlying chemical systems. One could certainly study for a degree in
+chemistry. Alternatively one could collaborate with a chemist or
+cheminformatics practitioner.
+
+Nevertheless, because of the increasing availability of tools and
+data, the barrier to entry for non-chemists and non-cheminformaticians
+is significantly lower. Many questions that benefit from computer
+scientists can now be comprehensively taclked: for a theorist,
 graph-theoretic questions of three-dimensional enumeration; for a
 database designer, more effective search algorithms and ontologies;
 for a practical programmer, expansion of the many open-source
@@ -856,15 +905,6 @@ more computer scientists think chemically we are much better
 positioned taking not only ``simple'' chemicals into account (only one
 identifier and isomer possible per molecule), but also their complex
 relationships, transformations, and combinatorial challenges.
-
-In 2010, drug company Glaxo made public over 13,000 compounds that
-they have investigated as potential cures for
-malaria~\cite{glaxo-malaria}.  (Malaria has traditionally been a
-neglected disease in drug research, because the populations who suffer
-from it tend not to have enough money to be a stable consumer base for
-a new pharmaceutical.)  Perhaps we will now be able to find cures for
-some of these neglected diseases, by using the open source, open data
-approach to the computer science of chemical discovery.
 
 \section{Acknowledgements}
 We would like to thank Danny Verbinnen for sharing his insights into

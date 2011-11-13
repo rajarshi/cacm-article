@@ -560,49 +560,61 @@ statistical QSAR methods to simultaneous model the receptor and
 ligand as first reported by Lapinsh \textit{et  al.}~\cite{lapinsh2001}.
 
 The first step in the predictive modeling of biological activities is
-to describe compounds in a way amenable to computerized data mining,
-while at the same time capturing information relevant for the property
-one attempts to model. Here multiple approaches exist: Either we
-transform molecular graphs into a numerical vector representation
-(a.k.a. \emph{descriptors} or \emph{features}) of chemical structures,
-or we use algorithms for comparing molecular graphs directly
-(\emph{molecule kernel}). In the first case thousands of descriptors
-(many of which are equivalent) have been described
-\cite{todeschini2000}, and a variety of tools are available for their
-calculation. Given a set of molecules, observed activities and a
-descriptor vector, the problem can be considered a traditional
-statistical modeling problem. In the second case no explicit vector
-representation is required, which prevents the challenge of
-transforming the molecular graph into a vector without losing
-information. On the other hand, the implicit kernel encoding imposes
-the challenge that we have to compare all compounds against all
-compounds, which imposes large-scale mining challenge, which risks
-overrunning available processing time and space. Note that the public
-PubChem dataset alone contains over 30 million chemical compounds and
-over 70 million substances.
+to generate molecular descriptors (a.k.a, features) that are numerical
+representations of different structural features. Here multiple
+approaches exist. We can transform molecular graphs into a numerical
+vector representation (a.k.a. \emph{descriptors} or \emph{features})
+of chemical structures \cite{todeschini2000}, ranging from counts of
+elements to eigenvalues of the Laplacian matrix.  Alternatively, we
+can compare molecular graphs directly, via kernel methods. In these
+cases, rather than compute vectorial representations, we directly
+operate on the graph representations.
 
-In order to judge which predictive modeling approach is applicable in
-every case, we firstly have to consider the goal of a the model in a
-cheminformatics setting. In some cases, pure predictive ability is
-desired -- such as in a virtual screening setting. For such cases, the
-complexity of the modeling approach is immaterial, as it leads to
-accurate and generalizable results. Here a large-scale mining capacity
-is crucial. On the other hand, when working with chemists and
-biologists, the interpretability of a model and risk reduction
-arguments are paramount, since we have to translate the predicted
-outputs into real-world compounds. In such cases, ``black-box
-methods'' can be less useful, though attempts have been made to
-interpret vectorial models built using neural networks, na\"{i}ve
-Bayes, Support Vector Machines or random forests.
+Both methods have advantages and disadvantages. The vectorial approach
+requires one to identify a subset of \emph{relevant} (to the property
+being modeled) descriptors. This is the feature selection problem and
+is well discussed in the data mining literature. A kernel approach
+does not require feature selection; but now, one faces the problem of
+evaluating a data set in a pairwise fashion. Furthermore, one must now
+identify an appropriate kernel. This is an important challenge as the
+kernel should be selected to satisfy Mercer's condition, and this is
+not always possible with traditional cheminformatics based kernels
+(such as a multiple common substructure based kernel). These
+challenges can make kernel based methods prohibitive on very large
+datasets.
 
-Secondly, the concept of model applicability -- the question of when
-the prediction of the model for a new object is reliable -- has grown
-in importance with the increasing use of predictive models in
-regulatory settings. A variety of methods have been developed that
-attempt to characterize the domain of a model. These methods not only
-determine whether models are applicable, but can also be used for
-deciding if additional biological experiments are required for
-reducing the prediction error on certain compound classes.
+Having settled on a numerical representation and a possible class of
+model types, one must address the goal of the model. Are we
+looking for pure predictive power, with no interest in any explanatory
+features? Or are we more interested in decent predictive power, but
+some of explanation as to why a molecule is predicted as toxic or
+non-toxic, for example. The former scenario is common in virtual
+screening settings, where we require high degree of accuracy and fast
+predictions, but do not really care as to why one molecule is active
+and another inactive. These types of models can be black boxes (neural
+networks) and algorithmic models \cite{Breiman:2001fk} (random
+forests). The latter scenario is more common in exploratory and
+optimization settings, where we hope that the output of the model will
+guide us in chemical modifications to improve the property being
+modeled.  In this case, we require to understand the effect of a
+certain structural feature on the observed potency and expect that the
+model will provide insight. These types of models are generally
+distributional in nature (such as linear regression and PLS) though
+some algorithmic approaches such as random forests can provide some
+degree of insight.
+
+Having chosen a modeling approach, a vital question is that of model
+reliability which is closely tied to the concept of model
+applicability -- the question of when the prediction of the model for
+a new object is reliable. This issue has grown in importance with the
+increasing use of predictive models in regulatory settings. A
+misprediction (due to the model not bein applicable to a certain class
+of inputs) can have significant financial repurcussions. A variety of
+methods have been developed that attempt to characterize the domain of
+a model. These methods not only determine whether models are
+applicable, but can also be used for deciding if additional biological
+experiments are required for reducing the prediction error on certain
+compound classes.
 
 One of the key challenges faced by predictive modeling is the fact
 that small molecules are not static and do not exist in
@@ -615,7 +627,7 @@ ideally will require that such aspects be taking into account and, as
 far as possible, take into account the receptor
 simultaneously. Multi-conformer modeling has been addressed in the
 4D-QSAR methodology described by Hopfinger and co-workers
-\cite{Albuquerque:1998ys}.  Computer science techniques such as
+\cite{Albuquerque:1998ys}.  Recent techniques such as
 \emph{multiple-instance learning} could also be applied to the
 multi-conformer problem.
 

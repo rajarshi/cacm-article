@@ -104,7 +104,10 @@ years \cite{faulon2010}.
 
 So why is chemical information important and why should we care about
 its public availability -- and how does this relate to the field of
-computer science?
+computer science? We note that though cheminformatics has a broad
+applicability, ranging from agrochemical research to the design of
+novel materials, we have chosen to use drug discovery as the context
+of this article due to its central relevance for human well being.
 
 Given that the art and science of drug discovery is based around small
 molecules, techniques and algorithms to handle, analyse and interpret
@@ -242,31 +245,28 @@ following sections.
 
 Our motivation for this article is to highlight a variety of topics in
 cheminformatics, presenting the computational and algorithmic problems
-faced in the field and how modern CS research can contribute.
+faced in the field and how modern CS research can contribute to their
+solution.
 
-
-While cheminformatics has a broad applicability, ranging from
-agrochemical research and drug discovery to the design of novel
-materials, we have chosen to use drug discovery as the context of this
-article due to its central relevance for human wellbeing. Given that
-the safety of drugs on the market is a key concern both for the
-general audience as well as researchers in pharmaceutical companies,
-the remainder of this article is structured around the concept of
-``risk minimization'' in drug discovery -- the question of how to
-minimize the chances of a small molecule failing, due to poor
-physical, chemical or biological properties, in the various research
-and development stages as a drug candidate, and how to successfully
-employ cheminformatics methods in these efforts. As an example, a
-molecule must be soluble and show a certain degree of bioavailability
-to be considered as drug candidate. In cases where these properties
-are poor, a cheminformatics approach can suggest replacement of
-certain functional groups, that maintain potency but improve the
-solubility and bioavailability.  Table~\ref{table:properties} (in the
-Appendix) summarizes a number of properties a drug candidate must
-satisfy to be considered therapeutically useful (such as being
-appropriately soluble, exhibiting minimal toxicity and being selective
-for the intended target) and sketches the role of cheminformatics at
-each stage of drug development.
+As noted above, in this article we choose to focus on cheminformatics
+in the context of drug discovery and development. Given that this is a
+slow and expensive process, the concept of ``risk minimization'' plays
+an important role in this field. Thus, we structure the article around
+this idea -- how to minimize the chances of a small
+molecule failing, due to poor physical, chemical or biological
+properties, in the various research and development stages as a drug
+candidate, and how to successfully employ cheminformatics methods in
+these efforts. As an example, a molecule must be soluble and show a
+certain degree of bioavailability to be considered as drug
+candidate. In cases where these properties are poor, a cheminformatics
+approach can suggest replacement of certain functional groups, that
+maintain potency but improve the solubility and bioavailability.
+Table~\ref{table:properties} (in the Appendix) summarizes a number of
+properties a drug candidate must satisfy to be considered
+therapeutically useful (such as being appropriately soluble,
+exhibiting minimal toxicity and being selective for the intended
+target) and sketches the role of cheminformatics at each stage of drug
+development.
 %
 \subsection{Representing and Searching Structures}
 \label{sec:databases}
@@ -279,10 +279,10 @@ essential to enable many scientific applications. Yet, each one of
 those areas poses its unique computer science challenges.
 
 There is considerable progress in open chemical and bioactivity
-databases like ChEMBL and NCBI-PubChem, which are both freely
+databases like ChEMBL and PubChem, which are both freely
 available and contain in the order of millions (ChEMBL) and tens of
 millions (PubChem) of data points each. Still, the integration of
-chemical databases with one other remains a challenge, not only due
+chemical databases with one another remains a challenge, not only due
 to the normalization problems in the chemical and bioactivity
 landscape, but also due to sheer data volume. One problem is the
 annotation with the ``protein targets'' a molecule binds to -- here
@@ -292,20 +292,24 @@ merging databases often a cumbersome exercise.
 
 Given the requirement to ``make sense'' of as much chemical data at
 hand as possible, we have to be able to search in complex data, for
-example multi-labelled molecular graphs, where graph labels can change from database to database. Hence, we need to be able to capture molecular graphs in a
-risk-bounded machine encoded way.
+example multi-labelled molecular graphs, where graph labels can change
+from database to database. Hence, we need to be able to capture
+molecular graphs in a risk-bounded machine encoded way.
 
 A fundamental challenge in cheminformatics is the unique
 representation of chemical structures in a machine readable format. A
 (chemical) graph can be encoded in multiple ways, depending on how one
 orders the nodes, resulting in multiple representations of the same
 molecule. When one considers the need to include other aspects such as
-protonation states (how the molecule changes when one proton is added to it) and tautomer states (how the molecule can change when a proton migrates from one part of the molecule to another), the challenge increases. The need for
-a unique representation that is invariant with respect to the atom
-ordering arises due to the fact that graph isomorphism (i.e., checking
-whether two molecules are the same) is an expensive operation. The
-first such ``unique representation algorithm,'' or \emph{canonicalization} algorithm, was described by Morgan
-\cite{Morgan1965}, allowing one to generate unique string
+protonation states (how the molecule changes when one proton is added
+to it) and tautomer states (how the molecule can change when a proton
+migrates from one part of the molecule to another), the challenge
+increases. The need for a unique representation that is invariant with
+respect to the atom ordering arises due to the fact that graph
+isomorphism (i.e., checking whether two molecules are the same) is an
+expensive operation. The first such ``unique representation
+algorithm,'' or \emph{canonicalization} algorithm, was described by
+Morgan \cite{Morgan1965}, allowing one to generate unique string
 representations of chemical graphs letting one compare structures via
 string comparisons. The SMILES (Simplified Molecular Input Line
 Specification) format \cite{Weininger:1988kx} is an example of a
@@ -340,7 +344,8 @@ the SMILES, InChI and InChIKey for lipoic acid.
 
 The InChI is now widely used for matching identical chemical
 structures, but it is still limited. For example, it cannot
-differentiate between certain types of stereoisomers (informally, molecules that are ``3D mirror images'' of each other):
+differentiate between certain types of stereoisomers (informally,
+molecules that are ``3D mirror images'' of each other):
 Figure~\ref{figure:cistrans} (in the Appendix) illustrates two
 stereoisomers for which the generated InChI is the same.
 
@@ -352,11 +357,11 @@ are required to generalize from the data points contained in a
 particular database to other, related molecules. In substructure
 searching, the database is searched for a specified wholly contained
 part of the structures in the database, while in similarity searching,
-the database is searched for structures similar (in some property
-space) to a provided search, or query, structure. Chemical search
-packages are often implemented and optimized for a given database
-technology; for example, the OrChem package is an open source chemical
-search package for the Oracle database \cite{rijnbeek2009}.
+the database is searched for structures similar (in some structure or
+property space) to a provided search, or query, structure. Chemical
+search packages are often implemented and optimized for a given
+database technology; for example, the OrChem package is an open source
+chemical search package for the Oracle database \cite{rijnbeek2009}.
 
 Graph substructure matching is a variant of \emph{graph isomorphism},
 which is widely believed to be computationally
@@ -368,14 +373,18 @@ obtained via the use of heuristics such as structural
 given chemical structure, usually in a fixed-length
 bitmap. Fingerprints fall broadly into two categories: structure keys
 and hashed keys. In the former, each bit position corresponds to a
-distinct substructure such as a \emph{functional group} (a connected set of atoms that affects the characteristics of the chemical reactions of the molecule). Examples
-include MACCS and PubChem keys. The latter class are designed such
-that substructural patterns are represented as strings and then hashed
-to a random bit position. As a result, a given position can encode
-multiple substructures. The advantage of such fingerprints is that
-they can cover an arbitrarily large collection of substructures such
-as ``paths of length $N$,'' or circular environments, and so on. Examples
-include ECFPs (Extended Connectivity Fingerprints, which use local topological information) and Daylight fingerprints (which are ``folded'' to optimize information density and screening speed).
+distinct substructure such as a \emph{functional group} (a connected
+set of atoms that affects the characteristics of the chemical
+reactions of the molecule). Examples include MACCS and PubChem
+keys. The latter class are designed such that substructural patterns
+are represented as strings and then hashed to a random bit
+position. As a result, a given position can encode multiple
+substructures. The advantage of such fingerprints is that they can
+cover an arbitrarily large collection of substructures such as ``paths
+of length $N$,'' or circular environments, and so on. Examples include
+ECFPs (Extended Connectivity Fingerprints, which use local topological
+information) and Daylight fingerprints (which are ``folded'' to
+optimize information density and screening speed).
 
 Given a binary fingerprint, we can first ``pre-screen'' a database, to
 ignore molecules that cannot possibly match the query. This is
@@ -388,8 +397,7 @@ screen. Fingerprints can also be used to rapidly search databases for
 similar molecules, in which case a similarity metric such as the
 Tanimoto coefficient is used to compare the query and target
 fingerprints. While fast, heuristics have been developed
-\cite{Swamidass:2007ve} to further
-speed up similarity searches.
+\cite{Swamidass:2007ve} to further speed up similarity searches.
 
 \subsection{Linking Molecules to Other Data}
 \label{sec:prof-ident}
@@ -404,18 +412,19 @@ sources. At one level, equivalent compounds can be identified via
 canonical structure representations (InChI). But there are other
 equivalences beyond structure. For example, compounds may bind to the
 same or similar targets; they may be have similar biological function
-(say, anti-neoplastic, that is to say, it prevents the development of tumors) and so on. To assess such higher level
-characteristics, ontologies and semantic technologies have been
-employed, to first, support annotations of chemical systems and
-second, enable semantic analyses of chemical systems in conjunction
-with other biological systems (such as pathways). A number of
-challenges remain in this area - the use of ontologies allows one to
-build a semantic network of concepts that links molecules to other
-molecules as well as other objects such as targets, genes and
-pathways. Open questions include the following.  How does one evaluate similarities in such a heterogenous
-network \cite{couto2010}? How does one integrate chemical structure
-information with ontologies \cite{hastingsowled2010}? And more
-generally, how can we achieve automated inferencing in such
+(say, anti-neoplastic, that is to say, it prevents the development of
+tumors) and so on. To assess such higher level characteristics,
+ontologies and other semantic technologies have been employed, to first,
+support annotations of chemical systems and second, enable semantic
+analyses of chemical systems in conjunction with other biological
+systems (such as pathways). A number of challenges remain in this area
+- the use of ontologies allows one to build a semantic network of
+concepts that links molecules to other molecules as well as other
+objects such as targets, genes and pathways. Open questions include
+the following.  How does one evaluate similarities in such a
+heterogenous network \cite{couto2010}? How does one integrate chemical
+structure information with ontologies \cite{hastingsowled2010}? And
+more generally, how can we achieve automated inferencing in such
 heterogenous linked systems, allowing us to achieve a systems level
 understanding of small molecules \cite{Oprea:2007fk}.
 
@@ -425,12 +434,12 @@ Enumerating molecules is a combinatorial problem that has fascinated
 chemists, computer scientists and mathematicians alike, for more than
 a century. Indeed, many fundamental principles of graph theory and
 combinatorics were developed in the context of counting isomers of
-paraffin by Cayley, Polya and others. In the 1960's, Lederberg
+paraffin by Cayley, Polya and others. In the 1960's, Lederberg, 
 Dejerassi and others developed algorithms to enumerate structures
 based on spectral data, leading to the development of DENDRAL, widely
 considered as the first expert system \cite{DENDRAL}.
 
-From a risk reduction point of view efficient methods to enumerate
+From a risk reduction point of view, efficient methods to enumerate
 structures allows us to explore new regions of chemical space (for
 example, allowing one to bypass patents), generate structures that
 exhibit desired properties, identify molecules matching experimental
@@ -486,7 +495,7 @@ investigated the problem of identify such one-way molecular
 descriptors as well as methods to reconstruct molecules from
 descriptors \cite{Masek:2008kx} and new methods that generate such
 one-way molecular features but still correlate with physicochemical
-properties would be invaluable.
+properties would be valuable.
 
 While the complexity of molecular graph enumeration remains an open
 problem, an alternative to enumerating the space is to sample it
@@ -497,11 +506,11 @@ face of the computational complexity of molecular enumeration,
 computational chemists have developed and successfully used
 enumeration tools to generate large chemical libraries such as GDB-13,
 comprising almost a billion chemical structures~\cite{GDB} (but only
-considering molecules up to 13 heavy atoms and using only carbon, nitrogen, oxygen, sulfur
-and chlorine). Yet, the current enumeration software products do not
-generally produce stereoisomers or tautomers; these require specific
-enumeration procedures, which are still the subject of investigations
-by the cheminformatics community.
+considering molecules up to 13 heavy atoms and using only carbon,
+nitrogen, oxygen, sulfur and chlorine). Yet, the current enumeration
+software products do not generally produce stereoisomers or tautomers;
+these require specific enumeration procedures, which are still the
+subject of investigations by the cheminformatics community.
 
 Another relevant application of enumeration methods is in the
 \emph{generation of chemical reaction networks}. The problem here
@@ -512,26 +521,28 @@ compounds necessary for producing a given target, known as
 \emph{retrosynthesis}. Designing new drugs or chemicals, understanding
 the kinetics of combustion and petroleum refining, studying the
 dynamics of metabolic networks, applying metabolic engineering and
-synthetic biology to produce heterologous compounds (compounds from different species) in microorganisms,
-all involve enumeration of reaction networks. As reviewed in Chapter
-11 in \cite{faulon2010} several network enumeration techniques have
-been developed. However, these techniques generally suffer from a
-combinatorial explosion of product compounds. One way to limit the
-number of compounds generated is to simulate the dynamics of the
-network while it is being constructed and remove compounds of low
-concentration. Following that idea, methods have been developed based
-on the Gillespie Stochastic Simulation Algorithm (SSA) to compute
-on-the-fly species concentrations. Chemical reaction network
-enumeration and sampling is an active field of research, particularly
-in the context of metabolism, either to study biodegradation, or to
-propose metabolic engineering strategies to biosynthesize compounds of
-commercial interest. The difficulty with metabolic network design is
-that in addition to network generation based on reactions, one also
-needs to verify that there are enzymatic events possible for enabling
-reactions catalyses (in other words, enzymes must be present to reduce the energy required for some reactions to take place). That additional task requires encompassing both
-chemical structure and protein sequence information and the
-development of tools that are at the interface between cheminformatics
-and bioinformatics.
+synthetic biology to produce heterologous compounds (compounds from
+different species) in microorganisms, all involve enumeration of
+reaction networks. As reviewed in Chapter 11 in \cite{faulon2010}
+several network enumeration techniques have been developed. However,
+these techniques generally suffer from a combinatorial explosion of
+product compounds. One way to limit the number of compounds generated
+is to simulate the dynamics of the network while it is being
+constructed and remove compounds of low concentration. Following that
+idea, methods have been developed based on the Gillespie Stochastic
+Simulation Algorithm (SSA) to compute on-the-fly species
+concentrations. Chemical reaction network enumeration and sampling is
+an active field of research, particularly in the context of
+metabolism, either to study biodegradation, or to propose metabolic
+engineering strategies to biosynthesize compounds of commercial
+interest. The difficulty with metabolic network design is that in
+addition to network generation based on reactions, one also needs to
+verify that there are enzymatic events possible for enabling reactions
+catalyses (in other words, enzymes must be present to reduce the
+energy required for some reactions to take place). That additional
+task requires encompassing both chemical structure and protein
+sequence information and the development of tools that are at the
+interface between cheminformatics and bioinformatics.
 
 \subsection{Activity Mining \& Prediction}
 \label{sec:activity-mining}
@@ -558,21 +569,26 @@ interaction with a receptor. Traditionally, QSAR \cite{Hansch:1962vn,
   Free:1964ys} approaches do not take into account receptor features,
 focusing only on small molecule features, and therefore lose valuable
 information on ligand-receptor interactions. As a result, techniques
-such as docking (which predicts how molecules fit together), pharmacophore modeling (which predicts the surface features of a molecule) and proteochemometric methods (which predict the interaction between small molecules and proteins)
-have been designed to take into account both ligand and receptor
-structures. The last method is an example of an extension of
-statistical QSAR methods to simultaneous model the receptor and
-ligand as first reported by Lapinsh \textit{et  al.}~\cite{lapinsh2001}.
+such as docking (which predicts how molecules fit together),
+pharmacophore modeling (a 3D approach to capturing protein-ligand
+interactions) and proteochemometric methods have been designed to take
+into account both ligand and receptor structures. The last method is
+an example of an extension of statistical QSAR methods to simultaneous
+model the receptor and ligand as first reported by Lapinsh \textit{et
+  al.}~\cite{lapinsh2001}.
 
 The first step in the predictive modeling of biological activities is
-to generate \emph{molecular descriptors} (a.k.a. \emph{features}) that are numerical
-representations of different structural features. Here multiple
-approaches exist. We can transform molecular graphs into a numerical
-vector representation of chemical structures \cite{todeschini2000}, ranging from counts of
-elements to eigenvalues of the Laplacian matrix.  Alternatively, we
-can compare molecular graphs directly, via \emph{kernel methods}, where a kernel on graphs $G$ and $G'$ provides a measure of how similar $G$ is to $G'$, or a kernel on a single graph compares measures similarities between the graph's nodes. In these
-cases, rather than compute vectorial representations, we directly
-operate on the graph representations.
+to generate \emph{molecular descriptors} (a.k.a. \emph{features}) that
+are numerical representations of different structural features. Here
+multiple approaches exist. We can transform molecular graphs into a
+numerical vector representation of chemical structures
+\cite{todeschini2000}, ranging from counts of elements to eigenvalues
+of the Laplacian matrix.  Alternatively, we can compare molecular
+graphs directly, via \emph{kernel methods}, where a kernel on graphs
+$G$ and $G'$ provides a measure of how similar $G$ is to $G'$, or a
+kernel on a single graph compares measures similarities between the
+graph's nodes. In these cases, rather than compute vectorial
+representations, we directly operate on the graph representations.
 
 Both methods have advantages and disadvantages. The vectorial approach
 requires one to identify a subset of \emph{relevant} (to the property
@@ -581,11 +597,12 @@ is well discussed in the data mining literature. A kernel approach
 does not require feature selection; but now, one faces the problem of
 evaluating a data set in a pairwise fashion. Furthermore, one must now
 identify an appropriate kernel. This is an important challenge as the
-kernel should be selected to satisfy \emph{Mercer's condition} (a well-known mathematical property in machine learning that makes a set of observations easier to make predictions about), and this is
-not always possible with traditional cheminformatics based kernels
-(such as a multiple common substructure based kernel). These
-challenges can make kernel based methods prohibitive on very large
-datasets.
+kernel should be selected to satisfy \emph{Mercer's condition} (a
+well-known mathematical property in machine learning that makes a set
+of observations easier to make predictions about), and this is not
+always possible with traditional cheminformatics based kernels (such
+as a multiple common substructure based kernel). These challenges can
+make kernel based methods prohibitive on very large datasets.
 
 Having settled on a numerical representation and a possible class of
 model types, one must address the goal of the model. Are we
@@ -670,7 +687,7 @@ adopt to fast changing data standards, scientists spent too much time
 with administrative work, chemical data quality was inconsistent, an
 alignment with other working groups was inefficient (\emph{e.g.}, for
 running analytical experiments). Legal disputes would require manual
-searches through many paper lab notebooks and data synchornization was
+searches through many paper lab notebooks and data synchronization was
 painful, hampering large scale collaborations.
 
 %  Now, chemists prefer ELNs, because they can run
@@ -689,7 +706,7 @@ drive for the development of ELNs came from the field of chemistry,
 perhaps driven by the early adoption by chemists of computer
 technologies \ldots The pharmaceutical industry shifted from a
 position of `if we get an ELN' to `when we get an
-ELN'.''~\cite{ELNstatus}. The growth of the use of ELNs has been
+ELN'.''~\cite{ELNstatus}. The growth of ELN usage has been
 driven by many factors including ease of use (rapid searches across
 organization-wide data sources, easy sharing of domain knowledge) and
 regulatory compliance (timestamped experimental data, experiment and
@@ -729,10 +746,10 @@ synchronization. If external partners are small they often do not even
 have sufficient IT resources themselves and thus rely on external
 services. Cloud services could help not only to provide a service
 infrastructure for all parties involved, but also to provide the
-required private/public access toolbox. Furthermore, there are still
-many data sources not being indexed properly: chemistry patents are
-often cryptic and chemical image and text mining remains a challenge
-(albeit, currently being addressed in academia and industry
+required private/public interface. Furthermore, there are still many
+data sources that are not being indexed properly: chemistry patents
+are often cryptic and chemical image and text mining remains a
+challenge (albeit, currently being addressed in academia and industry
 \cite{Jessop:2011fk,Sayle:2009uq}). The closed CAS (Chemical Abstract
 Service) is a highly trusted source, and public chemistry and
 bioactivity space has to improve quality and interconnectivity to
@@ -855,7 +872,8 @@ field. One could argue that the outcomes from cheminformatics methods
 and software have a more direct impact on profits, in terms of
 identifying lead like compounds and improving properties of drug
 candidates. In contrast, much bioinformatics software is employed in
-upstream areas such as target identification (finding molecules that react well with the molecule under consideration).  While certainly
+upstream areas such as target identification (identifying the protein
+that a small molecule binds to).  While certainly
 important, this type of research is not as directly related to
 possible profits as an actual small molecule.
 
@@ -893,7 +911,7 @@ more computer scientists to participate in cheminformatics research.
 
 There is an admittedly steep learning curve, as significant domain
 knowledge is required to attack many problems in cheminformatics due
-to the underlying chemistry of the systems being studies. Indeed, many
+to the underlying chemistry of the systems being studied. Indeed, many
 issues faced by chemists are often detailed and subtle and do not
 admit as clean an abstraction as ``algorithms on a string'', the way
 many bioinformatics algorithms can be abstracted into a computer
@@ -908,16 +926,17 @@ underlying chemical systems.
 
 Nevertheless, because of the increasing availability of tools and
 data, the barrier to entry for non-chemists and non-cheminformaticians
-is significantly lower than it was a decade ago. Many questions that benefit from computer
-science can now be comprehensively tackled: for a theorist,
-graph-theoretic questions of three-dimensional enumeration; for a
-database designer, more effective search algorithms and ontologies;
-for a practical programmer, expansion of the many open-source
-cheminformatics projects.  If more chemists think algorithmically, and
-more computer scientists think chemically we are much better
-positioned taking not only ``simple'' chemicals into account (only one
-identifier and isomer possible per molecule), but also their complex
-relationships, transformations, and combinatorial challenges.
+is significantly lower than it was a decade ago. Many questions that
+benefit from computer science can now be comprehensively tackled: for
+a theorist, graph-theoretic questions of three-dimensional
+enumeration; for a database designer, more effective search algorithms
+and ontologies; for a practical programmer, expansion of the many
+open-source cheminformatics projects.  If more chemists think
+algorithmically, and more computer scientists think chemically we are
+much better positioned taking not only ``simple'' chemicals into
+account (only one identifier and isomer possible per molecule), but
+also their complex relationships, transformations, and combinatorial
+challenges.
 
 \section{Acknowledgements}
 We would like to thank Danny Verbinnen for sharing his insights into

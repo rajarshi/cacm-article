@@ -96,32 +96,38 @@ petabytes of biological information.  While biological information has
 been publicly available for decades, the same has not been true for
 chemical information, until recently. It was not until 2004 that a
 large public small molecule structure repository (PubChem) became
-freely available. This was followed by other databases, as discussed
-later in this article. While much of the foundational algorithms of
-cheminformatics have been described since the 1950s, publically
-available software implementing many of these algorithms have only
-been accessible in the last ten to fifteen years \cite{faulon2010}.
+freely available. This was followed by other databases. While much of
+the foundational algorithms of cheminformatics have been described
+since the 1950s, publicly available software implementing many of
+these algorithms have only been accessible in the last ten to fifteen
+years \cite{faulon2010}.
 
-So why should we actually care about chemical information being made
-public -- and how does this relate to the field of computer science?
+So why is chemical information important and why should we care about
+its public availability -- and how does this relate to the field of
+computer science?
 
-Making chemical information public is important because the drugs we
-take are the result of intensive and costly research, which is
-facilitated by the amount of information available. The more
-information is shared (a process very hard to achieve in
-pharmaceutical companies), the more information is available to each
-researcher, facilitating the development of novel treatments. The
+Given that the art and science of drug discovery is based around small
+molecules, techniques and algorithms to handle, analyse and interpret
+chemical structure information are a core component of the drug
+discovery toolbox. Public availability of chemical information and
+tools to handle it are important as drug discovery research is slow,
+expensive and prone to failure. The more information available to each
+researcher, facilitating the development of novel treatments, the
+better the chances of avoiding the many causes of attrition. The
 relevance of computer science to this research becomes clear when we
 consider the quantity and types of data available -- currently a
 single data base such as PubChem contains more than 34 million
 chemical structure records, along with an even larger number of
-\emph{annotations} (comments on the structure that are database searchable), such as synonyms (different names for the same molecule), known targets (drugs with which the molecule is known to interact), mode of action (how the molecule reacts with others),
+\emph{annotations} (comments on the structure that are database
+searchable), such as synonyms (different names for the same molecule),
+known targets (drugs with which the molecule is known to interact),
+mode of action (how the molecule interacts with its targets),
 regulatory approval status and so on.  Simply considering the synonym
 list, PubChem stores 50.1 million synonym for 19.6 million compounds.
 
-The design of data structures for this chemical information, as well
-as subsequent data mining of this information, are areas where
-expertise in computer science is urgently needed. (For a recent,
+The design of data structures to handle chemical structures and
+associated information, as well as subsequent data mining are areas
+where expertise in computer science is urgently needed. (For a recent,
 detailed introduction to cheminformatics, written for computer
 scientists, see \cite{brown2009}).
 
@@ -129,19 +135,20 @@ Cheminformatics comprises different areas, which broadly speaking can
 be divided into three fields: \emph{capturing data} (using lab
 notebooks or potentially using formats such as the Chemical Markup
 Language for publications); \emph{storing data} (designing database
-schemas, devising ontologies) and \emph{mining data} (such as for
-bioactivity prediction, which might involve algorithms based on
-graphs).  However, the type of information being analyzed is different
-from biological information: while bioinformatics often deals with
-sequences, the domain of cheminformatics is chemical structures. In
-the case of the former, information can very frequently be represented
-as one-dimensional strings, which are relatively easy to handle
+schemas, devising ontologies) and \emph{mining data} (such as for the
+prediction of biological activities of compounds).  However, the type
+of information being analyzed is different from biological
+information: while bioinformatics often deals with sequences, the
+domain of cheminformatics is chemical structures. In the case of the
+former, information can very frequently be represented as
+one-dimensional strings, which are relatively easy to handle
 computationally. In the case of the latter however, chemical
 structures may possess rings, branches as well as multiple valid
-representations of the same structure (such as \emph{tautomers}, where hydrogen atoms can be positioned in different
-places of the molecules), potentially giving rise to
-ambiguities. Hence, chemical structures are often reported to be more
-difficult to standardize.
+representations of the same structure (such as \emph{tautomers}, where
+hydrogen atoms can be positioned in different places of the
+molecules), potentially giving rise to ambiguities. Hence, chemical
+structures are often reported to be more difficult to standardize and
+algorithms dealing with them must take this into account.
 
 To illustrate the difficulty of standardizing chemical structures,
 different representations of the same chemical structure are shown in
@@ -170,17 +177,18 @@ datasets \cite{horst2009}.
 \label{figure:chemical-structures}
 \end{figure}
 
-Although graphs implicitly encode the 3D structure of a molecule
-(when combined with knowledge about favored bond angles and
-distances), many different low energy 3D structures, or conformers,
-may be consistent with the same graph structure. In addition, the 3D
-structure may have a ``secondary'' geometrical arrangement of features
-(such as the presence of a right-handed helix) which cannnot be
-encoded in the graph. Thus we have 3D representations
+Although graphs implicitly encode the 3D structure of a molecule (when
+combined with knowledge about favored bond angles and distances), many
+different low energy 3D structures, or conformers, may be consistent
+with the same graph structure. In addition, the 3D structure may have
+a ``secondary'' geometrical arrangement of features (such as the
+presence of a right-handed helix) which cannot be encoded in the
+graph. Thus we have 3D representations
 (Fig.~\ref{figure:chemical-structures}C) that make the 3D arrangement
 of atoms and bonds explicit. Fig.~\ref{figure:chemical-structures}D
 goes further and represents a molecular surface, encoding some
-property (such as lipophilicity, the ability to dissolve in fats) that varies over the surface.
+property (such as lipophilicity, the ability to dissolve in non-polar
+solvents) that varies over the surface.
 
 Even though some structure representations contain more explicit
 information than others, they are all equally valid and are suited for
@@ -207,13 +215,15 @@ are answered using trial and error.
 
 From the above it becomes clear that the nature of chemical problems
 is often a complex mixture of combinatorial and continuous
-problems. If we oversimplify the nature of chemical structures and
-their properties, we can not describe the world around us in
-sufficient detail. On the other hand, if we try to encode every detail
-(\emph{e.g.}, all possible 3D structures and their properties, all
-metabolites of a structure in humans in different tissues), the
-complexity of collecting, storing, and mining these data increases
-dramatically. For the field of cheminformatics to flourish, we need
+problems. 
+% If we oversimplify the nature of chemical structures and
+% their properties, we can not describe the world around us in
+% sufficient detail. On the other hand, if we try to encode every detail
+% (\emph{e.g.}, all possible 3D structures and their properties, all
+% metabolites of a structure in humans in different tissues), the
+% complexity of collecting, storing, and mining these data increases
+% dramatically. 
+For the field of cheminformatics to flourish, we need
 closer collaboration between chemists (or, more generally, life
 scientists) and computer scientists -- where the former need to be
 able to pose their problems in a way relevant for practical
@@ -222,18 +232,18 @@ capturing, storing, and analyzing chemical data which achieve optimal
 balances between the different risks in generalizable encodings and
 complexity (space and time). The goals of cheminformatics are to
 support better chemical decision making by 1. storing and integrating
-data in maintainable ways, 2.  providing enough open standards and
-tools so software engineering concepts allow applications and data to
-be used across heterogeneous platforms, and 3. mining the many
-chemical property spaces in a time- and space-efficient way. We will
-discuss all three goals in the following sections.
+data in maintainable ways, 2.  providing sufficient open standards and
+tools allowing applications and data to be used across heterogeneous
+platforms, and 3. mining the many chemical property spaces in a time-
+and space-efficient way. We will discuss all three goals in the
+following sections.
 
 \section{Bridging Cheminformatics and Computer Science}
 
 Our motivation for this article is to highlight a variety of topics in
-cheminformatics where modern CS research could contribute, and
-to present the computational and algorithmic problems
-that are addressed in the field.
+cheminformatics, presenting the computational and algorithmic problems
+faced in the field and how modern CS research can contribute.
+
 
 While cheminformatics has a broad applicability, ranging from
 agrochemical research and drug discovery to the design of novel

@@ -1,0 +1,170 @@
+\documentclass{sig-alternate}
+
+\usepackage{array}
+\usepackage{pifont}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{multirow}
+
+\newcommand{\none}{\ding{55}}
+\newcommand{\least}{\ding{51}}
+\newcommand{\little}{\ding{51}\ding{51}}
+\newcommand{\lots}{\ding{51}\ding{51}\ding{51}}
+
+
+\begin{document}
+\pagenumbering{arabic}
+
+
+\title{Open Questions for Computer Science and Cheminformatics}
+\numberofauthors{9}
+\author{
+\alignauthor
+Joerg Kurt Wegner\\
+       \affaddr{Tibotec BVBA}\\
+       \affaddr{Turnhoutseweg 30}\\
+       \affaddr{2340 Beerse Turnhout, Belgium}\\
+       \email{jwegner@its.jnj.com}
+% 2nd. author
+\alignauthor
+Aaron Sterling\\
+       \affaddr{Department of Computer Science}\\
+       \affaddr{Iowa State University}\\
+       \affaddr{Ames, Iowa, USA}\\
+       \email{sterling@iastate.edu}
+% 3rd author
+\alignauthor
+Rajarshi Guha\\
+\affaddr{NIH Center for Translational Therapeutics}\\
+\affaddr{9800 Medical Center Drive}\\
+\affaddr{Rockville, MD 20850}\\
+\email{guhar@mail.nih.gov}
+}
+
+\additionalauthors{Additional authors:
+Andreas Bender (University of Cambridge, email: {\texttt{andreas.bender@cantab.net}}),
+Jean-Loup Faulon (University of Evry, email: {\texttt{Jean-Loup.Faulon@issb.genopole.fr}}),
+Janna Hastings (European Bioinformatics Institute, Cambridge, UK, email: {\texttt{janna.hastings@gmail.com}}),
+Noel O'Boyle (University College Cork, Cork, Ireland, email: {\texttt{baoilleach@gmail.com}}),
+John Overington (European Bioinformatics Institute, Cambridge, UK, email: {\texttt{jpo@ebi.ac.uk}}),
+Herman Van Vlijmen (Tibotec, Beerse, Belgium, email: {\texttt{hvvlijme@its.jnj.com}}), and
+Egon Willighagen (Karolinska Institutet, Stockholm, Sweden, email: {\texttt{egon.willighagen@ki.se}})
+.}
+\maketitle
+%
+We offer the following open questions to suggest concrete interdisciplinary research directions for computer scientists working with chemoinformaticians.  This list is by no means exhaustive.  We have focused on questions that, in our opinion, are answerable, and whose answers would be of great interest to the field.  The questions are grouped roughly by computer science subarea, and include both open theoretical problems and ``requests'' for open-source practical implementations.  We hope CS researchers new to cheminformatics find this useful.
+
+\section*{Algorithmic graph theory}
+\begin{enumerate}
+\item \emph{Design an algorithm that approximately counts the number of (3D) conformers of a chemical formula.}
+
+This question encompasses the open questions of \emph{approximately counting the number of stereoisomers, or the number of tautomers, of a chemical formula}.  Goldberg and Jerrum designed an algorithm which, given a chemical formula, would output an isomer of that formula chosen uniformly at random~\cite{RandomlySampling}.  Perhaps the main theoretical obstacle to overcome is that molecules tend to be \emph{chiral} (that is, they have a ``handedness'' or 3D orientation), whereas traditional graph theory (and the Goldberg/Jerrum algorithm) treats graphs with identical vertices and edges as isomorphic.  So part of the question could be rephrased as, ``Given a labeled vertex set, count the number of structures that are identical on that vertex set, except that they differ in their 3D orientation.''  Mathematical chemists have designed measures of molecular chirality~\cite{ChiralityMeasures}. A resolution of this problem may require connecting graph enumeration algorithms to knot theory or other topics in topology~\cite{TopologicalLook}.
+%
+\item \emph{Write code that approximately counts the number of conformers of a chemical formula.}
+
+While this is related to the previous question, it is conceivable that one could answer this question without solving the theoretical problem.  For example, as we note in the main article, the commercial software MOLGEN can approximately enumerate structures that satisfy given spectral data, even though related theoretical enumeration problems appear wide open.
+%
+\item \emph{Design and implement efficient subgraph isomorphism algorithms for useful special cases of molecular graphs}.
+
+The Subgraph Isomorphism Problem is known to be $\textsf{NP}$-complete (hence possibly harder than the Graph Isomorphism Problem, which is not known to be $\textsf{NP}$-complete).  Nevertheless, finding maximum common subgraphs to match chemical structures is of fundamental importance in chemistry; hence, much work has been invested in partial solutions to this problem.  Raymond and Willet reviewed the state of the art in 2002~\cite{MCSreview}.  As one possible way to attack this problem, we note the empirical fact that molecular graphs are of bounded degree, and are observed to have \emph{treewidth} $\leq 5$~\cite{treewidth}.  Bounded treewidth is at least theoretically useful~\cite{Epp-JGAA-99}, and it may be possible to improve on current open-source implementations whose isomorphism-checking routines are written for all graphs, instead of taking advantage of special properties of chemical graphs.
+
+\item \emph{Searching within complex data types, e.g. molecules, for semantic web approaches}.
+
+The key bonus of the semantic web is that different data sources can be readily integrated with each other. In the field
+of Cheminformatics, we are not only interest in linking two molecules 
+(this normalization problem for different protomers, tautomers, or special cases of isomerisms remains open), but we
+are also interested in being able to search efficiently within molecules when being linked via semantic web approaches.
+What could be algorithmic solutions for this?
+\end{enumerate}
+
+\section*{Cryptography}
+One-way molecular featurization (???)
+
+\section*{Data mining}
+evaluation of similarities in a heterogeneous network.  What is a specific example here?
+
+integrate chemical structure information with ontologies.  Specific example problem?
+
+Classify molecular descriptors up to equivalence, and dependence on one another.
+
+systems-level understanding of small molecules.  What does this mean, and what would a specific challenge problem be?
+
+\begin{enumerate}
+
+\item \emph{Efficient molecule browsing, e.g. on scaffold level}.
+
+Chemical Abstract Services have a molecule browsing tool called SubScape, which allows to brows large-scale
+chemical spaces efficiently. What could be large-scale solutions for doing this within (combined and aligned) 
+public databases.
+%
+\item \emph{Large-scale browsing of molecular property spaces, e.g. on scaffold level, side-effect-level, ...}.
+
+Certain molecules might have hundreds of biological activities, side-effects in humans (from clinical trials), or
+many other properties attached to them. What are large-scale mining and visulization options, especially when thinking
+about mining private and public datasources at the very same time?
+%
+\item \emph{Patent text mining (curation)}.
+
+There are various tools for doing automatic text mining on chemical patents. Still, the overall acceptance rate is improvable
+since many medicinal chemists are very concerned about the data quality of such efforts. What could be done to improve
+the mining quality and to provide confidence level estimations for each molecule coming from patent mining? 
+How can patent mining be used to create new drugs faster or to speed-up collaboration/licensing discussions?
+\end{enumerate}
+
+\section*{Machine learning}
+I don't know.  Help?  Ideas: better kernelization techniques (something specific though), better algorithms to train X model about Y thing.
+\begin{enumerate}
+\item \emph{Large-scale vectorial versus kernels molecule similarity}
+
+Vectorial molecule encodings serve as efficient approximations.
+Sometimes non-vectorial molecular 3D shape or molecule kernel comparisons might be more suitabe to compare molecules, since
+they might better correlate with biological activity, toxicity in humans, etc. One key problem is that molecular 3D shape 
+or molecule kernel approaches require to compare two molecules (or their 3D conformational eplosions) directly.
+This becomes prohibitively expensive when considering millions of molecules. What could be potential solutions for approximating boundary 
+conditions or large-scale mining methods allowing within a second range to return all similar molecules to molecule X, especially
+considering not just one vectorial encoding, but molecule kernels, ligand-protein similarities (for example from ligand-protein crystal structures), 
+or chemogenomics similarities (all reported biological activities for one molecule).
+%
+\item \emph{Using multiple annotations for improving molecular mining/predictions (chemogenomics)}
+
+As an example: Biological activities might not be independent of each other, but have a certain correlation between each other.
+In Chemogenomics this is used for creating models of combining molecules with protein sequences, molecules with active sites of proteins,
+molecules with biological read-outs of multiple assays. How can we optimize such highly complex mining scenarios, especially
+when considering large-scale data sets with hundred of thousands molecules and thousands of biological activities? 
+How can we combine, mine, and visualize categorial and continuous output variables, e.g. hydrophobicity of a molecule and toxicity in humans, 
+by still being able to make conrete proposals to medicinal chemistry of which parts of the molecule needs to be changed to
+optimize the effect on a certain set of multi-objective variables? Is analoging (creating vrey small modifications of a molecule and measuring its activities)
+really the most efficient way forward? If we test molecules, should we test it in a single biological assay or in multiple biological assays, if multiple, which ones?
+If a company does not have a biological assay within reach, which other partner could offer testing a molecule within two days (vendor matching based on licenses)?
+\end{enumerate} 
+
+\section*{Software engineering}
+\begin{enumerate}
+\item \emph{Large-scale exchange and use of 3D conformational databases}
+
+There exist a multitude of programs generation 3D conformations of molecules. Still, often input formats vary and require
+to re-create 3D conformational spaces with other programs. This does not only complicate the maintenance scenario of such
+databases, especially with the explosion of public databases, but also creates hugh space and time complexity issues when
+searching within such databases. What could be better interfaces, maintenance, data structures, and private/public sharing
+scenarios for conformational 3D databases? 
+Many software vendors use different solutions for parallizing comput jobs: SGE, PVM, MPI, etc. 
+Everyone knowing thh enterprise structure within companies might know that having more than one parallel processing framework 
+is not easy? What could be better ways to streamline parallel processing structures for 
+cheminformatics (and molecular modeling) algorithms? Is a cloud really an option? What about SaaS with secured data transfer?
+\end{enumerate}
+
+\section*{Enterprise software (KM,ELN)}
+We know that the enterprise software and ELN market is still growing.
+\begin{enumerate}
+\item \emph{Public-private collaboration and security scenarios}
+
+Having within an organization, e.g. a commercial company, single or a small number of established KM and ELN products. 
+How can we improve the maintenance, leveraging, and collaboration with many external partners (each of them potentially
+with another KM/ELN solution)? Which party is hosting which data in which data structure, and how can we ensure that only
+pre-defined data entries (and a limited number of annotations, e.g. bioological activities) are visible to a partner.
+How can this be organized for a multitude of partners? Cloud computing?
+\end{enumerate}
+
+\bibliographystyle{abbrv}
+\bibliography{paper}
+\end{document}

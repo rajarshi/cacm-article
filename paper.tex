@@ -44,7 +44,7 @@ Rajarshi Guha\\
 \additionalauthors{Additional authors:
 Andreas Bender (University of Cambridge, email: {\texttt{andreas.bender@cantab.net}}),
 Jean-Loup Faulon (University of Evry, email: {\texttt{Jean-Loup.Faulon@issb.genopole.fr}}),
-Janna Hastings (European Bioinformatics Institute, Cambridge, UK, email: {\texttt{janna.hastings@gmail.com}}),
+Janna Hastings (European Bioinformatics Institute, Cambridge, UK, email: {\texttt{hastings@ebi.ac.uk}}),
 Noel O'Boyle (University College Cork, Cork, Ireland, email: {\texttt{baoilleach@gmail.com}}),
 John Overington (European Bioinformatics Institute, Cambridge, UK, email: {\texttt{jpo@ebi.ac.uk}}),
 Herman Van Vlijmen (Tibotec, Beerse, Belgium, email: {\texttt{hvvlijme@its.jnj.com}}), and
@@ -56,7 +56,7 @@ Egon Willighagen (Karolinska Institutet, Stockholm, Sweden, email: {\texttt{egon
 \maketitle
 \begin{abstract}
   One of the most prominent success stories in all the sciences over
-  the last decade has been the advance of bioinformatics: The
+  the last decade has been the advance of bioinformatics: the
   interdisciplinary collaboration between computer scientists and
   molecular biologists led as one of its major accomplishments to the
   sequencing of the human genome, where researchers connected
@@ -67,12 +67,12 @@ Egon Willighagen (Karolinska Institutet, Stockholm, Sweden, email: {\texttt{egon
   properties.  Cheminformatics has wide applicability, from the
   discovery of novel drug candidates to the optimization of certain
   physicochemical properties of small molecules. Until recently, much
-  of the the data and some of the techniques employed in the
+  of the data and some of the techniques employed in the
   cheminformatics field have been closely guarded secrets of companies
-  whose financial success depended on being the first to produce the
-  new therapeutic molecules.  Only within the last decade -- and as an
+  whose financial success depended on being the first to produce
+  new therapeutic molecules.  Only within the last decade -- as an
   effect of a change in mindsets, government-mandated policy changes,
-  and, not least, because of chemists volunteering their time
+  and, not least, as a result of chemists volunteering their time
   for an Open Science ``movement'' -- have researchers gained access to
   freely available software packages and databases of tens of millions
   of chemicals. Academic chemists now confront a variety of unsolved
@@ -90,16 +90,16 @@ data}
 \section{Is Cheminformatics the New \\Bioinformatics?}
 
 Novel technologies in the life sciences churn out information at an
-ever increasing rate -- public data stores such as the one at the
-European Bioinformatics Institute (EBI) contain on the order of 10
+ever increasing rate -- public data stores such as that of the
+European Bioinformatics Institute (EBI) contain in the order of 10
 petabytes of biological information.  While biological information has
 been publicly available for decades, the same has not been true for
 chemical information, until recently. It was not until 2004 that a
 large public small molecule structure repository (PubChem) became
 freely available. This was followed by other databases. While much of
 the foundational algorithms of cheminformatics have been described
-since the 1950s, publicly available software implementing many of
-these algorithms have only been accessible in the last ten to fifteen
+since the 1950s, publicly available (open source) software implementing many of
+these algorithms has only been accessible in the last ten to fifteen
 years \cite{faulon2010}.
 
 So why is chemical information important and why should we care about
@@ -147,7 +147,7 @@ former, information can very frequently be represented as
 one-dimensional strings, which are relatively easy to handle
 computationally. In the case of the latter however, chemical
 structures may possess rings, branches as well as multiple valid
-representations of the same structure (such as \emph{tautomers}, where
+representations of the same molecule (such as \emph{tautomers}, where
 hydrogen atoms can be positioned in different places of the
 molecules), potentially giving rise to ambiguities. Hence, chemical
 structures are often reported to be more difficult to standardize and
@@ -172,10 +172,10 @@ datasets \cite{horst2009}.
 \includegraphics[height=2in]{chemical-structures.png}
 \caption{A hierarchy of chemical structure representations, increasing
   in information content from left to right and top to bottom. A
-  chemists traditional 2D depiction (A), a labeled graph (B), a 3D
+  chemist's traditional 2D depiction (A), a labeled graph (B), a 3D
   conformation (C) and a surface represention (D). All show differing
   (and valid) aspects of the same molecule and are suited for
-  differing purposes. The choice of representation is guided by the
+  different purposes. The choice of representation is guided by the
   intended use of the structure data.}
 \label{figure:chemical-structures}
 \end{figure}

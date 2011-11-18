@@ -70,10 +70,11 @@ The Subgraph Isomorphism Problem is known to be $\textsf{NP}$-complete (hence po
 
 \item \emph{Searching within complex data types, e.g. molecules, for semantic web approaches}.
 
-The key bonus of the semantic web is that different data sources can be readily integrated with each other. In the field
+One key concept of the linked data web, the semantic web, is that different data sources can be readily integrated with each other. Still, in the field
 of Cheminformatics, we are not only interest in linking two molecules 
-(this normalization problem for different protomers, tautomers, or special cases of isomerisms remains open), but we
-are also interested in being able to search efficiently within molecules when being linked via semantic web approaches.
+(the linking normalization problem for different protomers, tautomers, or special cases of isomerisms remain open), but we
+are also interested in being able to search efficiently within molecules when being linked via semantic web approaches. Typical
+searches will require being able to apply substructure or similarity searches.
 What could be algorithmic solutions for this?
 \end{enumerate}
 
@@ -81,61 +82,54 @@ What could be algorithmic solutions for this?
 One-way molecular featurization (???)
 
 \section*{Data mining}
-evaluation of similarities in a heterogeneous network.  What is a specific example here?
-
-integrate chemical structure information with ontologies.  Specific example problem?
-
-Classify molecular descriptors up to equivalence, and dependence on one another.
-
-systems-level understanding of small molecules.  What does this mean, and what would a specific challenge problem be?
-
 \begin{enumerate}
-
-\item \emph{Efficient molecule browsing, e.g. on scaffold level}.
-
-Chemical Abstract Services have a molecule browsing tool called SubScape, which allows to brows large-scale
-chemical spaces efficiently. What could be large-scale solutions for doing this within (combined and aligned) 
-public databases.
+\item evaluation of similarities in a heterogeneous network (JKW: What are heterogenous networks?).  What is a specific example here?
+\item integrate chemical structure information with ontologies.  Specific example problem?
+\item Classify molecular descriptors up to equivalence, and dependence on one another.
+\item systems-level understanding of small molecules (JKW: which systems? This will help being clearer on the challenge).  What does this mean, and what would a specific challenge problem be?
+%\item \emph{Efficient molecule browsing, e.g. on scaffold level}.
+%
+%Chemical Abstract Services have a molecule browsing tool called SubScape, which allows to browse large-scale
+%chemical spaces efficiently. What could be large-scale solutions for doing this within (combined and aligned) 
+%public databases.
 %
 \item \emph{Large-scale browsing of molecular property spaces, e.g. on scaffold level, side-effect-level, ...}.
 
-Certain molecules might have hundreds of biological activities, side-effects in humans (from clinical trials), or
-many other properties attached to them. What are large-scale mining and visulization options, especially when thinking
-about mining private and public datasources at the very same time?
+Certain molecules might have hundreds of biological activities, side-effects in humans (SIDER database \cite{Kuhn_Campillos_Letunic_Jensen_Bork_2010}), or
+many other properties attached to them. What are large-scale mining and visulization options? 
+How can we mine private and public data sources at the very same time?
 %
-\item \emph{Patent text mining (curation)}.
+\item \emph{Chemical image/text mining in patents (curation)}.
 
-There are various tools for doing automatic text mining on chemical patents. Still, the overall acceptance rate is improvable
-since many medicinal chemists are very concerned about the data quality of such efforts. What could be done to improve
-the mining quality and to provide confidence level estimations for each molecule coming from patent mining? 
+There are various tools for doing automatic text mining on chemical patents. Still, the overall acceptance rate of chemical
+text mining is improvable, since many medicinal chemists are very concerned about the data quality of such efforts. 
+What could be done to improve the mining quality, curate the obtained data, and to provide confidence level estimations 
+for each molecule coming from patent mining? Do require image2structure and text2structure mining also data stores
+for ensuring a sufficient amount of confidence and data quality?
 How can patent mining be used to create new drugs faster or to speed-up collaboration/licensing discussions?
 \end{enumerate}
 
 \section*{Machine learning}
-I don't know.  Help?  Ideas: better kernelization techniques (something specific though), better algorithms to train X model about Y thing.
 \begin{enumerate}
 \item \emph{Large-scale vectorial versus kernels molecule similarity}
 
-Vectorial molecule encodings serve as efficient approximations.
+Vectorial molecule encodings can serve as efficient approximations of molecules.
 Sometimes non-vectorial molecular 3D shape or molecule kernel comparisons might be more suitabe to compare molecules, since
-they might better correlate with biological activity, toxicity in humans, etc. One key problem is that molecular 3D shape 
-or molecule kernel approaches require to compare two molecules (or their 3D conformational eplosions) directly.
-This becomes prohibitively expensive when considering millions of molecules. What could be potential solutions for approximating boundary 
-conditions or large-scale mining methods allowing within a second range to return all similar molecules to molecule X, especially
-considering not just one vectorial encoding, but molecule kernels, ligand-protein similarities (for example from ligand-protein crystal structures), 
-or chemogenomics similarities (all reported biological activities for one molecule).
+they might better correlate with activities. One key problem is that non-vectorial encodings require to compare all molecules
+(or their 3D conformational eplosions) in a pair-wise manner.
+This becomes prohibitively expensive when considering millions of molecules.
+Can dyadic data approaches help \cite{Hochreiter:2006:SVM:1159508.1159516}? Other approximations or cascading flows?
 %
 \item \emph{Using multiple annotations for improving molecular mining/predictions (chemogenomics)}
 
 As an example: Biological activities might not be independent of each other, but have a certain correlation between each other.
 In Chemogenomics this is used for creating models of combining molecules with protein sequences, molecules with active sites of proteins,
-molecules with biological read-outs of multiple assays. How can we optimize such highly complex mining scenarios, especially
+or molecules with biological activities of multiple assays. How can we optimize such highly complex mining scenarios, especially
 when considering large-scale data sets with hundred of thousands molecules and thousands of biological activities? 
 How can we combine, mine, and visualize categorial and continuous output variables, e.g. hydrophobicity of a molecule and toxicity in humans, 
-by still being able to make conrete proposals to medicinal chemistry of which parts of the molecule needs to be changed to
-optimize the effect on a certain set of multi-objective variables? Is analoging (creating vrey small modifications of a molecule and measuring its activities)
+by still being able to make concrete proposals to medicinal chemistry? Is analoging (creating very small modifications of a molecule and measuring its activities)
 really the most efficient way forward? If we test molecules, should we test it in a single biological assay or in multiple biological assays, if multiple, which ones?
-If a company does not have a biological assay within reach, which other partner could offer testing a molecule within two days (vendor matching based on licenses)?
+If a company does not have a biological assay within reach, which other partner could offer testing a molecule within two days (vendor matching based on licenses or contracts)?
 \end{enumerate} 
 
 \section*{Software engineering}
@@ -147,10 +141,11 @@ to re-create 3D conformational spaces with other programs. This does not only co
 databases, especially with the explosion of public databases, but also creates hugh space and time complexity issues when
 searching within such databases. What could be better interfaces, maintenance, data structures, and private/public sharing
 scenarios for conformational 3D databases? 
-Many software vendors use different solutions for parallizing comput jobs: SGE, PVM, MPI, etc. 
-Everyone knowing thh enterprise structure within companies might know that having more than one parallel processing framework 
-is not easy? What could be better ways to streamline parallel processing structures for 
+Many software vendors use different solutions for parallizing compute jobs: SGE, PVM, MPI, etc. 
+Everyone knowing the enterprise IT approval cycles might know that having more than one parallel processing framework 
+is not easy. What could be better ways to streamline parallel processing structures for 
 cheminformatics (and molecular modeling) algorithms? Is a cloud really an option? What about SaaS with secured data transfer?
+Can this also offer alternative licensing strategies for software suites in this domain?
 \end{enumerate}
 
 \section*{Enterprise software (KM,ELN)}
@@ -158,11 +153,12 @@ We know that the enterprise software and ELN market is still growing.
 \begin{enumerate}
 \item \emph{Public-private collaboration and security scenarios}
 
-Having within an organization, e.g. a commercial company, single or a small number of established KM and ELN products. 
+Let us assume an organization, e.g. a commercial company, has a single or a small number of established KM and ELN products. 
 How can we improve the maintenance, leveraging, and collaboration with many external partners (each of them potentially
-with another KM/ELN solution)? Which party is hosting which data in which data structure, and how can we ensure that only
-pre-defined data entries (and a limited number of annotations, e.g. bioological activities) are visible to a partner.
-How can this be organized for a multitude of partners? Cloud computing?
+with another KM/ELN solution)? Which party is hosting which data in which data structure (ontologies?), and 
+how can we ensure that only pre-defined data entries 
+(and a limited number of annotations, e.g. biological activities) are visible to a partner.
+How can this be organized for a multitude of partners? Cloud computing, user management, encryption granularity and efficient security management?
 \end{enumerate}
 
 \bibliographystyle{abbrv}

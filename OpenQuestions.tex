@@ -93,6 +93,18 @@ One-way molecular featurization (???)
 %chemical spaces efficiently. What could be large-scale solutions for doing this within (combined and aligned) 
 %public databases.
 %
+\item \emph{Dynamic similarity search on instant binary vectors}.
+
+Binary feature vectors are a common practice for chemical similarity searches. The typical process starts with 1. creating
+binary substructure (or other feature vectors) \cite{citeulike:8530538}, 2. creating fixed-length binary vectors of typically
+1024 bits for reducing space requirements and speeding up further similarity searches (by loosing some accuracy), 3. creating 
+further pre-computations for speeding up threshold based similarity searches \cite{doi:10.1021/ci800076s}.\\
+Still, if we are interested to employ dynamic changes in the similarity encodings, e.g. using only a set of binary features,
+then previously done hashing or pre-computations might need to be redone efficiently on the fly. Finally, the major goal
+is to employ similarity searches \cite{doi:10.1021/ci200235e} on a scale of multiple million entries and more optimizations and
+benchmarking studies are urgently required, e.g. using GPUs
+\cite{doi:10.1021/ci1004948}, optimizing pair-wise similarity calculations \cite{MINF:MINF201100050}.
+%
 \item \emph{Large-scale browsing of molecular property spaces, e.g. on scaffold level, side-effect-level, ...}.
 
 Certain molecules might have hundreds of biological activities, side-effects in humans (SIDER database \cite{Kuhn_Campillos_Letunic_Jensen_Bork_2010}), or

@@ -215,29 +215,21 @@ what type of labels are required? Currently, many of these questions
 are answered using trial and error.
 
 From the above it becomes clear that the nature of chemical problems
-is often a complex mixture of combinatorial and continuous
-problems. 
-% If we oversimplify the nature of chemical structures and
-% their properties, we can not describe the world around us in
-% sufficient detail. On the other hand, if we try to encode every detail
-% (\emph{e.g.}, all possible 3D structures and their properties, all
-% metabolites of a structure in humans in different tissues), the
-% complexity of collecting, storing, and mining these data increases
-% dramatically. 
-For the field of cheminformatics to flourish, we need
-closer collaboration between chemists (or, more generally, life
-scientists) and computer scientists -- where the former need to be
-able to pose their problems in a way relevant for practical
-applications; and where the latter are able to devise ways of
-capturing, storing, and analyzing chemical data which achieve optimal
-balances between the different risks in generalizable encodings and
-complexity (space and time). The goals of cheminformatics are to
-support better chemical decision making by 1. storing and integrating
-data in maintainable ways, 2.  providing sufficient open standards and
-tools allowing applications and data to be used across heterogeneous
-platforms, and 3. mining the many chemical property spaces in a time-
-and space-efficient way. We will discuss all three goals in the
-following sections.
+is often a complex mixture of combinatorial and continuous problems.
+For the field of cheminformatics to flourish, we need closer
+collaboration between chemists (or, more generally, life scientists)
+and computer scientists -- where the former need to be able to pose
+their problems in a way relevant for practical applications; and where
+the latter are able to devise ways of capturing, storing, and
+analyzing chemical data which achieve optimal balances between the
+different risks in generalizable encodings and complexity (space and
+time). The goals of cheminformatics are to support better chemical
+decision making by 1. storing and integrating data in maintainable
+ways, 2.  providing sufficient open standards and tools allowing
+applications and data to be used across heterogeneous platforms, and
+3. mining the many chemical property spaces in a time- and
+space-efficient way. We will discuss all three goals in the following
+sections.
 
 \section{Bridging Cheminformatics and Computer Science}
 
@@ -356,7 +348,7 @@ part of the structures in the database, while in similarity searching,
 the database is searched for structures similar (in some structure or
 property space) to a provided search, or query, structure. Chemical
 search packages are often implemented and optimized for a given
-database technology, for example, the OrChem package is an open source
+database technology, for example, the OrChem package is an Open Source
 chemical search package for the Oracle database \cite{rijnbeek2009}.
 
 Graph substructure matching is a variant of \emph{graph isomorphism},
@@ -398,47 +390,47 @@ fingerprints. While fast, heuristics have been developed
 \subsection{Molecules in their Biological Context}
 \label{sec:prof-ident}
 
-The preceding section focuses on the choice of representation of
-chemical structures. In the quest for the discovery of novel
-therapeutic agents, it is essential to study molecules as they are
-situated in a biological context, underlying the processes of life, 
-as metabolites, cofactors for enzymatic reactions, hormones, signalling
-molecules and environmental xenobiotics. This gives rise to the need
-to adequately represent and organise chemical data across biological
-databases such as those containing pathways, protein information or 
-biological samples. Integration and processing of data from such 
-disparate domains underlies ``systems'' level biological research.
-This gives rise to some additional challenges that standard chemical
-structural representation cannot address: firstly, the representation of
-\textit{classes of chemical entities} -- since, in many cases, a class of 
-compounds behave in a certain context in a biological system rather than
-a single molecule with a fully-specified structure -- and for similar
-reasons, chemical concepts such as \textit{groups} (parts of molecules); 
-secondly, the need to represent \textit{non-structural} groupings of 
-compounds of interest, since compounds may bind to the same or similar 
-targets or they may have  similar biological functions such as acting as 
-an anti-neoplastic -- preventing the development of tumors. With the 
-many different biological databases needing to refer to these different
-chemical entities in an organised and standardized 
-fashion to enable cross-database integration for a whole-systems 
-perspective, \textit{ontologies} and other semantic technologies 
-are being successfully employed to support annotation, classification and
-semantic cross-domain querying of chemical entities within
-biological systems. The most widely used ontology for biologically relevant
-chemical entities is ChEBI \cite{chebi2010}, containing around 26,500 
+In the quest for the discovery of novel therapeutic agents, it is
+essential to study molecules as they are situated in a biological
+context, as metabolites, cofactors for enzymatic reactions, hormones
+and signalling molecules. Thus we need to adequately represent and
+organise chemical data across biological databases such as those
+containing pathways, protein information or biological
+samples. Integration and processing of data from such disparate
+domains underlies ``systems'' level biological research.  This leads
+to additional challenges that standard chemical structural
+representation cannot address: firstly, the representation of
+\textit{classes of chemical entities} -- since, in many cases, a class
+of compounds behave in a certain context in a biological system rather
+than a single molecule with a fully-specified structure -- and for
+similar reasons, chemical concepts such as \textit{groups} (parts of
+molecules); secondly, the need to represent \textit{non-structural}
+groupings of compounds of interest, since compounds may bind to the
+same or similar targets or they may have similar biological functions
+such as acting as an anti-neoplastic -- preventing the development of
+tumors. With the many different biological databases needing to refer
+to these different chemical entities in an organised and standardized
+fashion to enable cross-database integration for a whole-systems
+perspective, \textit{ontologies} and other semantic technologies are
+being successfully employed to support annotation, classification and
+semantic cross-domain querying of chemical entities within biological
+systems. The most widely used ontology for biologically relevant
+chemical entities is ChEBI \cite{chebi2010}, containing around 26,500
 entities in an interlinked semantic graph as of November 2011, and
-being actively used for annotation in dozens of biological databases. 
-Ontologies are based on logical languages of 
-varying levels of expressivity, accompanied by sophisticated reasoning
-algorithms. They can be used to construct various sorts of semantic
-similarity (e.g. similarity in function, similarity in application) 
-which complement traditional structural similarity methods \cite{couto2010}.
-An open challenge is integrating graph-based chemical
-structure information with the wider logic-based ontology information, which 
-will allow combined automated reasoning and querying over the different domains 
-encoded in a growing number of interlinked ontologies.% \cite{hastingsowled2010}. 
-Enabling automated inferencing in such heterogenous linked systems brings us closer to
-achieving a systems level understanding of bioactive chemistry \cite{Oprea:2007fk}.
+being actively used for annotation in dozens of biological databases.
+Ontologies are based on logical languages of varying levels of
+expressivity, accompanied by sophisticated reasoning algorithms. They
+can be used to construct various sorts of semantic similarity
+(e.g. similarity in function, similarity in application) which
+complement traditional structural similarity methods \cite{couto2010}.
+An open challenge is integrating graph-based chemical structure
+information with the wider logic-based ontology information, which
+will allow combined automated reasoning and querying over the
+different domains encoded in a growing number of interlinked
+ontologies. % \cite{hastingsowled2010}.
+Enabling automated inferencing in such heterogenous linked systems
+brings us closer to achieving a systems level understanding of small
+molecule activity \cite{Oprea:2007fk}.
 
 \subsection{Expanding Chemical Space}
 \label{sec:struct-enum}
@@ -778,11 +770,6 @@ field, a software library that handles chemical structures and related
 data is essential. A wide variety of such chemical toolkits are
 available, both commercial (which may offer free academic
 licenses) and Open Source.
-% [JH comment]
-% we should standardize our nomenclature for the phrase 'Open Source' in the
-% document. Here it is capitalized, earlier it has been uncapitalized 
-% ('open source'), and below it is hyphenated! (open-source)
-% [JH comment]
 
 Due to the importance of cheminformatics to the pharmaceutical
 industry, numerous commercial vendors provide libraries,
@@ -797,15 +784,15 @@ arguments for and against Open Source; we focus on Open Source
 tools because this ensures that an interested reader will be able to explore
 cheminformatics problems with a minimum of hindrances.
 
-The extent of open-source software in cheminformatics has somewhat
+The extent of Open Source software in cheminformatics has somewhat
 lagged behind related fields such as bioinformatics, partly due to the
 existence of a lucrative pharmaceutical market for proprietary
 software. However, in recent years there has been a rise in the amount
-of open-source cheminformatics software. One contribution to this has
+of Open Source cheminformatics software. One contribution to this has
 been the Blue Obelisk group~\cite{BlueObelisk2011}
 (\url{http://blueobelisk.org}) of chemists, who have worked together
-to create interoperable open-source chemistry software (among other
-activities). Now there are a number of Open-Source chemical toolkits
+to create interoperable Open Source chemistry software (among other
+activities). Now there are a number of Open Source chemical toolkits
 available including the Chemistry Development Kit
 (CDK)~\cite{steinbeck2003}, Open Babel~\cite{openbabel2011}, RDKit and
 Indigo. These toolkits are written in Java or C++ (though toolkits
@@ -830,27 +817,27 @@ a large collection of molecular descriptors. On the other hand, Open
 Babel has robust support for 3D structure generation and optimization
 and supports the interconversion of a huge number of chemical file
 formats. Table~\ref{tab:features} (in the Appendix) compares features
-offered by the open-source toolkits currently available.  Given that
+offered by the Open Source toolkits currently available.  Given that
 there is ample scope for software engineering (algorithm
 implementation, code quality and analysis, building systems and so on), both
 the CDK and Open Babel are open to new contributions. Both are driven
 via public, active mailing lists and public issue tracking systems.
 
-Certain challenges faced by nearly all
-cheminformatics toolkits stem from the graph representation of
-chemistry. This representation, while succinct and amenable to
-computation, is only an approximation of reality -- and edge cases
-abound. Existing areas of interest are enumeration of colored graphs,
-taking into account symmetry, and symmetry detection itself, which not
-only derives from the chemical graph, but typically also from the 3D
-geometry of the chemical. It is important to realize that although
-chemical representations have increased in sophistication over the
-years, many chiral molecules or non-standard bonding cases such as 
-organometallic compounds cannot be satisfactorily handled by
-current representation systems. A more challenging aspect is
-that the chemical representation of a molecule really needs to capture
-non-static graphs, in order to take into account delocalisation and
-the tautomeric phenomena molecules undergo in practice.
+Certain challenges faced by nearly all cheminformatics toolkits stem
+from the graph representation of chemistry. This representation, while
+succinct and amenable to computation, is only an approximation of
+reality -- and edge cases abound. Existing areas of interest are
+enumeration of colored graphs, taking into account symmetry, and
+symmetry detection itself, which not only derives from the chemical
+graph, but typically also from the 3D geometry of the chemical. It is
+important to realize that although chemical representations have
+increased in sophistication over the years, many chiral molecules or
+non-standard bonding cases such as organometallic compounds cannot be
+satisfactorily handled by current representation systems. A more
+challenging aspect is that the chemical representation of a molecule
+really needs to capture non-static graphs, in order to take into
+account delocalisation and the tautomeric phenomena molecules undergo
+in practice.
 
 Of equal importance to the development of new algorithms is freely
 available data on which to train and test new methods. As has been
@@ -885,28 +872,25 @@ issues of profits, competitive intelligence and intellectual property,
 which are relevant to the pharmaceutical as well as other chemical
 industries. This is in contrast to much of bioinformatics, where the
 data and tools have been freely available since the inception of the
-field. This disparity could be attributed to the fact that 
-the outcomes from cheminformatics methods
-and software have a more direct impact on profits, in terms of
-identifying lead-like compounds and improving the properties of drug
-candidates, while bioinformatics software is employed in
-upstream areas such as target identification, 
-perhaps not as directly related to
-possible profits as an actual small molecule.
+field. This disparity could be attributed to the fact that the
+outcomes from cheminformatics methods and software have a more direct
+impact on profits, in terms of identifying lead-like compounds and
+improving the properties of drug candidates, while bioinformatics
+software is employed in upstream areas such as target identification,
+perhaps not as directly related to possible profits as an actual small
+molecule. Furthermore, chemical data (structure, activity information
+etc.) has been harder to acquire and when done on large scales can be
+extremely intensive in terms of time and effort, whereas
+bioinformatics data (e.g., sequences) are much easier to obtain.
 
-%Furthermore, chemical data (structure, activity information etc.) has
-%been harder to acquire and when done on large scales can be extremely
-%intensive in terms of time and effort, whereas bioinformatics data (sequences for
-%example) are much easier to obtain. 
-While both fields have theoretical
-components, it is possible that the free availability of large amounts
-of data in bioinformatics drove the development of publicly
-available tools to handle it. In contrast, the proprietary nature of
-chemical data would imply that tools to process and analyze that data
-were of interest primarily to the owners. As a result, the incentive
-to make cheminformatics software public has been low and since the
-users of it were primarily industrial, commercial software was the
-norm.
+While both fields have theoretical components, it is possible that the
+free availability of large amounts of data in bioinformatics drove the
+development of publicly available tools to handle it. In contrast, the
+proprietary nature of chemical data would imply that tools to process
+and analyze that data were of interest primarily to the owners. As a
+result, the incentive to make cheminformatics software public has been
+low and since the users of it were primarily industrial, commercial
+software was the norm.
 
 Of course, with the advent of systems biology and its large amounts of
 heterogenous data and wide array of (possibly profitable) commercial
@@ -916,30 +900,28 @@ biosystems implies that cheminformatics and bioinformatics will both
 be required to tackle future cross-domain integrative problems.
 
 As we enter the second decade of the 21st century, the cheminformatics
-landscape is rapidly shifting.  There now exist free-of-charge
-open-source cheminformatics toolkits, applications and open databases
-with tens of millions of compounds and containing valuable
-experimental bioactivity data. Modern experimental techniques such as
-high throughput sequencing have made the generation of large amounts
-of structure-activity data much more accessible.  We believe the
+landscape is rapidly shifting.  There now exist free-of-charge Open
+Source cheminformatics toolkits, applications and open databases with
+tens of millions of compounds and containing valuable experimental
+bioactivity data. Modern experimental techniques such as high
+throughput sequencing have made the generation of large amounts of
+structure-activity data much more accessible.  We believe the
 prospects for academic and industrial collaboration between chemists
-and computer scientists are bright, and we would like to encourage
-more computer scientists to participate in cheminformatics research.
+and computer scientists are bright, and encourage more computer
+scientists to participate in cheminformatics research.
 
 There is an admittedly steep learning curve, as significant domain
 knowledge is required to attack many problems in cheminformatics due
 to the underlying chemistry of the systems being studied. Indeed, many
-issues faced by chemists are often detailed and subtle and do not
-admit as clean an abstraction as ``algorithms on a string'', the way
-many bioinformatics algorithms can be abstracted into a computer
-science framework.  As a result, while one can certainly make
-significant contributions to cheminformatics by just considering
-structures as graphs, one is limited to somewhat abstract
-problems. Keeping in mind that cheminformatics is fundamentally a
-practical field that serves to help and advance experimental
-chemistry, the key challenges require an understanding of the
-underlying chemical systems. 
-%One could certainly study for a degree in chemistry. Alternatively one could collaborate with a chemist or cheminformatics practitioner.
+issues faced by chemists do not admit as clean an abstraction as
+``algorithms on a string'', the way many bioinformatics algorithms can
+be abstracted into a computer science framework.  As a result, while
+one can certainly make significant contributions to cheminformatics by
+just considering structures as graphs, one is limited to somewhat
+abstract problems. Keeping in mind that cheminformatics is
+fundamentally a practical field that serves to help and advance
+experimental chemistry, the key challenges require an understanding of
+the underlying chemical systems.
 
 Nevertheless, because of the increasing availability of tools and
 data, the barrier to entry for non-chemists and non-cheminformaticians
@@ -948,7 +930,7 @@ benefit from computer science can now be comprehensively tackled: for
 a theorist, graph-theoretic questions of three-dimensional
 enumeration; for a database designer, more effective search algorithms
 and ontologies; for a practical programmer, expansion of the many
-open-source cheminformatics projects.  If more chemists think
+Open Source cheminformatics projects.  If more chemists think
 algorithmically, and more computer scientists think chemically we will be
 much better positioned to take not only ``simple'' chemicals into
 account (only one identifier and isomer possible per molecule), but
@@ -1115,7 +1097,7 @@ Relevant Market Need   & and they possess the means  &  companies (but often to 
     \multicolumn{5}{l}{for each project was considered.  We did not count Indigo's lines of code.} \\
     \multicolumn{5}{l}{3. More checks indicates more complete implementation of a feature.} \\
   \end{tabular}
-  \caption{Cheminformatics features provided by open-source toolkits.}
+  \caption{Cheminformatics features provided by Open Source toolkits.}
   \label{tab:features}
 \end{table*}
 

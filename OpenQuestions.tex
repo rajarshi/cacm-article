@@ -83,10 +83,40 @@ One-way molecular featurization (???)
 
 \section*{Data mining \& machine learning}
 \begin{enumerate}
-\item evaluation of similarities in a heterogeneous network (JKW: What are heterogenous networks?).  What is a specific example here?
-\item integrate chemical structure information with ontologies.  Specific example problem?
-\item Classify molecular descriptors up to equivalence, and dependence on one another.
-\item systems-level understanding of small molecules (JKW: which systems? This will help being clearer on the challenge).  What does this mean, and what would a specific challenge problem be?
+
+
+\item \emph{Small molecules \& phenotypic data}
+
+Phenotypic (where one takes images of cells and then analyzes them
+extract numerical features from the image) screens are increasingly
+common. These types of screens lead to very large, very high
+dimensional datasets.
+\begin{itemize}
+\item What methods are suitable to perform feature selection and
+  modeling of such data
+\item Does phenotype-derived data lead to to ``better'' models for
+  small molecules compared to the usual structure-derived data?
+\end{itemize}
+
+\item \emph{Inverse QSAR}
+
+(statistical) QSAR is an example of traditional data mining where one
+correlates a set of independent variables to a dependent
+variable. This lets one predict properties of a new molecule based on
+its structural features and those of a training set. The inverse QSAR
+problem is such that given a molecule structure representation
+(usually a descriptor vector), what are the possible input structures
+that satisfy the representation. This can be made more complex, by
+asking that the input structures also satisfy aexperimental property
+range.
+\begin{itemize}
+\item What methodologies can be devised to address this problem?
+\item How does a given methodology allow us to translate the
+  descriptor space to a minimal region of the input space?
+\item Are there internal features of a modeling algorithm (say
+  hyperplanes in a SVM approach) that lets us simplify the problem?
+\end{itemize}
+
 %\item \emph{Efficient molecule browsing, e.g. on scaffold level}.
 %
 %Chemical Abstract Services have a molecule browsing tool called SubScape, which allows to browse large-scale
@@ -113,27 +143,23 @@ One-way molecular featurization (???)
   calculations \cite{MINF:MINF201100050}.
 %
 
-\item \emph{Large-scale browsing of molecular property spaces, e.g. on scaffold level, side-effect-level, ...}.
-
-  Certain molecules might have hundreds of biological activities,
-  side-effects in humans (SIDER database
-  \cite{Kuhn_Campillos_Letunic_Jensen_Bork_2010}), or many other
-  properties attached to them. What are large-scale mining and
-  visulization options?  How can we mine private and public data
-  sources at the very same time?
-%
 \item \emph{Chemical image/text mining in patents (curation)}.
 
   There are various tools for doing automatic text mining on chemical
   patents. Still, the overall acceptance rate of chemical text mining
   is improvable, since many medicinal chemists are very concerned
-  about the data quality of such efforts.  What could be done to
-  improve the mining quality, curate the obtained data, and to provide
-  confidence level estimations for each molecule coming from patent
-  mining? Do require image2structure and text2structure mining also
-  data stores for ensuring a sufficient amount of confidence and data
-  quality?  How can patent mining be used to create new drugs faster
-  or to speed-up collaboration/licensing discussions?
+  about the data quality of such efforts.
+
+  \begin{itemize}
+  \item What could be done to improve the mining quality, curate the
+    obtained data, and to provide confidence level estimations for
+    each molecule coming from patent mining?
+  \item Do require image2structure and text2structure mining also data
+    stores for ensuring a sufficient amount of confidence and data
+    quality?
+  \item How can patent mining be used to create new drugs faster or to
+    speed-up collaboration/licensing discussions?
+ \end{itemize}
 
 \item \emph{Large-scale vectorial versus kernels molecule similarity}
 
@@ -172,7 +198,7 @@ One-way molecular featurization (???)
 
 \section*{Databases \& software engineering}
 \begin{enumerate}
-\item \emph{Large scale conformational databases}
+\item \emph{Large scale conformational databases}.
 
   While many programs are availabel to generate 3D conformations, on
   the fly generation for large collections can be time
@@ -191,7 +217,27 @@ One-way molecular featurization (???)
   \item What type of parallel infrastructure can be used to speed up queries?
   \end{itemize}
 
+
+\item \emph{Database indexing schemes for chemical representations}. 
+
+Databases of chemical structures are ubiqituous, employing a variety
+of RDBMS products. Structure based queries (exact match, substructure,
+similarity) are dependent on the chemical representation - most
+solutions employ a linear string based form (SMILES, InChI) and
+depending on the nature queries to be supported, some are preferred
+over others. While one can perform linear scans, indexing is key to
+efficient query performance.
+\begin{itemize}
+\item  Since many queries use binary fingerprints as pre-screens, what
+  types of indexing schemes can be designed to support queries on
+  binary vectors?
+\item If we choose to support 3D searches (shape, pharmacophore) what
+  indexing scheme will allow us to perform these types of queries
+  efficiently?
+\end{itemize}
+
 \item \emph{Map/Reduce in cheminformatics}
+
   Many cheminformatics tasks apply algorithms over large input files
   or across many molecules (similarity and substructure search,
   docking, filtering). A simple way to parallelize this is to chunk

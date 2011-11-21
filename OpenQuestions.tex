@@ -98,19 +98,26 @@ dimensional datasets.
   small molecules compared to the usual structure-derived data?
 \end{itemize}
 
-\item \emph{Inverse QSAR}
+\item \emph{Inverse QSAR (or de-novo design)}
 
 (statistical) QSAR is an example of traditional data mining where one
 correlates a set of independent variables to a dependent
 variable. This lets one predict properties of a new molecule based on
 its structural features and those of a training set. The inverse QSAR
-problem is such that given a molecule structure representation
+problem, also de-novo design, is such that given a molecule structure representation
 (usually a descriptor vector), what are the possible input structures
-that satisfy the representation. This can be made more complex, by
-asking that the input structures also satisfy aexperimental property
+that satisfy the representation. This process might be considered as
+a chemical design of experiments. It is clearly a non-continuous optimization problem, since
+not all chemical molecules might be accessible, and cost/risk to create molecules phsically is another
+critical factor. This can be made more complex, by
+asking that the input structures also satisfy an experimental property
 range.
 \begin{itemize}
 \item What methodologies can be devised to address this problem?
+\item How can we ensure combinatorically created suggestions make use of the large 
+chemical structure, chemical building block, and chemical reaction databases by suggesting
+chemically feasible molecules (not just virtual accessible ones)? How can we improve 
+synthetic accessibility predictions \cite{Boda_Seidel_Gasteiger_2007}?
 \item How does a given methodology allow us to translate the
   descriptor space to a minimal region of the input space?
 \item Are there internal features of a modeling algorithm (say
@@ -139,7 +146,7 @@ range.
   goal is to employ similarity searches \cite{doi:10.1021/ci200235e}
   on a scale of multiple million entries and more optimizations and
   benchmarking studies are urgently required, e.g. using GPUs
-  \cite{doi:10.1021/ci1004948}, optimizing pair-wise similarity
+  \cite{doi:10.1021/ci1004948}, or optimizing pair-wise similarity
   calculations \cite{MINF:MINF201100050}.
 %
 
@@ -168,7 +175,7 @@ range.
   molecule kernel comparisons might be more suitabe to compare
   molecules, since they might better correlate with activities. One
   key problem is that non-vectorial encodings require to compare all
-  molecules (or their 3D conformational eplosions) in a pair-wise
+  molecules (or their 3D conformational explosions) in a pair-wise
   manner.  This becomes prohibitively expensive when considering
   millions of molecules.  Can dyadic data approaches help
   \cite{Hochreiter:2006:SVM:1159508.1159516}? Other approximations or

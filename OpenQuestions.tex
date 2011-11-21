@@ -115,41 +115,62 @@ One-way molecular featurization (???)
 
 \item \emph{Large-scale browsing of molecular property spaces, e.g. on scaffold level, side-effect-level, ...}.
 
-Certain molecules might have hundreds of biological activities, side-effects in humans (SIDER database \cite{Kuhn_Campillos_Letunic_Jensen_Bork_2010}), or
-many other properties attached to them. What are large-scale mining and visulization options? 
-How can we mine private and public data sources at the very same time?
+  Certain molecules might have hundreds of biological activities,
+  side-effects in humans (SIDER database
+  \cite{Kuhn_Campillos_Letunic_Jensen_Bork_2010}), or many other
+  properties attached to them. What are large-scale mining and
+  visulization options?  How can we mine private and public data
+  sources at the very same time?
 %
 \item \emph{Chemical image/text mining in patents (curation)}.
 
-There are various tools for doing automatic text mining on chemical patents. Still, the overall acceptance rate of chemical
-text mining is improvable, since many medicinal chemists are very concerned about the data quality of such efforts. 
-What could be done to improve the mining quality, curate the obtained data, and to provide confidence level estimations 
-for each molecule coming from patent mining? Do require image2structure and text2structure mining also data stores
-for ensuring a sufficient amount of confidence and data quality?
-How can patent mining be used to create new drugs faster or to speed-up collaboration/licensing discussions?
+  There are various tools for doing automatic text mining on chemical
+  patents. Still, the overall acceptance rate of chemical text mining
+  is improvable, since many medicinal chemists are very concerned
+  about the data quality of such efforts.  What could be done to
+  improve the mining quality, curate the obtained data, and to provide
+  confidence level estimations for each molecule coming from patent
+  mining? Do require image2structure and text2structure mining also
+  data stores for ensuring a sufficient amount of confidence and data
+  quality?  How can patent mining be used to create new drugs faster
+  or to speed-up collaboration/licensing discussions?
 \end{enumerate}
 
 \section*{Machine learning}
 \begin{enumerate}
 \item \emph{Large-scale vectorial versus kernels molecule similarity}
 
-Vectorial molecule encodings can serve as efficient approximations of molecules.
-Sometimes non-vectorial molecular 3D shape or molecule kernel comparisons might be more suitabe to compare molecules, since
-they might better correlate with activities. One key problem is that non-vectorial encodings require to compare all molecules
-(or their 3D conformational eplosions) in a pair-wise manner.
-This becomes prohibitively expensive when considering millions of molecules.
-Can dyadic data approaches help \cite{Hochreiter:2006:SVM:1159508.1159516}? Other approximations or cascading flows?
+  Vectorial molecule encodings can serve as efficient approximations
+  of molecules.  Sometimes non-vectorial molecular 3D shape or
+  molecule kernel comparisons might be more suitabe to compare
+  molecules, since they might better correlate with activities. One
+  key problem is that non-vectorial encodings require to compare all
+  molecules (or their 3D conformational eplosions) in a pair-wise
+  manner.  This becomes prohibitively expensive when considering
+  millions of molecules.  Can dyadic data approaches help
+  \cite{Hochreiter:2006:SVM:1159508.1159516}? Other approximations or
+  cascading flows?
 %
 \item \emph{Using multiple annotations for improving molecular mining/predictions (chemogenomics)}
 
-As an example: Biological activities might not be independent of each other, but have a certain correlation between each other.
-In Chemogenomics this is used for creating models of combining molecules with protein sequences, molecules with active sites of proteins,
-or molecules with biological activities of multiple assays. How can we optimize such highly complex mining scenarios, especially
-when considering large-scale data sets with hundred of thousands molecules and thousands of biological activities? 
-How can we combine, mine, and visualize categorial and continuous output variables, e.g. hydrophobicity of a molecule and toxicity in humans, 
-by still being able to make concrete proposals to medicinal chemistry? Is analoging (creating very small modifications of a molecule and measuring its activities)
-really the most efficient way forward? If we test molecules, should we test it in a single biological assay or in multiple biological assays, if multiple, which ones?
-If a company does not have a biological assay within reach, which other partner could offer testing a molecule within two days (vendor matching based on licenses or contracts)?
+  As an example: Biological activities might not be independent of
+  each other, but have a certain correlation between each other.  In
+  Chemogenomics this is used for creating models of combining
+  molecules with protein sequences, molecules with active sites of
+  proteins, or molecules with biological activities of multiple
+  assays. How can we optimize such highly complex mining scenarios,
+  especially when considering large-scale data sets with hundred of
+  thousands molecules and thousands of biological activities?  How can
+  we combine, mine, and visualize categorial and continuous output
+  variables, e.g. hydrophobicity of a molecule and toxicity in humans,
+  by still being able to make concrete proposals to medicinal
+  chemistry? Is analoging (creating very small modifications of a
+  molecule and measuring its activities) really the most efficient way
+  forward? If we test molecules, should we test it in a single
+  biological assay or in multiple biological assays, if multiple,
+  which ones?  If a company does not have a biological assay within
+  reach, which other partner could offer testing a molecule within two
+  days (vendor matching based on licenses or contracts)?
 \end{enumerate} 
 
 \section*{Software engineering}
@@ -175,13 +196,13 @@ jobs to a scheduling system.
 
 Can we employ modern frameworks like Hadoop to perform this? Can we
 develop a generalized framework that includes the requisite
-cheminformatics tools that allows users to seamless distribute jobs
+cheminformatics tools that allows users to seamlessly distribute jobs
 over Hadoop and other map reduce systems?
 
 Going further, are there cheminformatics problems that can make use of
 the map/reduce paradigm at the algorithmic level? More generally, are
 cheminformatics algorithms amenable to parallelization (that does not
-involve chunking the input data)
+involve chunking the input data)? Are they worth the effort?
 
 \item \emph{Licensing in a parallel world} Many software vendors use
   different solutions for parallizing compute jobs: SGE, PVM, MPI,

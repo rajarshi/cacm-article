@@ -1298,6 +1298,15 @@
  address = {Cambridge, MA, USA},
 } 
 
+@article{chebi2010,
+ author={P {de Matos} and R Alc\'{a}ntara and A Dekker and M Ennis and J Hastings and K Haug and I Spiteri and S Turner and C Steinbeck},
+ year={2010},
+ title={{Chemical Entities of Biological Interest}: an update},
+ journal={Nucleic Acids Research},
+ volume={38}, 
+ pages={D249--D254}
+}
+
 @article{citeulike:8530538,
     abstract = {{BACKGROUND}:The decomposition of a chemical graph is a convenient approach to encode information of the corresponding organic compound. While several commercial toolkits exist to encode molecules as so-called fingerprints, only a few open source implementations are available. The aim of this work is to introduce a library for exactly defined molecular decompositions, with a strong focus on the application of these features in machine learning and data mining. It provides several options such as search depth, distance cut-offs, atom- and pharmacophore typing. Furthermore, it provides the functionality to combine, to compare, or to export the fingerprints into several {formats.RESULTS}:We provide a Java 1.6 library for the decomposition of chemical graphs based on the open source Chemistry Development Kit toolkit. We reimplemented popular fingerprinting algorithms such as depth-first search fingerprints, extended connectivity fingerprints, autocorrelation fingerprints (e.g. {CATS2D}), radial fingerprints (e.g. {Molprint2D}), geometrical Molprint, atom pairs, and pharmacophore fingerprints. We also implemented custom fingerprints such as the all-shortest path fingerprint that only includes the subset of shortest paths from the full set of paths of the depth-first search fingerprint. As an application of {jCompoundMapper}, we provide a command-line executable binary. We measured the conversion speed and number of features for each encoding and described the composition of the features in detail. The quality of the encodings was tested using the default parametrizations in combination with a support vector machine on the Sutherland {QSAR} data sets. Additionally, we benchmarked the fingerprint encodings on the large-scale Ames toxicity benchmark using a large-scale linear support vector machine. The results were promising and could often compete with literature results. On the large Ames benchmark, for example, we obtained an {AUC} {ROC} performance of 0.87 with a reimplementation of the extended connectivity fingerprint. This result is comparable to the performance achieved by a non-linear support vector machine using state-of-the-art descriptors. On the Sutherland {QSAR} data set, the best fingerprint encodings showed a comparable or better performance on 5 of the 8 benchmarks when compared against the results of the best descriptors published in the paper of Sutherland et {al.CONCLUSIONS}:{jCompoundMapper} is a library for chemical graph fingerprints with several tweaking possibilities and exporting options for open source data mining toolkits. The quality of the data mining results, the conversion speed, the {LPGL} software license, the command-line interface, and the exporters should be useful for many applications in cheminformatics like benchmarks against literature methods, comparison of data mining algorithms, similarity searching, and similarity-based data mining.},
     author = {Hinselmann, Georg and Rosenbaum, Lars and Jahn, Andreas and Fechner, Nikolas and Zell, Andreas},
@@ -1310,7 +1319,7 @@
     journal = {Journal of Cheminformatics},
     keywords = {cdk, cheminformatics, cito--extends--1073448, cito--extends--423382, fingerprint},
     number = {1},
-    pages = {3+},
+    pages = {3},
     pmid = {21219648},
     posted-at = {2011-01-10 20:10:26},
     priority = {2},
@@ -1378,4 +1387,3 @@ doi = {10.1021/ci200235e},
 URL = {http://pubs.acs.org/doi/abs/10.1021/ci200235e},
 eprint = {http://pubs.acs.org/doi/pdf/10.1021/ci200235e}
 }
-

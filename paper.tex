@@ -1069,33 +1069,32 @@ Relevant Market Need   & and they possess the means  &  companies (but often to 
   %\onehalfspacing
   \centering
   \begin{tabular}{lcccc}  \hline
-    \textbf{Feature} & \textbf{CDK} & \textbf{OpenBabel} &
-    \textbf{RDKit} & \textbf{Indigo}\textsuperscript{1} \tabularnewline \hline
+    \textbf{Feature} & \textbf{CDK} & \textbf{Open Babel} &
+    \textbf{RDKit} & \textbf{Indigo} \tabularnewline \hline
     License & LGPL & GPL & new BSD & GPL or commercial \tabularnewline
-    Language & Java & C++ & C++ & C++ / Python \tabularnewline
-    SLOC\textsuperscript{2} & 188,554 & 194,358 & 173,219 & ? \tabularnewline
-    Structure-based Fingerprints & \lots\textsuperscript{3} & \lots & \lots & yes \tabularnewline
+    Language & Java & C++ & C++/Python & C/C++ \tabularnewline
+    SLOC\textsuperscript{1} & 188,554 & 194,358 & 173,219 & 144,080 \tabularnewline
+    Structure-based fingerprints & \lots\textsuperscript{2} & \lots & \lots & \lots \tabularnewline
     %\ \ \ Substructure & \lots & \lots & \lots \tabularnewline
-    Support for multiple chemical file formats & \little & \lots & \least & \little \tabularnewline
+    Support for multiple chemical file formats & \little & \lots & \least & \least \tabularnewline
     %Aromaticity models & \least & \least & \least \tabularnewline
     %Stereochemistry & \least & \little & \lots \tabularnewline
-    Canonical labeling of graphs & \lots & \lots & \lots & yes \tabularnewline
-    Calculation of molecular descriptors & \lots & \least & \lots & no \tabularnewline
+    Canonical labeling of graphs & \lots & \lots & \lots & \lots \tabularnewline
+    Calculation of molecular descriptors & \lots & \least & \lots & \none \tabularnewline
     %2D coordinate generation & \lots & \none & \lots & no \tabularnewline
-    3D coordinate generation & \least & \lots & \lots & no \tabularnewline
+    3D coordinate generation & \least & \lots & \lots & \none \tabularnewline
     2D depictions & \lots & \little & \lots & \little \tabularnewline
-    Generation of conformational isomers & \none & \least & \least & no \tabularnewline
+    Generation of conformational isomers & \none & \least & \least & \none \tabularnewline
     %Rigid alignment & \lots & \lots & \lots \tabularnewline
-    SMARTS searching/matching & \lots & \lots & \lots & yes \tabularnewline
+    SMARTS searching/matching & \lots & \lots & \lots & \lots \tabularnewline
     %Pharmacophore searching & \little & \none & \lots \tabularnewline
-    Chemical reaction enumeration & no & no & no & yes \tabularnewline
+    Chemical reaction enumeration & \none & \none & \none & \lots \tabularnewline
     \hline
-    \multicolumn{5}{l}{1. Indigo is a new toolkit (published late 2010), and we have not investigated its features in depth.} \\
-    \multicolumn{5}{l}{2. Source Lines of Code as measured by the tool \emph{sloccount} (\url{http://www.dwheeler.com/sloccount/}).} \\
+    \multicolumn{5}{l}{1. Source Lines of Code as measured by the tool \emph{sloccount} (\url{http://www.dwheeler.com/sloccount/}).} \\
     \multicolumn{5}{l}{The count includes all source files, in any language, for the
   project. In addition, only the trunk} \\
-    \multicolumn{5}{l}{for each project was considered.  We did not count Indigo's lines of code.} \\
-    \multicolumn{5}{l}{3. More checks indicates more complete implementation of a feature.} \\
+    \multicolumn{5}{l}{for each project was considered.} \\
+    \multicolumn{5}{l}{2. More checks indicates more complete implementation of a feature.} \\
   \end{tabular}
   \caption{Cheminformatics features provided by Open Source toolkits.}
   \label{tab:features}

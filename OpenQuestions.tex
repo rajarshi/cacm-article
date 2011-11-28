@@ -58,24 +58,54 @@ We offer the following open questions to suggest concrete interdisciplinary rese
 \begin{enumerate}
 \item \emph{Design an algorithm that approximately counts the number of (3D) conformers of a chemical formula.}
 
-This question encompasses the open questions of \emph{approximately counting the number of stereoisomers, or the number of tautomers, of a chemical formula}.  Goldberg and Jerrum designed an algorithm which, given a chemical formula, would output an isomer of that formula chosen uniformly at random~\cite{RandomlySampling}.  Perhaps the main theoretical obstacle to overcome is that molecules tend to be \emph{chiral} (that is, they have a ``handedness'' or 3D orientation), whereas traditional graph theory (and the Goldberg/Jerrum algorithm) treats graphs with identical vertices and edges as isomorphic.  So part of the question could be rephrased as, ``Given a labeled vertex set, count the number of structures that are identical on that vertex set, except that they differ in their 3D orientation.''  Mathematical chemists have designed measures of molecular chirality~\cite{ChiralityMeasures}. A resolution of this problem may require connecting graph enumeration algorithms to knot theory or other topics in topology~\cite{TopologicalLook}.
+  This question encompasses the open questions of \emph{approximately
+    counting the number of stereoisomers, or the number of tautomers,
+    of a chemical formula}.  Goldberg and Jerrum designed an algorithm
+  which, given a chemical formula, would output an isomer of that
+  formula chosen uniformly at random~\cite{RandomlySampling}.  Perhaps
+  the main theoretical obstacle to overcome is that molecules tend to
+  be \emph{chiral} (that is, they have a ``handedness'' or 3D
+  orientation), whereas traditional graph theory (and the
+  Goldberg/Jerrum algorithm) treats graphs with identical vertices and
+  edges as isomorphic.  So part of the question could be rephrased as,
+  ``Given a labeled vertex set, count the number of structures that
+  are identical on that vertex set, except that they differ in their
+  3D orientation.''  Mathematical chemists have designed measures of
+  molecular chirality~\cite{ChiralityMeasures}. A resolution of this
+  problem may require connecting graph enumeration algorithms to knot
+  theory or other topics in topology~\cite{TopologicalLook}.
 %
-\item \emph{Write code that approximately counts the number of conformers of a chemical formula.}
+\item \emph{Design and implement efficient subgraph isomorphism
+    algorithms for useful special cases of molecular graphs}.
 
-While this is related to the previous question, it is conceivable that one could answer this question without solving the theoretical problem.  For example, as we note in the main article, the commercial software MOLGEN can approximately enumerate structures that satisfy given spectral data, even though related theoretical enumeration problems appear wide open.
-%
-\item \emph{Design and implement efficient subgraph isomorphism algorithms for useful special cases of molecular graphs}.
-
-The Subgraph Isomorphism Problem is known to be $\textsf{NP}$-complete (hence possibly harder than the Graph Isomorphism Problem, which is not known to be $\textsf{NP}$-complete).  Nevertheless, finding maximum common subgraphs to match chemical structures is of fundamental importance in chemistry; hence, much work has been invested in partial solutions to this problem.  Raymond and Willet reviewed the state of the art in 2002~\cite{MCSreview}.  As one possible way to attack this problem, we note the empirical fact that molecular graphs are of bounded degree, and are observed to have \emph{treewidth} $\leq 5$~\cite{treewidth}.  Bounded treewidth is at least theoretically useful~\cite{Epp-JGAA-99}, and it may be possible to improve on current open-source implementations whose isomorphism-checking routines are written for all graphs, instead of taking advantage of special properties of chemical graphs.
+  The Subgraph Isomorphism Problem is known to be
+  $\textsf{NP}$-complete (hence possibly harder than the Graph
+  Isomorphism Problem, which is not known to be
+  $\textsf{NP}$-complete).  Nevertheless, finding maximum common
+  subgraphs to match chemical structures is of fundamental importance
+  in chemistry; hence, much work has been invested in partial
+  solutions to this problem.  Raymond and Willet reviewed the state of
+  the art in 2002~\cite{MCSreview}.  As one possible way to attack
+  this problem, we note the empirical fact that molecular graphs are
+  of bounded degree, and are observed to have \emph{treewidth} $\leq
+  5$~\cite{treewidth}.  Bounded treewidth is at least theoretically
+  useful~\cite{Epp-JGAA-99}, and it may be possible to improve on
+  current open-source implementations whose isomorphism-checking
+  routines are written for all graphs, instead of taking advantage of
+  special properties of chemical graphs.
 
 \item \emph{Searching within complex data types, e.g. molecules, for semantic web approaches}.
 
-One key concept of the linked data web, the semantic web, is that different data sources can be readily integrated with each other. Still, in the field
-of Cheminformatics, we are not only interest in linking two molecules 
-(the linking normalization problem for different protomers, tautomers, or special cases of isomerisms remain open), but we
-are also interested in being able to search efficiently within molecules when being linked via semantic web approaches. Typical
-searches will require being able to apply substructure or similarity searches.
-What could be algorithmic solutions for this?
+  One key concept of the linked data web, the semantic web, is that
+  different data sources can be readily integrated with each
+  other. Still, in the field of Cheminformatics, we are not only
+  interest in linking two molecules (the linking normalization problem
+  for different protomers, tautomers, or special cases of isomerisms
+  remain open), but we are also interested in being able to search
+  efficiently within molecules when being linked via semantic web
+  approaches. Typical searches will require being able to apply
+  substructure or similarity searches.  What could be algorithmic
+  solutions for this?
 \end{enumerate}
 
 \section*{Cryptography}
@@ -205,6 +235,27 @@ synthetic accessibility predictions \cite{Boda_Seidel_Gasteiger_2007}?
 
 \section*{Databases \& software engineering}
 \begin{enumerate}
+
+
+\item \emph{Real time substructure searching in massive chemical
+    databases}.
+
+  Chemical databases have grown tremendously in size. A common task in
+  such databases is substructure searching. However most cases of very
+  large structure databases do not support substructure in real time
+  (something that would allow applications such as
+  ``type-ahead''). How can one enable such rapid substructure searches
+  on massive ($> 10^9$ molecules) collections of structures? This
+  problem has various aspects:
+  \begin{itemize}
+  \item What type of indexing schemes will support rapid substructure searches?
+  \item How can other molecular properties be included in substructure
+    searchs that allow ranking of results, all the while maintaining
+    real-time response (i.e. $< 1$ sec)?
+  \item What type of database architectures are required for this
+    scale of structure searching?
+  \end{itemize}
+
 \item \emph{Large scale conformational databases}.
 
   While many programs are availabel to generate 3D conformations, on

@@ -167,7 +167,9 @@ datasets \cite{horst2009}; this information can also be determined by simulation
 \includegraphics[height=2in]{chemical-structures.png}
 \caption{A hierarchy of chemical structure representations, increasing
   in information content from left to right and top to bottom. A
-  chemist's traditional 2D depiction (top left), a labeled graph (top right), a 3D
+  chemist's traditional 2D depiction (top left), a labeled graph (top
+  right; 'A' corresponds to aromatic atoms, 'O' to oxygens and 'On' to
+  oxygens or nitrogens. Unlabeled nodes have an implicit label of 'C'), a 3D
   conformation (bottom left) and a surface representation (bottom right). All show differing
   (and valid) aspects of the same molecule and are suited for
   different purposes, with the choice of representation guided by its
@@ -178,7 +180,9 @@ datasets \cite{horst2009}; this information can also be determined by simulation
 Although graphs implicitly encode the 3D structure of a molecule (when
 combined with knowledge about favored bond angles and distances), many
 different low energy 3D structures, or conformers, may be consistent
-with the same graph structure. In addition, the 3D structure may have
+with the same graph structure. 
+
+In addition, the 3D structure may have
 a ``secondary'' geometrical arrangement of features (such as the
 presence of a right-handed helix) which cannot be encoded in the
 graph. Thus we have 3D representations
@@ -190,10 +194,13 @@ solvents) that varies over the surface.
 
 Even though some structure representations contain more explicit
 information than others, they are all equally valid and are suited for
-different problems. Fig.~\ref{figure:chemical-structures} shows
-a hierarchy of representations; when searching for
-substructures, a 2D representation suffices, but when exploring
-protein binding, a 3D structure is vital.
+different problems. Fig.~\ref{figure:chemical-structures} shows a
+hierarchy of representations; when searching for substructures, a 2D
+representation suffices, but when exploring protein binding, a 3D
+structure is vital. Figure \ref{fig:structure-classes} in the Appendix
+highlights yet another subtlety where the number and types of atoms
+and their connectivity may not suffice to uniquely define the
+structure.
 
 Given that a fundamental principle of the field is that \emph{similar
 molecules exhibit similar properties} \cite{Johnson:1990qf}, the
@@ -208,7 +215,11 @@ time required to evaluate it would be prohibitive. Instead, can we
 obtain accurate predictions from a subset of conformers? Or, can we
 obtain comparable accuracy by using a 2D representation? And if so,
 what type of labels are required? Currently, many of these questions
-are answered using trial and error.
+are answered using trial and error - in that an objective function
+(usually root mean square error or percentage correct) is defined and
+descriptors and modeling approaches are iteratively adapted to
+optimize the objective function . In other words, there is no
+underlying theory to explain or suggest optimal approaches.
 
 From the above it becomes clear that the nature of chemical problems
 is often a complex mixture of combinatorial and continuous problems.
@@ -234,21 +245,22 @@ cheminformatics, presenting the computational and algorithmic problems
 faced in the field and how modern CS research can contribute to their
 solution.  We have also provided two appendices: a brief history of cheminformatics, and a detailed list of open problems.
 
-We structure the main article around ``risk minimization'' of drug discovery (a slow and expensive process)---how to minimize the chances of a small
-molecule failing, due to poor physical, chemical or biological
-properties, in the various research and development stages as a drug
-candidate, and how to successfully employ cheminformatics methods in
-these efforts. As an example, a molecule must be soluble and show a
-certain degree of bioavailability to be considered as a drug
-candidate. In cases where these properties are poor, a cheminformatics
-approach can suggest replacement of certain functional groups, that
-maintain potency but improve the solubility and bioavailability.
-Table~\ref{table:properties} (in the Appendix) summarizes a number of
-properties a drug candidate must satisfy to be considered
-therapeutically useful (such as being appropriately soluble,
-exhibiting minimal toxicity and being selective for the intended
-target) and sketches the role of cheminformatics at each stage of drug
-development.
+We structure the main article around ``risk minimization'' of drug
+discovery (a slow and expensive process)---how to minimize the chances
+of a small molecule failing, due to poor physical, chemical or
+biological properties, in the various research and development stages
+as a drug candidate, and how to successfully employ cheminformatics
+methods in these efforts. As an example, a molecule must be soluble
+and show a certain degree of bioavailability to be considered as a
+drug candidate. In cases where these properties are poor, a
+cheminformatics approach can suggest replacement of certain functional
+groups, that maintain potency but improve the solubility and
+bioavailability.  Table~\ref{table:properties} (in the Appendix)
+summarizes a number of properties a drug candidate must satisfy to be
+considered therapeutically useful (such as being appropriately
+soluble, exhibiting minimal toxicity and being selective for the
+intended target) and sketches the role of cheminformatics at each
+stage of drug development.
 %
 \subsection{Representing and Searching Structures}
 \label{sec:databases}
@@ -424,6 +436,146 @@ Enabling automated inferencing in such heterogenous linked systems
 brings us closer to achieving a systems level understanding of small
 molecule activity \cite{Oprea:2007fk}.
 
+\subsection{Activity Mining \& Prediction}
+\label{sec:activity-mining}
+
+
+The basis of predictive modeling in cheminformatics is that the
+biological activity of a molecule is a function of its chemical
+structure. Together with the \emph{similar property principle}
+\cite{Johnson:1990qf} (structurally similar molecules exhibit
+similar properties), the goal of any modeling approach is to capture
+and characterize correlations between structural features and
+observed biological activities. Simultaneously, such approaches must
+also describe the likelihood of error when using the
+models for decision making.  A variety of approaches can be employed
+to assess the error in (or conversely, the reliability or confidence of) a
+prediction, ranging from statistical approaches to more
+empirical approaches such as defining an \emph{applicability domain} -
+the region of the input (i.e., chemical structures) that can be
+reliably predicted, usually delineated by similarity
+to the training set.
+
+In many cases, the activity of a small molecule is due to its
+interaction with a receptor. Traditionally, QSAR \cite{Hansch:1962vn,
+ Free:1964ys} approaches do not take into account receptor features,
+focusing only on small molecule features, and therefore lose valuable
+information on ligand-receptor interactions. As a result, techniques
+such as docking (which predicts how molecules fit together),
+structure-based pharmacophore modeling (a 3D approach to capturing protein-ligand
+interactions) and proteochemometric methods have been designed to take
+into account both ligand and receptor structures. The last method is
+an extension of statistical QSAR methods to simultaneously
+model the receptor and ligand, as first reported by Lapinsh \textit{et
+ al.}~\cite{lapinsh2001}.
+
+The first step in the predictive modeling of biological activities is
+to generate \emph{molecular descriptors} (a.k.a. \emph{features}) that
+are numerical representations of different structural features. For
+example, labeled graphs (Figure 1B), and their associated
+characterizations are easily accessible to computer scientists, yet
+such features miss significant physicochemical features (surface
+properties such as charge, flexibility and so on). At the same time,
+it can be difficult to objectively quantify many chemical aspects of a
+molecule, such that the resultant descriptors are suitable for
+predictive modeling.  Hence, the choice of a chemical descriptor
+should by no means be treated as a ‘solved’ problem. For a more
+detailed discussion the reader is referred to more comprehensive
+textbooks \cite{todeschini2000,faulon2010}.
+
+As noted above, molecular graphs can be transformed to numerical
+vector representations ranging from counts of elements to eigenvalues
+of the Laplacian matrix.  Alternatively, we can compare molecular
+graphs directly, via \emph{kernel methods}, where a kernel on graphs
+$G$ and $G'$ provides a measure of how similar $G$ is to $G'$, or a
+kernel on a single graph compares measured similarities between the
+graph's nodes. In these cases, rather than compute vector
+representations, we directly operate on the graph representations.
+
+Both methods have advantages and disadvantages. The vector approach
+requires one to identify a subset of \emph{relevant} (to the property
+being modeled) descriptors: the feature selection problem is
+well discussed in the data mining literature. A kernel approach
+does not require feature selection, but one faces the problem of
+evaluating a data set in a pairwise fashion, and one must
+identify an appropriate kernel. This is an important challenge as the
+kernel should be selected to satisfy \emph{Mercer's condition} (a
+well-known mathematical property in machine learning that makes a set
+of observations easier to make predictions about), and this is not
+always possible with traditional cheminformatics based kernels (such
+as a multiple common substructure based kernel). These challenges can
+make kernel based methods prohibitive on very large datasets.
+
+Having settled on a numerical representation and a possible class of
+model types, one must address the goal of the model. Are we looking
+for pure predictive power, with no interest in any explanatory
+features? Or are we more interested in decent predictive power, but
+also some explanation as to why a molecule is predicted as toxic or
+non-toxic (for example)? The former scenario is common in virtual
+screening settings, where we require a high degree of accuracy and
+fast predictions, but do not really care why one molecule is active
+and another inactive. These types of models can be black boxes (e.g.,
+neural networks) and algorithmic models \cite{Breiman:2001fk} (random
+forests). The latter scenario is more common in exploratory and
+optimization settings, where we hope that the output of the model will
+guide us in chemical modifications to improve the property being
+modeled.  In this case, we need to understand the effect of a certain
+structural feature on the observed potency and expect that the model
+will provide insight. These types of models are generally
+distributional in nature (such as linear regression, Partial Least
+Squares and Na\"{i'}ve Bayes) though some algorithmic approaches such
+as random forests can provide insight.
+
+Having chosen a modeling approach, a vital question is that of model
+reliability which is closely tied to the concept of model
+applicability -- the question of when the prediction of the model for
+a new object is reliable. This issue has grown in importance with the
+increasing use of predictive models in regulatory settings. A
+misprediction (due to the model not being applicable to a certain class
+of inputs) can have significant financial repercussions. A variety of
+methods have been developed that attempt to characterize the domain of
+a model. These methods not only determine whether models are
+applicable, but can also be used for deciding if additional biological
+experiments are required for reducing the prediction error on certain
+compound classes.
+
+One of the key challenges faced by predictive modeling is the fact
+that small molecules are not static and do not exist in isolation.
+Traditionally, predictive models have focused on a single structure
+for a small molecule and ignored the receptor. Yet, small molecules
+can exist in multiple tautomeric forms and usually in multiple
+conformations. As a result, enhancing the accuracy of predictions
+ideally will require that the 3D geometries of that molecule be taken
+into account and, as far as possible, that the receptor also be
+considered. While some relevant low-energy conformers of small
+molecules may be accessible from crystallographic databases, this is
+not always the case. Though it is now possible to generate reasonable
+low energy conformations \emph{ab initio} it must be noted that the
+``biologically relevant'' conformation might differ from the lowest
+energy conformation of the molecule considered in isolation,
+necessitating the need for conformational search.  Multi-conformer
+modeling has been addressed in the 4D-QSAR methodology described by
+Hopfinger \textit{et al.}  \cite{Albuquerque:1998ys}.  Recent
+techniques such as \emph{multiple-instance learning} could also be
+applied to the multi-conformer problem.
+
+With the advent of high-throughput screening technologies, large
+libraries of compounds can be screened against multiple targets in an
+efficient manner. Such panel assays provide a broad, systems-level
+view of small molecule activities.  Models developed on such data
+afford us the opportunity to identify targets, characterize off-target
+effects and so on. However, most approaches to this problem tend to
+develop multiple individual models \cite{Chen:2010zr}, leading to
+multiple, independent predictions for a given input molecule.
+Instead, one could imagine an approach that takes into account the
+covariance structure of the multiple observed activities and the
+structural descriptors within a single model. Such an approach could
+lead to more robust predictions for panel assays (that is, which
+battery of tests would be most useful to perform). Finally, this
+approach also better reflects clinically relevant compound
+profiles~\cite{kuhn2010} and the ``personalized medicine'' concept
+(\emph{e.g.}, drug-drug interaction profiles).
+
 \subsection{Expanding Chemical Space}
 \label{sec:struct-enum}
 Enumerating molecules is a combinatorial problem that has fascinated
@@ -539,128 +691,6 @@ task requires encompassing both chemical structures and protein
 sequences and the development of tools that are at the
 interface between cheminformatics and bioinformatics.
 
-\subsection{Activity Mining \& Prediction}
-\label{sec:activity-mining}
-
-
-The basis of predictive modeling in cheminformatics is that the
-biological activity of a molecule is a function of its chemical
-structure. Together with the \emph{similar property principle}
-\cite{Johnson:1990qf} (structurally similar molecules exhibit
-similar properties), the goal of any modeling approach is to capture
-and characterize correlations between structural features and
-observed biological activities. Simultaneously, such approaches must
-also describe the likelihood of error when using the
-models for decision making.  A variety of approaches can be employed
-to assess the error in (or conversely, the reliability or confidence of) a
-prediction, ranging from statistical approaches to more
-empirical approaches such as defining an \emph{applicability domain} -
-the region of the input (i.e., chemical structures) that can be
-reliably predicted, usually delineated by similarity
-to the training set.
-
-In many cases, the activity of a small molecule is due to its
-interaction with a receptor. Traditionally, QSAR \cite{Hansch:1962vn,
- Free:1964ys} approaches do not take into account receptor features,
-focusing only on small molecule features, and therefore lose valuable
-information on ligand-receptor interactions. As a result, techniques
-such as docking (which predicts how molecules fit together),
-structure-based pharmacophore modeling (a 3D approach to capturing protein-ligand
-interactions) and proteochemometric methods have been designed to take
-into account both ligand and receptor structures. The last method is
-an extension of statistical QSAR methods to simultaneously
-model the receptor and ligand, as first reported by Lapinsh \textit{et
- al.}~\cite{lapinsh2001}.
-
-The first step in the predictive modeling of biological activities is
-to generate \emph{molecular descriptors} (a.k.a. \emph{features}) that
-are numerical representations of different structural features. Here
-multiple approaches exist. We can transform molecular graphs into a
-numerical vector representation of chemical structures
-\cite{todeschini2000}, ranging from counts of elements to eigenvalues
-of the Laplacian matrix.  Alternatively, we can compare molecular
-graphs directly, via \emph{kernel methods}, where a kernel on graphs
-$G$ and $G'$ provides a measure of how similar $G$ is to $G'$, or a
-kernel on a single graph compares measured similarities between the
-graph's nodes. In these cases, rather than compute vector
-representations, we directly operate on the graph representations.
-
-Both methods have advantages and disadvantages. The vector approach
-requires one to identify a subset of \emph{relevant} (to the property
-being modeled) descriptors: the feature selection problem is
-well discussed in the data mining literature. A kernel approach
-does not require feature selection, but one faces the problem of
-evaluating a data set in a pairwise fashion, and one must
-identify an appropriate kernel. This is an important challenge as the
-kernel should be selected to satisfy \emph{Mercer's condition} (a
-well-known mathematical property in machine learning that makes a set
-of observations easier to make predictions about), and this is not
-always possible with traditional cheminformatics based kernels (such
-as a multiple common substructure based kernel). These challenges can
-make kernel based methods prohibitive on very large datasets.
-
-Having settled on a numerical representation and a possible class of
-model types, one must address the goal of the model. Are we
-looking for pure predictive power, with no interest in any explanatory
-features? Or are we more interested in decent predictive power, but
-also some explanation as to why a molecule is predicted as toxic or
-non-toxic (for example)? The former scenario is common in virtual
-screening settings, where we require a high degree of accuracy and fast
-predictions, but do not really care why one molecule is active
-and another inactive. These types of models can be black boxes (e.g., neural
-networks) and algorithmic models \cite{Breiman:2001fk} (random
-forests). The latter scenario is more common in exploratory and
-optimization settings, where we hope that the output of the model will
-guide us in chemical modifications to improve the property being
-modeled.  In this case, we need to understand the effect of a
-certain structural feature on the observed potency and expect that the
-model will provide insight. These types of models are generally
-distributional in nature (such as linear regression and Partial Least Squares) though
-some algorithmic approaches such as random forests can provide insight.
-
-Having chosen a modeling approach, a vital question is that of model
-reliability which is closely tied to the concept of model
-applicability -- the question of when the prediction of the model for
-a new object is reliable. This issue has grown in importance with the
-increasing use of predictive models in regulatory settings. A
-misprediction (due to the model not being applicable to a certain class
-of inputs) can have significant financial repercussions. A variety of
-methods have been developed that attempt to characterize the domain of
-a model. These methods not only determine whether models are
-applicable, but can also be used for deciding if additional biological
-experiments are required for reducing the prediction error on certain
-compound classes.
-
-One of the key challenges faced by predictive modeling is the fact
-that small molecules are not static and do not exist in isolation.
-Traditionally, predictive models have focused on a single
-structure for a small molecule and ignored the receptor. Yet, small molecules can
-exist in multiple tautomeric forms and usually in multiple
-conformations. As a result, enhancing the accuracy of predictions
-ideally will require that the 3D geometries of that molecule be taken
-into account and, as far as possible, that the receptor also be considered.
-Multi-conformer modeling has been addressed in the
-4D-QSAR methodology described by Hopfinger \textit{et al.}
-\cite{Albuquerque:1998ys}.  Recent techniques such as
-\emph{multiple-instance learning} could also be applied to the
-multi-conformer problem.
-
-With the advent of high-throughput screening technologies, large
-libraries of compounds can be screened against multiple targets in an
-efficient manner. Such panel assays provide a broad, systems-level
-view of small molecule activities.  Models developed on such data
-afford us the opportunity to identify targets, characterize off-target
-effects and so on. However, most approaches to this problem tend to
-develop multiple individual models \cite{Chen:2010zr}, leading to
-multiple, independent predictions for a given input molecule.
-Instead, one could imagine an approach that takes into account the
-covariance structure of the multiple observed activities and the
-structural descriptors within a single model. Such an approach could
-lead to more robust predictions for panel assays (that is, which
-battery of tests would be most useful to perform). Finally, this
-approach also better reflects clinically relevant compound
-profiles~\cite{kuhn2010} and the ``personalized medicine'' concept
-(\emph{e.g.}, drug-drug interaction profiles).
 
 \subsection{Knowledge Management}
 \label{sec:knowledge-management}
@@ -1107,4 +1137,15 @@ Relevant Market Need   & and they possess the means  &  companies (but often to 
 \label{figure:applicability-domain}
 \end{figure}
 %
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{cacm_tautomers.png}
+\caption{An depiction of the various classes of chemical structures
+  (shown using a 2D representation). This figure serves to highlight
+  the danger of assuming that a molecule is \emph{uniquely} defined by
+the number and types of atoms and even simple connectivity between them.}
+\label{fig:structure-classes}
+\end{figure}
+%
+
 \end{document}

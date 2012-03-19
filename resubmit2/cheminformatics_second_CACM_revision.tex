@@ -191,23 +191,24 @@ and their connectivity may not suffice to uniquely define a
 structure.
 
 A fundamental principle of cheminformatics is that \emph{similar
-molecules exhibit similar properties} \cite{Johnson:1990qf}. The
+  molecules exhibit similar properties} \cite{Johnson:1990qf}. The
 choice of representation is key in determining how such similarities
 are evaluated, and thus the effectiveness of subsequent analyses. But
-there is a further challenge in balancing computational costs with
-the utility of a
-representation. For example, a full 3D description of a molecule,
-taking into account all possible conformers, would allow accurate
-prediction of many properties. But the size of this representation and the
-time required to evaluate it would be prohibitive. Instead, can we
-obtain accurate predictions from a subset of conformers? Or, can we
-obtain comparable accuracy by using a 2D representation? And if so,
-what type of labels are required? Currently, many of these questions
-are answered using trial and error through definition of an objective function
-(usually root mean square error or percentage correct) and
-iterative adaptation of descriptors and modeling approaches to
-optimize the objective function. There is no
-unifying theory to explain or suggest optimal approaches in all cases.
+there is a further challenge in balancing computational costs with the
+utility of a representation. For example, a full 3D description of a
+molecule, taking into account all possible conformers, would allow
+more accurate prediction of many properties (though this is also dependent
+on qood quality force-fields, algorithms and so on). But the size of this
+representation and the time required to evaluate it would be
+prohibitive. Instead, can we obtain accurate predictions from a subset
+of conformers? Or, can we obtain comparable accuracy by using a 2D
+representation? And if so, what type of labels are required?
+Currently, many of these questions are answered using trial and error
+through definition of an objective function (usually root mean square
+error or percentage correct) and iterative adaptation of descriptors
+and modeling approaches to optimize the objective function. There is
+no unifying theory to explain or suggest optimal approaches in all
+cases.
 
 The goals of cheminformatics are to support better chemical
 decision making by (1) storing and integrating data in maintainable
@@ -355,33 +356,32 @@ which is widely believed to be computationally
 intractable~\cite{cordella2001}. To execute a graph isomorphism search
 across a full chemical database of thousands or even millions of
 structures is unfeasible \cite{Weininger:2011ly}. Speedups can be
-obtained via the use of heuristics such as structural
-\emph{fingerprints}. Fingerprints encode characteristic features of a
-given chemical structure, usually in a fixed-length
-bitmap. Fingerprints fall broadly into two categories: structure keys
-and hashed keys. In structure keys, each bit position corresponds to a
-distinct substructure such as a functional group. Examples include MACCS and PubChem
-keys. Hashed keys are those in which substructural patterns
+obtained via the use of structural \emph{fingerprint}
+filters. Fingerprints encode characteristic features of a given
+chemical structure, usually in a fixed-length bitmap. Fingerprints
+fall broadly into two categories: structure keys and hashed keys. In
+structure keys, each bit position corresponds to a distinct
+substructure such as a functional group. Examples include MACCS and
+PubChem keys. Hashed keys are those in which substructural patterns
 are represented as strings and then hashed to a random bit
 position. As a result, a given position can encode multiple
 substructures. The advantage of such fingerprints is that they can
 cover an arbitrarily large collection of substructures such as ``paths
-of length $N$,'' or circular environments. Examples include Daylight fingerprints (which are ``folded'' to
-optimize information density and screening speed) and
-ECFPs (Extended Connectivity Fingerprints, which use local topological
-information).
-Given a binary fingerprint, we can first ``pre-screen'' a database, to
-ignore molecules that cannot possibly match the query,
- by requiring that all bits in a query fingerprint must also
-be present in the target fingerprint. Since the target fingerprints
-are pre-computed, this check can be performed extremely
-rapidly on modern hardware. As a result, we apply the actual
+of length $N$,'' or circular environments. Examples include Daylight
+fingerprints (which are ``folded'' to optimize information density and
+screening speed) and ECFPs (Extended Connectivity Fingerprints, which
+use local topological information).  Given a binary fingerprint, we
+can first ``pre-screen'' a database, to ignore molecules that cannot
+possibly match the query, by requiring that all bits in a query
+fingerprint must also be present in the target fingerprint. Since the
+target fingerprints are pre-computed, this check can be performed
+extremely rapidly on modern hardware. As a result, we apply the actual
 isomorphism test only on those molecules that pass the
 screen. Fingerprints can also be used to rapidly search databases for
-similar molecules, by using a similarity metric such as the
-Tanimoto coefficient to compare the query and target
-fingerprints. Additional heuristics have been developed
-\cite{Swamidass:2007ve} to further speed up similarity searches.
+similar molecules, by using a similarity metric such as the Tanimoto
+coefficient to compare the query and target fingerprints. Additional
+heuristics have been developed \cite{Swamidass:2007ve} to further
+speed up similarity searches.
 
 \subsection{Molecules in their Biological Context}
 \label{sec:prof-ident}
@@ -450,52 +450,52 @@ to the training set.
 
 In many cases, the activity of a small molecule is due to its
 interaction with a receptor. Traditionally, QSAR \cite{Hansch:1962vn,
- Free:1964ys} approaches do not take into account receptor features,
-focusing only on small molecule features, and therefore lose valuable
-information on ligand-receptor interactions. As a result, techniques
-such as docking (which predicts how molecules fit together),
-structure-based pharmacophore modeling (a 3D approach to capturing protein-ligand
+  Free:1964ys} approaches do not consider receptor features, focusing
+only on small molecule features, thus losing valuable information on
+ligand-receptor interactions. As a result, techniques such as docking
+(which predicts how molecules fit together), structure-based
+pharmacophore modeling (a 3D approach to capturing protein-ligand
 interactions) and proteochemometric methods have been designed to take
 into account both ligand and receptor structures. The last method is
-an extension of statistical QSAR methods to simultaneously
-model the receptor and ligand, as first reported by Lapinsh \textit{et
- al.}~\cite{lapinsh2001}.
+an extension of statistical QSAR methods to simultaneously model the
+receptor and ligand, as first reported by Lapinsh \textit{et
+  al.}~\cite{lapinsh2001}.
 
-The first step in the predictive modeling of biological activities is
-to generate \emph{molecular descriptors} (a.k.a. \emph{features}) that
-are numerical representations of different structural features. For
-example, labeled graphs and their associated
-characterizations are easily accessible to computer scientists, yet
-such features miss significant physicochemical features (
-properties such as charge, flexibility and so on). At the same time,
-it can be difficult to objectively quantify many chemical aspects of a
-molecule, such that the resultant descriptors are suitable for
-predictive modeling.  Hence, the choice of a chemical descriptor
-should by no means be treated as a ``solved'' problem. For a more
-detailed discussion the reader is referred to more comprehensive
-textbooks \cite{todeschini2000,faulon2010}.
+The first step in predicting biological activities is to generate
+\emph{molecular descriptors} (a.k.a. \emph{features}) that are
+numerical representations of structural features. For example, labeled
+graphs and their associated characterizations are easily accessible to
+computer scientists, yet such features miss significant
+physicochemical features (properties such as surface distributions or
+3D pharmacophores). At the same time, it can be difficult to
+objectively quantify many chemical aspects of a molecule, such that
+the resultant descriptors are suitable for predictive modeling.
+Hence, the choice of a chemical descriptor should by no means be
+treated as a ``solved'' problem. For a more detailed discussion the
+reader is referred to more comprehensive textbooks
+\cite{todeschini2000,faulon2010}.
 
-As noted above, molecular graphs can be transformed to numerical
-vector representations ranging from counts of elements to eigenvalues
-of the Laplacian matrix.  Alternatively, we can compare molecular
-graphs directly, via \emph{kernel methods}, where a kernel on graphs
-$G$ and $G'$ provides a measure of how similar $G$ is to $G'$, or a
-kernel on a single graph compares measured similarities between the
-graph's nodes. In these cases, rather than compute vector
-representations, we directly operate on the graph representations.
-Both methods have advantages and disadvantages. The vector approach
-requires one to identify a subset of \emph{relevant} (to the property
-being modeled) descriptors: the feature selection problem is
-well discussed in the data mining literature. A kernel approach
-does not require feature selection, but one faces the problem of
-evaluating a data set in a pairwise fashion, and must
-identify an appropriate kernel. This is an important challenge as the
-kernel should be selected to satisfy \emph{Mercer's condition} (a
-well-known mathematical property in machine learning that makes a set
-of observations easier to make predictions about), and this is not
-always possible with traditional cheminformatics based kernels such as those based on multiple common substructures.
-These challenges can
-make kernel based methods prohibitive on larger datasets.
+Molecular graphs can be transformed to numerical vector
+representations ranging from counts of elements to eigenvalues of the
+Laplacian matrix.  Alternatively, molecular graphs can be compared 
+directly via \emph{kernel methods}, where a kernel on graphs $G$ and
+$G'$ provides a measure of how similar $G$ is to $G'$, or a kernel on
+a single graph compares measured similarities between the graph's
+nodes. In these cases, rather than compute vector representations, we
+directly operate on the graph representations.  Both methods have
+advantages and disadvantages. The vector approach requires one to
+identify a subset of \emph{relevant} (to the property being modeled)
+descriptors: the feature selection problem is well discussed in the
+data mining literature. A kernel approach does not require feature
+selection, but one faces the problem of evaluating a data set in a
+pairwise fashion, and must identify an appropriate kernel. This is an
+important challenge as the kernel should be selected to satisfy
+\emph{Mercer's condition} (a well-known mathematical property in
+machine learning that makes a set of observations easier to make
+predictions about), and this is not always possible with traditional
+cheminformatics based kernels such as those based on multiple common
+substructures.  These challenges can make kernel based methods
+prohibitive on larger datasets.
 
 Having settled on a numerical representation and a possible class of
 model types, one must address the goal of the model. Are we looking
@@ -534,21 +534,19 @@ One of the key challenges faced by predictive modeling is the fact
 that small molecules are not static and do not exist in isolation.
 Traditionally, predictive models have focused on a single structure
 for a small molecule and ignored the receptor. Yet, small molecules
-can exist in multiple tautomeric forms and conformations.
-Enhancing the accuracy of predictions
-will ideally require that the 3D geometries of that molecule be taken
-into account and the receptor be considered as far as possible.
-While some relevant low-energy conformers of small
-molecules may be accessible in crystallographic databases, this is
-not always the case. Though it is now possible to generate reasonable
-low energy conformations \emph{ab initio}, the
-``biologically relevant'' conformation might differ from the lowest
-energy conformation of the molecule considered in isolation,
-necessitating the need for conformational search.  Multi-conformer
-modeling has been addressed in the 4D-QSAR methodology described by
-Hopfinger \textit{et al.}  \cite{Albuquerque:1998ys}.  Recent
-techniques such as \emph{multiple-instance learning} could also be
-applied to the multi-conformer problem.
+can exist in multiple tautomeric forms and conformations.  Enhancing
+the accuracy of predictions will ideally require that the 3D
+geometries of that molecule be taken into account and the receptor be
+considered as far as possible.  Though it is now possible to generate
+reasonable low energy conformations \emph{ab initio}, the
+``biologically relevant'' conformation might differ significantly (in
+terms of energetics) from the lowest energy conformation of the
+molecule considered in isolation, necessitating the need for
+conformational search.  Multi-conformer modeling has been addressed in
+the 4D-QSAR methodology described by Hopfinger \textit{et al.}
+\cite{Albuquerque:1998ys}.  Recent techniques such as
+\emph{multiple-instance learning} could also be applied to the
+multi-conformer problem.
 
 With the advent of high-throughput screening technologies, large
 libraries of compounds can be screened against multiple targets in an
@@ -570,13 +568,12 @@ profiles~\cite{kuhn2010} and the ``personalized medicine'' concept
 \subsection{Expanding Chemical Space}
 \label{sec:struct-enum}
 Enumerating molecules is a combinatorial problem that has fascinated
-chemists, computer scientists and mathematicians alike for more than
-a century. Indeed, many fundamental principles of graph theory and
-combinatorics were developed by Cayley, Polya and others
-in the context of counting isomers of
-paraffin. In the 1960's, Lederberg,
-Djerassi and others developed algorithms to enumerate structures
-based on spectral data, leading to the development of DENDRAL, widely
+chemists, computer scientists and mathematicians alike for more than a
+century. Indeed, many fundamental principles of graph theory and
+combinatorics were developed by Cayley, Polya and others in the
+context of counting isomers of paraffin. In the 1960's, Lederberg,
+Djerassi and others developed algorithms to enumerate structures based
+on spectral data, leading to the development of DENDRAL, widely
 considered as the first expert system \cite{DENDRAL}.
 
 From a risk reduction point of view, efficient methods to enumerate
@@ -587,18 +584,16 @@ data and so on. It is important to realize that chemical space (the
 abstract, multi-dimensional space occupied by all possible chemical
 structures) is, in principle, infinite. Even considering molecules for
 just 30 heavy atoms, the size of this space is on the order of
-$10^{60}$ \cite{Bohacek:1996ve}. Any enumeration method
-will face a combinatorial explosion if
-implemented na\"{i}vely.
+$10^{60}$ \cite{Bohacek:1996ve}. Any enumeration method will face a
+combinatorial explosion if implemented na\"{i}vely.
 
 A key application of structure enumeration is the elucidation of
 structures based on spectral data \cite{Kind:2010zr}. This is
-especially relevant for identifying metabolites, small molecules
-that are the byproducts of metabolic processes and thus provide
-insight into the biological state (diseased, fasting, etc.) of an
-organism. A chemist gathers
-spectral data (NMR, mass, LC/MS, etc.)
-and an algorithm would ideally provide a list of structures that can give
+especially relevant for identifying metabolites, small molecules that
+are the byproducts of metabolic processes and thus provide insight
+into the biological state (diseased, fasting, etc.) of an organism. A
+chemist gathers spectral data (NMR, mass, LC/MS, etc.)  and an
+algorithm would ideally provide a list of structures that can give
 rise to the observed spectra. Some commercial products such as MOLGEN
 (\url{http://molgen.de}) are able to perform this task rapidly.
 
@@ -617,8 +612,8 @@ Digitial Chemistry and ChemAxon provide toolkits to handle these
 problems.
 
 Structure enumeration plays a fundamental role in \emph{molecular
-  design} -- the design of compounds (drugs, for instance) that
-optimize some physical, chemical, or biological property or activity
+  design} -- the design of compounds that optimize some physical,
+chemical, or biological property or activity
 \cite{Schneider:2005uq}. A key challenge in this area is to combine
 enumeration algorithms with efficient property prediction and is
 closely related to methods in predictive modeling of chemical
@@ -664,24 +659,23 @@ dynamics of metabolic networks, applying metabolic engineering and
 synthetic biology to produce heterologous compounds (compounds from
 different species) in microorganisms, all involve enumeration of
 reaction networks. As reviewed in Chapter 11 in \cite{faulon2010}
-several network enumeration techniques have been developed. However,
-these techniques generally suffer from a combinatorial explosion of
-product compounds. One way to limit the number of compounds generated
-is to simulate the dynamics of the network while it is being
-constructed and remove compounds of low concentration. Following that
-idea, methods have been developed based on the Gillespie Stochastic
-Simulation Algorithm (SSA) to compute on-the-fly species
-concentrations. Chemical reaction network enumeration and sampling is
-an active field of research, particularly in the context of
-metabolism, either to study biodegradation, or to propose metabolic
-engineering strategies to biosynthesize compounds of commercial
-interest. With metabolic network design, a difficulty is that in
-addition to network generation based on reactions, one also needs to
-verify that there are possible enzymatic events to enable reaction
-catalysis (enzymes must be present to reduce the
-energy required for some reactions to take place). That additional
-task requires encompassing both chemical structures and protein
-sequences and the development of tools that are at the
+several network enumeration techniques have been developed but they
+generally suffer from a combinatorial explosion of product
+compounds. One way to limit the number of compounds generated is to
+simulate the dynamics of the network while it is being constructed and
+remove compounds of low concentration. Following that idea, methods
+have been developed based on the Gillespie Stochastic Simulation
+Algorithm (SSA) to compute on-the-fly species concentrations. Chemical
+reaction network enumeration and sampling is an active field of
+research, particularly in the context of metabolism, either to study
+biodegradation, or to propose metabolic engineering strategies to
+biosynthesize compounds of commercial interest. With metabolic network
+design, a difficulty is that in addition to network generation based
+on reactions, one also needs to verify that there are possible
+enzymatic events to enable reaction catalysis (enzymes must be present
+to reduce the energy required for some reactions to take place). That
+additional task requires encompassing both chemical structures and
+protein sequences and the development of tools that are at the
 interface between cheminformatics and bioinformatics.
 
 
@@ -753,33 +747,32 @@ knowledge management tool specifically for chemists is the web-based
 service Reaxys, founded in 2009, which aims to provide ``a
 single, fully integrated chemical workflow solution.''
 
-However, the future still holds many challenges. Using
-external (public) databases with chemical and bioactivity data remains a
+However, the future still holds many challenges. Using external
+(public) databases with chemical and bioactivity data remains a
 challenge due to differences in identifiers, synchronization, curation
 and error correcting mechanisms, and efficient substructure and
-similarity search within complex data types. A
-collaboration with external parties, e.g. contract research, poses
-other problems including compound duplication and efficient data
-synchronization. If external partners are small they often do not even
-have sufficient IT resources themselves and thus rely on external
-services. Cloud services could help not only to provide a service
-infrastructure for all parties involved, but also to provide the
-required private--public interface. Furthermore, there are still many
-data sources that are not being indexed properly: chemistry patents
-are often cryptic and chemical image and text mining remains a
-challenge (albeit being addressed in academic and industrial research
+similarity search within complex data types. A collaboration with
+external parties, e.g. contract research, poses other problems
+including compound duplication and efficient data synchronization. If
+external partners are small they often do not even have sufficient IT
+resources themselves and thus rely on external services. Cloud
+services could help not only to provide a service infrastructure for
+all parties involved, but also to provide the required private--public
+interface. Furthermore, there are still many data sources that are not
+being indexed properly: chemistry patents are often cryptic and
+chemical image and text mining remains a challenge (albeit being
+addressed in academic and industrial research
 \cite{Jessop:2011fk,Sayle:2009uq}). The closed CAS (Chemical Abstract
 Service) is a highly trusted source, and public chemical and
-bioactivity databases have to improve their quality and interconnectivity to
-compete.
-SciFinder is another chemical abstract service, with a version, SciFinder Scholar,
-marketed to universities.  Open-source efforts like ChEMBL and PubChem-BioAssay
-are on the
-right track, though, unlike some commercial tools, these efforts do not yet
-abstract reactions. Still, improving data quality and standards between
-public and closed sources will be absolutely critical for ensuring
-constant growth, usage, and collaboration between private
-and public parties.
+bioactivity databases have to improve their quality and
+interconnectivity to compete.  SciFinder is another chemical abstract
+service, with a version, SciFinder Scholar, marketed to universities.
+Open-source efforts like ChEMBL and PubChem-BioAssay are on the right
+track, though, unlike some commercial tools, these efforts do not yet
+abstract reactions. Still, improving data quality and standards
+between public and closed sources will be absolutely critical for
+ensuring constant growth, usage, and collaboration between private and
+public parties.
 
 \section{Support for the Development of Novel Algorithms}
 \label{sec:development-support}
@@ -827,7 +820,7 @@ cheminformaticians, many applications have
 been developed that rely on these toolkits to handle chemical data;
 for example, the molecular viewer Avogadro
 (\url{http://avogadro.openmolecules.net}) uses Open Babel, while the
-molecular workbench Bioclipse~\cite{Bioclipse2} uses the CDK.
+molecular workbench Bioclipse~\cite{Bioclipse2} uses the CDK.  
 
 The various toolkits have many features in common and at the same time
 have certain distinguishing features. For example, the CDK implements
@@ -864,15 +857,16 @@ become available. As a result, this enables much more robust
 validation of cheminformatics methodologies as well as large scale
 \emph{benchmarking of algorithms}. The latter is especially relevant
 for the plethora of data mining techniques employed in
-cheminformatics. At this point, the nature of Open Data focuses
-primarily on structure and activity data types. On the other hand,
-there is a distinct lack of textual data (such as journal articles)
-that are ``Open''. While PubMed abstracts serve as a proxy
-for journal articles, text mining methods in cheminformatics are
-hindered by not being able to mine the full text of many scientific
-publications.  Interestingly, patent information is publicly
-accessible (cf. Google Patents) and represents an excellent resource
-to support these types of efforts.
+cheminformatics. Currently Open Data focuses primarily on structure
+and activity data types and there is a distinct lack of textual data
+(such as journal articles) that are ``Open''. While PubMed abstracts
+serve as a proxy for journal articles, text mining methods in
+cheminformatics are hindered by not being able to mine the full text
+of many scientific publications.  Interestingly, patent information is
+publicly accessible and can be used resource to support these types of
+efforts. Of course, Open Data does not explicitly address data quality
+issues nor the problems with integrating data sources. In many cases,
+manual curation is the only option to maintain high quality databases.
 
 %
 \section{Conclusions}
@@ -929,17 +923,17 @@ and computer scientists are bright, and encourage more computer
 scientists to participate in cheminformatics research.
 
 There is an admitted learning curve, as significant domain
-knowledge is required to attack many problems in cheminformatics due
-to the underlying chemistry of the systems being studied. Indeed, many
-issues faced by chemists do not admit as clean an abstraction as
-``algorithms on a string,'' the way many bioinformatics algorithms can
-be abstracted into a computer science framework.  Hence, while
-one can certainly make significant contributions to cheminformatics by
-just considering structures as graphs, one is limited to somewhat
-abstract problems. Keeping in mind that cheminformatics is
-fundamentally a practical field that serves to help and advance
-experimental chemistry, the key challenges require an understanding of
-the underlying chemical systems.
+knowledge is required to attack many problems in cheminformatics 
+%%due to the underlying chemistry of the systems being studied.
+Indeed, many issues faced by chemists do not admit as clean an
+abstraction as ``algorithms on a string,'' the way many bioinformatics
+algorithms can be abstracted into a computer science framework.
+Hence, while one can certainly make significant contributions to
+cheminformatics by just considering structures as graphs, one is
+limited to somewhat abstract problems. Keeping in mind that
+cheminformatics is fundamentally a practical field that serves to help
+and advance experimental chemistry, the key challenges require an
+understanding of the underlying chemical systems.
 
 Nevertheless, because of the increasing availability of tools and
 data, the barrier to entry for non-chemists and non-cheminformaticians
@@ -966,7 +960,7 @@ for funding. J. Hastings thanks the EU project EU-OPENSCREEN for
 funding support.
 
 \bibliographystyle{abbrv}
-\bibliography{CACM_second_revision}
+\bibliography{resubmission}
 
 \newpage
 \appendix
